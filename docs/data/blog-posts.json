@@ -19,6 +19,42 @@
         "During the event, we watched the network in real time and adjusted channel plans as the venue filled. Traffic shaping kept live streaming and staff tools responsive, while guests still saw strong connectivity throughout the evening.",
         "Post event, we collected metrics and notes for future builds. The main takeaway: a clear RF plan and a strict separation between guest and production traffic makes rural deployments much more predictable."
       ]
+    },
+    {
+      "id": "starlink-review",
+      "title": "Starlink: Mijn Ervaringen met Satellietinternet",
+      "date": "2024-03-14",
+      "excerpt": "Ik was altijd al nieuwsgierig naar Starlink. Onlangs heeft Starlink de prijzen aanzienlijk verlaagd. Voor de eenmalige kosten heb ik €288 betaald, inclusief een ethernetadapter.",
+      "cover": "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240314_175558-768x1024.png",
+      "images": [
+        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240314_175558-768x1024.png",
+        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240314_182522-768x1024.jpg",
+        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240314_182527-768x1024.jpg",
+        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240314_182551-768x1024.jpg",
+        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240314_182742-768x1024.jpg",
+        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/Screenshot_20240314_183056_Starlink-473x1024.png",
+        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/Screenshot_20240314_183148_Starlink-473x1024.png",
+        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/Screenshot_20240314_183159_Starlink-473x1024.png",
+        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/Screenshot_20240314_183335_Starlink-473x1024.png",
+        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/Screenshot_20240314_184014_Starlink-473x1024.png",
+        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/WhatsApp-Image-2024-03-14-at-19.32.36.jpeg",
+        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/16029289517-300x160.png",
+        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/WhatsApp-Image-2024-03-14-at-19.08.33-1024x282.jpeg",
+        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240314_201314-1-768x1024.jpg"
+      ],
+      "tags": ["Starlink", "Satellietinternet"],
+      "content": [
+        "Ik was altijd al nieuwsgierig naar Starlink. Onlangs heeft Starlink de prijzen aanzienlijk verlaagd. Voor de eenmalige kosten heb ik €288 betaald, inclusief een ethernetadapter.",
+        "Er zijn eigenlijk twee interessante abonnementen beschikbaar: Residential en Mobile Regionaal (Roam). Residential kost €50 per maand, terwijl Mobile Regionaal €59 per maand kost. Ik heb gekozen voor Mobile Regionaal (Roam).",
+        "Wat is het verschil? Hoewel je €9 per maand meer betaalt, kun je met dit abonnement op elk moment pauzeren en alleen betalen wanneer je het nodig hebt. Aangezien ik thuis glasvezel heb, is de kans dat ik Starlink thuis daadwerkelijk nodig heb, laag. Bovendien hebben de 'roam'-abonnementen een 'best effort'-beperking, wat betekent dat als het netwerk erg druk is, je minder prioriteit krijgt en lagere snelheden kunt ervaren. De kans op deze situatie in Europa is echter niet erg hoog, gezien het lagere aantal Starlink-gebruikers in vergelijking met de VS.",
+        "Levertijd Ik heb de Starlink-kit inclusief ethernetadapter op 5 maart besteld en uiteindelijk was alles compleet op 14 maart. Tijdens het bestellen deed zich een probleem voor (ik heb geprobeerd een andere bank te kiezen, wat niet had gehoeven), waardoor er wat vertraging ontstond. Desondanks vind ik een levertijd van 9 dagen redelijk. De levering werd uitgevoerd door DHL.",
+        "Unboxing Dit is het eigenlijk… ik had een soort Apple-achtige unboxing verwacht, maar veel zit er niet in: – De Starlink schotel zelf – Router – Lange kabel van de router naar de schotel",
+        "Installatie (let niet op de tuin, moet nog netjes worden gemaakt in de lente) Het is slechts een kwestie van de schotel naar buiten te plaatsen en ervoor te zorgen dat hij een goed zicht op de hemel heeft, en binnen 5 minuten ben je online. Zodra je de stroom inschakelt, begint hij met het zoeken naar satellieten en dan ben je verbonden. Het kan echter tot 15 minuten duren voordat hij een optimale verbinding tot stand brengt.",
+        "Starlink App In de Starlink-app kun je de status van de schotel en de router bekijken. Ook kun je hier je wifi-instellingen aanpassen en snelheidstests uitvoeren. Verder heb je de app eigenlijk niet nodig.",
+        "Welke snelheden kun je verwachten? In de korte peridode dat ik heb kunnen testen, haal ik rond 200-300 Mbps download en 20-30 Mbps upload met een ping van tussen 30 en 50 ms. UPDATE: na 24 uur actief krijg ik snelheden boven 300 Mbps: Je krijgt zowel een IPv4 als een IPv6 adres, beide met een locatie in Nederland, zodat je toegang hebt tot Nederlandse content. De ping is, zoals verwacht, niet altijd superstabiel. Af en toe kan er een beetje packet loss optreden, wat bij realtime applicaties zoals VoIP of videobellen voor kleine haperingen kan zorgen.",
+        "De rode streepjes is packetloss en de zwarte lijn is de latency. Het groene gedeelte is 100 ms.",
+        "Al met al is het erg interessant materiaal. Heb ik het zelf nodig? Niet echt. Maar het kan wel handig zijn tijdens noodsituaties, en wellicht ga ik het uitlenen samen met wat handige wifi-hardware. Benieuwd naar het stroomverbruik? Die heb ik gepost in deze blog."
+      ]
     }
   ]
 }
