@@ -255,7 +255,7 @@ if (!$ok) {
     http_response_code(500);
     header('Content-Type: text/plain; charset=UTF-8');
     echo 'Email sending failed. ' . $error;
-    exit;
+    exit; 
 }
 
 $lang = sanitize_single_line((string) ($_POST['lang'] ?? ''));
