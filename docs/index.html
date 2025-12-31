@@ -8,10 +8,10 @@
       name="description"
       content="JarnoWiFi levert professionele event-wifi overal met Starlink en 5G-back-up, ondersteund door een 99,95% SLA."
     />
-    <link rel="alternate" hreflang="nl" href="?lang=nl" />
-    <link rel="alternate" hreflang="en" href="?lang=en" />
-    <link rel="alternate" hreflang="de" href="?lang=de" />
-    <link rel="alternate" hreflang="x-default" href="?lang=nl" />
+    <link rel="alternate" hreflang="nl" href="/?lang=nl" />
+    <link rel="alternate" hreflang="en" href="/?lang=en" />
+    <link rel="alternate" hreflang="de" href="/?lang=de" />
+    <link rel="alternate" hreflang="x-default" href="/?lang=nl" />
 
     <link
       rel="preconnect"
@@ -265,9 +265,9 @@
           <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 ms-lg-3 mt-3 mt-lg-0">
             <a class="btn btn-sm btn-dark" href="#contact" data-i18n="nav.cta">Offerte aanvragen</a>
             <div class="d-flex gap-2">
-              <a class="btn btn-sm btn-dark" href="?lang=nl" data-lang="nl">NL</a>
-              <a class="btn btn-sm btn-outline-dark" href="?lang=en" data-lang="en">EN</a>
-              <a class="btn btn-sm btn-outline-dark" href="?lang=de" data-lang="de">DE</a>
+              <a class="btn btn-sm btn-dark" href="/?lang=nl" data-lang="nl">NL</a>
+              <a class="btn btn-sm btn-outline-dark" href="/?lang=en" data-lang="en">EN</a>
+              <a class="btn btn-sm btn-outline-dark" href="/?lang=de" data-lang="de">DE</a>
             </div>
           </div>
         </div>
@@ -1354,6 +1354,12 @@
         return lang.toLowerCase().split("-")[0];
       }
 
+      function cleanHomeUrl() {
+        const hash = window.location.hash;
+        const target = hash ? `/${hash}` : "/";
+        window.history.replaceState({}, "", target);
+      }
+
       function getLanguageFromQuery() {
         const params = new URLSearchParams(window.location.search);
         const lang = normalizeLang(params.get("lang"));
@@ -1377,11 +1383,20 @@
       if (langField) {
         langField.value = initialLang;
       }
+      if (queryLang) {
+        const path = window.location.pathname;
+        if (path !== "/" && path !== "/index.html") {
+          window.location.replace("/");
+        } else {
+          cleanHomeUrl();
+        }
+      }
 
       languageButtons.forEach((button) => {
         button.addEventListener("click", (event) => {
           event.preventDefault();
-          setLanguage(button.dataset.lang);
+          setLanguage(button.dataset.lang, { updateUrl: false });
+          cleanHomeUrl();
         });
       });
 
