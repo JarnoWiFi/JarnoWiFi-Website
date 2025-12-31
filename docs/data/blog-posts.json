@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "id": "rural-festival-coverage",
+      "title": "Rural festival coverage playbook",
+      "date": "2025-02-12",
+      "excerpt": "How we built a resilient network for a 2,000-guest festival using dual uplinks, segmented WiFi, and on-site monitoring.",
+      "cover": "img/grootse-markt-2025/1748943099642.jpeg",
+      "images": [
+        "img/grootse-markt-2025/1748943179728.jpeg",
+        "img/20240508_194215-1536x1152.webp"
+      ],
+      "tags": ["Deployment", "Monitoring", "Field Ops"]
+    }
+  ]
+}

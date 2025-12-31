@@ -160,6 +160,47 @@
         padding: 2rem;
       }
 
+      .blog-card {
+        border: none;
+        border-radius: 1.25rem;
+        box-shadow: 0 18px 30px rgba(15, 23, 42, 0.08);
+        overflow: hidden;
+      }
+
+      .blog-card__cover {
+        object-fit: cover;
+      }
+
+      .blog-meta {
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(17, 24, 39, 0.6);
+      }
+
+      .blog-link {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .blog-link:hover {
+        color: var(--teal);
+      }
+
+      .blog-thumbs {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+      }
+
+      .blog-thumb {
+        width: 64px;
+        height: 48px;
+        border-radius: 0.6rem;
+        object-fit: cover;
+        border: 1px solid rgba(15, 23, 42, 0.12);
+      }
+
       .reliability {
         background: linear-gradient(120deg, #0b1a2a 0%, #123147 50%, #154c5f 100%);
         color: #ffffff;
@@ -293,6 +334,7 @@
             <li class="nav-item"><a class="nav-link" href="#reliability" data-i18n="nav.reliability">Betrouwbaarheid</a></li>
             <li class="nav-item"><a class="nav-link" href="#use-cases" data-i18n="nav.useCases">Toepassingen</a></li>
             <li class="nav-item"><a class="nav-link" href="#pricing" data-i18n="nav.plans">Pakketten</a></li>
+            <li class="nav-item"><a class="nav-link" href="#blog" data-i18n="nav.blog">Blog</a></li>
             <li class="nav-item"><a class="nav-link" href="#faq" data-i18n="nav.faq">FAQ</a></li>
           </ul>
           <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 ms-lg-3 mt-3 mt-lg-0">
@@ -644,6 +686,27 @@
       </div>
     </section>
 
+    <section class="py-5" id="blog">
+      <div class="container py-4">
+        <div class="row mb-4">
+          <div class="col-lg-7">
+            <p class="section-label" data-i18n="blog.label">Blog</p>
+            <h2 class="fw-bold" data-i18n="blog.title">Field notes and deployments.</h2>
+            <p class="text-muted" data-i18n="blog.lead">
+              Short updates and field notes from recent deployments.
+            </p>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-12">
+            <h4 class="fw-semibold mb-3" data-i18n="blog.localTitle">Featured posts</h4>
+            <div class="row g-4" data-blog-local></div>
+            <p class="text-muted small mb-0 d-none" data-blog-local-status data-i18n="blog.empty">No posts yet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="py-5 pattern-bg" id="pricing">
       <div class="container py-4">
         <div class="row mb-4">
@@ -860,6 +923,7 @@
           "nav.reliability": "Betrouwbaarheid",
           "nav.useCases": "Toepassingen",
           "nav.plans": "Pakketten",
+          "nav.blog": "Blog",
           "nav.faq": "FAQ",
           "nav.cta": "Offerte aanvragen",
           "hero.label": "Zakelijke eventconnectiviteit",
@@ -940,6 +1004,12 @@
           "gallery.alt7": "Antenne opstelling",
           "gallery.alt8": "Netwerkkast op locatie",
           "gallery.alt9": "WiFi meting op locatie",
+          "blog.label": "Blog",
+          "blog.title": "Updates uit het veld.",
+          "blog.lead": "Korte updates uit het veld en notities van recente deployments.",
+          "blog.localTitle": "Uitgelichte posts",
+          "blog.empty": "Nog geen posts.",
+          "blog.localError": "Laden van posts is mislukt.",
           "pricing.label": "Pakketten",
           "pricing.title": "Transparante pakketten die meeschalen.",
           "pricing.lead": "Elke deployment bevat monitoring, redundantie en ondersteuning op locatie.",
@@ -1014,6 +1084,7 @@
           "nav.reliability": "Reliability",
           "nav.useCases": "Use Cases",
           "nav.plans": "Plans",
+          "nav.blog": "Blog",
           "nav.faq": "FAQ",
           "nav.cta": "Request a quote",
           "hero.label": "Enterprise event connectivity",
@@ -1094,6 +1165,12 @@
           "gallery.alt7": "Antenna setup on site",
           "gallery.alt8": "Network cabinet on site",
           "gallery.alt9": "WiFi testing on site",
+          "blog.label": "Blog",
+          "blog.title": "Field notes and deployments.",
+          "blog.lead": "Short updates and field notes from recent deployments.",
+          "blog.localTitle": "Featured posts",
+          "blog.empty": "No posts yet.",
+          "blog.localError": "Unable to load posts right now.",
           "pricing.label": "Plans",
           "pricing.title": "Transparent packages with custom scale.",
           "pricing.lead": "Every deployment includes monitoring, redundancy, and on-site support.",
@@ -1168,6 +1245,7 @@
           "nav.reliability": "Zuverlässigkeit",
           "nav.useCases": "Einsatzbereiche",
           "nav.plans": "Pakete",
+          "nav.blog": "Blog",
           "nav.faq": "FAQ",
           "nav.cta": "Angebot anfragen",
           "hero.label": "Enterprise-Event-Konnektivität",
@@ -1248,6 +1326,12 @@
           "gallery.alt7": "Antennenaufbau vor Ort",
           "gallery.alt8": "Netzwerkschrank vor Ort",
           "gallery.alt9": "WiFi-Test vor Ort",
+          "blog.label": "Blog",
+          "blog.title": "Feldnotizen und Deployments.",
+          "blog.lead": "Kurze Updates und Notizen aus aktuellen Deployments.",
+          "blog.localTitle": "Ausgewaehlte Beitraege",
+          "blog.empty": "Noch keine Beitraege.",
+          "blog.localError": "Beitraege konnten nicht geladen werden.",
           "pricing.label": "Pakete",
           "pricing.title": "Transparente Pakete, die mitwachsen.",
           "pricing.lead": "Jedes Deployment umfasst Monitoring, Redundanz und Support vor Ort.",
@@ -1318,9 +1402,13 @@
       const placeholderNodes = document.querySelectorAll("[data-i18n-placeholder]");
       const altNodes = document.querySelectorAll("[data-i18n-alt]");
       const languageButtons = document.querySelectorAll("[data-lang]");
+      const blogLocalContainer = document.querySelector("[data-blog-local]");
+      const blogLocalStatus = document.querySelector("[data-blog-local-status]");
       const contactForm = document.querySelector("[data-contact-form]");
       const contactStatus = document.querySelector("[data-contact-status]");
       let currentLang = "nl";
+      let localPostsCache = [];
+      let blogLocalStatusKey = "";
       const langField = document.querySelector("[data-lang-field]");
 
       function setLanguage(lang, options = {}) {
@@ -1381,6 +1469,7 @@
         }
 
         localStorage.setItem("lang", lang);
+        rerenderBlog();
       }
 
       function normalizeLang(lang) {
@@ -1435,6 +1524,136 @@
           cleanHomeUrl();
         });
       });
+
+      function formatBlogDate(dateString) {
+        if (!dateString) {
+          return "";
+        }
+        const date = new Date(dateString);
+        if (Number.isNaN(date.getTime())) {
+          return dateString;
+        }
+        return date.toLocaleDateString(currentLang, {
+          year: "numeric",
+          month: "short",
+          day: "numeric"
+        });
+      }
+
+      function setLocalBlogStatus(key, fallback, show) {
+        if (!blogLocalStatus) {
+          return;
+        }
+        if (show) {
+          blogLocalStatus.textContent = getTranslation(currentLang, key, fallback);
+          blogLocalStatus.classList.remove("d-none");
+          blogLocalStatusKey = key;
+        } else {
+          blogLocalStatus.classList.add("d-none");
+          blogLocalStatusKey = "";
+        }
+      }
+
+      function createBlogCard(post) {
+        const col = document.createElement("div");
+        col.className = "col-md-6 col-lg-4";
+        const card = document.createElement("article");
+        card.className = "card blog-card h-100";
+
+        if (post.cover) {
+          const ratio = document.createElement("div");
+          ratio.className = "ratio ratio-16x9";
+          const img = document.createElement("img");
+          img.className = "w-100 h-100 blog-card__cover";
+          img.src = post.cover;
+          img.alt = post.title || "";
+          img.loading = "lazy";
+          ratio.appendChild(img);
+          card.appendChild(ratio);
+        }
+
+        const body = document.createElement("div");
+        body.className = "card-body d-flex flex-column";
+
+        if (post.date) {
+          const meta = document.createElement("p");
+          meta.className = "blog-meta mb-2";
+          meta.textContent = formatBlogDate(post.date);
+          body.appendChild(meta);
+        }
+
+        const title = document.createElement("h5");
+        title.className = "fw-semibold";
+        title.textContent = post.title || "";
+        body.appendChild(title);
+
+        if (post.excerpt) {
+          const excerpt = document.createElement("p");
+          excerpt.className = "text-muted mt-2 mb-0 flex-grow-1";
+          excerpt.textContent = post.excerpt;
+          body.appendChild(excerpt);
+        }
+
+        if (Array.isArray(post.images) && post.images.length > 0) {
+          const thumbs = document.createElement("div");
+          thumbs.className = "blog-thumbs mt-3";
+          post.images.slice(0, 3).forEach((image) => {
+            const thumb = document.createElement("img");
+            thumb.className = "blog-thumb";
+            thumb.src = image;
+            thumb.alt = post.title || "";
+            thumb.loading = "lazy";
+            thumbs.appendChild(thumb);
+          });
+          body.appendChild(thumbs);
+        }
+
+        card.appendChild(body);
+        col.appendChild(card);
+        return col;
+      }
+
+      function renderBlogPosts(posts, container) {
+        if (!container) {
+          return;
+        }
+        container.innerHTML = "";
+        posts.forEach((post) => {
+          container.appendChild(createBlogCard(post));
+        });
+      }
+
+      function rerenderBlog() {
+        if (localPostsCache.length && blogLocalContainer) {
+          renderBlogPosts(localPostsCache, blogLocalContainer);
+        }
+        if (blogLocalStatusKey) {
+          setLocalBlogStatus(blogLocalStatusKey, "No posts yet.", true);
+        }
+      }
+
+      async function loadLocalBlogPosts() {
+        if (!blogLocalContainer) {
+          return;
+        }
+        try {
+          const response = await fetch("data/blog-posts.json", { cache: "no-store" });
+          if (!response.ok) {
+            throw new Error("Local posts request failed");
+          }
+          const data = await response.json();
+          localPostsCache = Array.isArray(data.posts) ? data.posts : [];
+          if (localPostsCache.length === 0) {
+            setLocalBlogStatus("blog.empty", "No posts yet.", true);
+            return;
+          }
+          renderBlogPosts(localPostsCache, blogLocalContainer);
+          setLocalBlogStatus("", "", false);
+        } catch (error) {
+          console.error("Local blog load error:", error);
+          setLocalBlogStatus("blog.localError", "Unable to load posts right now.", true);
+        }
+      }
 
       function getTranslation(lang, key, fallback) {
         const dict = translations[lang];
@@ -1500,6 +1719,8 @@
           }
         });
       }
+
+      loadLocalBlogPosts();
     </script>
   </body>
 </html>
