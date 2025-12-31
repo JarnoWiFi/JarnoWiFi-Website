@@ -1,0 +1,1093 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PiloWiFi — Professionele event-wifi overal</title>
+    <meta
+      name="description"
+      content="PiloWiFi levert professionele event-wifi overal met Starlink en 5G-back-up, ondersteund door een 99,95% SLA."
+    />
+    <link rel="alternate" hreflang="nl" href="?lang=nl" />
+    <link rel="alternate" hreflang="en" href="?lang=en" />
+    <link rel="alternate" hreflang="de" href="?lang=de" />
+    <link rel="alternate" hreflang="x-default" href="?lang=nl" />
+
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      :root {
+        --ink: #111827;
+        --night: #0b1a2a;
+        --ocean: #123147;
+        --sand: #f4efe6;
+        --sun: #f0a44a;
+        --teal: #1b8ea6;
+        --mist: #e7edf1;
+      }
+
+      body {
+        font-family: "Work Sans", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: radial-gradient(circle at top, #f7f3ea 0%, #eef3f7 45%, #ffffff 75%);
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      .display-4 {
+        font-family: "Space Grotesk", "Segoe UI", sans-serif;
+        letter-spacing: -0.02em;
+      }
+
+      .nav-link {
+        font-weight: 500;
+      }
+
+      .hero {
+        padding: 6rem 0 4rem;
+        background: linear-gradient(135deg, rgba(11, 26, 42, 0.95), rgba(18, 49, 71, 0.9)),
+          url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80")
+            center / cover no-repeat;
+        color: #ffffff;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 20% 20%, rgba(240, 164, 74, 0.35), transparent 50%);
+        pointer-events: none;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-primary {
+        background: var(--sun);
+        border: none;
+        color: var(--night);
+        font-weight: 600;
+      }
+
+      .cta-outline {
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        color: #ffffff;
+      }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 1rem;
+        backdrop-filter: blur(8px);
+      }
+
+      .stat-chip {
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 999px;
+        padding: 0.35rem 0.9rem;
+        font-size: 0.9rem;
+      }
+
+      .section-label {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        color: var(--teal);
+        font-weight: 600;
+      }
+
+      .service-card,
+      .use-case-card {
+        border: none;
+        border-radius: 1.25rem;
+        box-shadow: 0 18px 30px rgba(15, 23, 42, 0.08);
+      }
+
+      .service-card .card-body,
+      .use-case-card .card-body {
+        padding: 2rem;
+      }
+
+      .reliability {
+        background: linear-gradient(120deg, #0b1a2a 0%, #123147 50%, #154c5f 100%);
+        color: #ffffff;
+      }
+
+      .diagram {
+        border: 1px dashed rgba(255, 255, 255, 0.35);
+        border-radius: 1rem;
+        padding: 1.5rem;
+      }
+
+      .plan-card {
+        border-radius: 1.5rem;
+        border: 1px solid var(--mist);
+        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+      }
+
+      .plan-card.featured {
+        border-color: var(--sun);
+        box-shadow: 0 25px 50px rgba(240, 164, 74, 0.18);
+      }
+
+      .cta-band {
+        background: linear-gradient(135deg, rgba(240, 164, 74, 0.9), rgba(27, 142, 166, 0.9));
+        color: #111827;
+        border-radius: 1.5rem;
+        padding: 2.5rem;
+      }
+
+      .pattern-bg {
+        background-image: radial-gradient(circle, rgba(27, 142, 166, 0.1) 0, transparent 60%),
+          radial-gradient(circle, rgba(240, 164, 74, 0.08) 0, transparent 55%);
+        background-position: top left, bottom right;
+        background-size: 420px 420px, 360px 360px;
+      }
+
+      .fade-up {
+        opacity: 0;
+        transform: translateY(18px);
+        animation: fadeUp 0.8s ease forwards;
+      }
+
+      .delay-1 { animation-delay: 0.1s; }
+      .delay-2 { animation-delay: 0.2s; }
+      .delay-3 { animation-delay: 0.3s; }
+      .delay-4 { animation-delay: 0.4s; }
+
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .floating {
+        animation: float 5s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+      }
+
+      .footer {
+        background: #0b1a2a;
+        color: #ffffff;
+      }
+
+      .footer a {
+        color: #ffffff;
+        text-decoration: none;
+      }
+
+      .badge-pill {
+        background: rgba(27, 142, 166, 0.12);
+        color: var(--teal);
+        border-radius: 999px;
+        padding: 0.35rem 0.9rem;
+        font-weight: 600;
+      }
+
+      .form-control,
+      .form-select {
+        border-radius: 0.85rem;
+        border-color: #d9e2ea;
+      }
+
+      .accordion-button:not(.collapsed) {
+        background: rgba(27, 142, 166, 0.08);
+        color: var(--night);
+      }
+
+      @media (max-width: 991px) {
+        .hero {
+          padding-top: 5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-white border-bottom fixed-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">
+          PiloWiFi
+          <span class="badge-pill ms-2" data-i18n="nav.badge">Starlink-gecertificeerd</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#piloNavbar"
+          aria-controls="piloNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="piloNavbar">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="#services" data-i18n="nav.services">Diensten</a></li>
+            <li class="nav-item"><a class="nav-link" href="#reliability" data-i18n="nav.reliability">Betrouwbaarheid</a></li>
+            <li class="nav-item"><a class="nav-link" href="#use-cases" data-i18n="nav.useCases">Toepassingen</a></li>
+            <li class="nav-item"><a class="nav-link" href="#pricing" data-i18n="nav.plans">Pakketten</a></li>
+            <li class="nav-item"><a class="nav-link" href="#faq" data-i18n="nav.faq">FAQ</a></li>
+          </ul>
+          <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 ms-lg-3 mt-3 mt-lg-0">
+            <a class="btn btn-sm btn-dark" href="#contact" data-i18n="nav.cta">Offerte aanvragen</a>
+            <div class="d-flex gap-2">
+              <a class="btn btn-sm btn-dark" href="?lang=nl" data-lang="nl">NL</a>
+              <a class="btn btn-sm btn-outline-dark" href="?lang=en" data-lang="en">EN</a>
+              <a class="btn btn-sm btn-outline-dark" href="?lang=de" data-lang="de">DE</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero text-white" id="home">
+      <div class="container hero-content">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-7">
+            <p class="section-label text-white-50" data-i18n="hero.label">Zakelijke eventconnectiviteit</p>
+            <h1 class="display-4 fw-bold mb-3 fade-up" data-i18n="hero.title">Professionele event-wifi, overal.</h1>
+            <p class="lead text-white-50 fade-up delay-1" data-i18n="hero.lead">
+              PiloWiFi brengt Starlink-gestuurd breedband naar landelijke locaties met automatische 5G-back-up en
+              een 99,95% SLA. We installeren binnen enkele uren, monitoren 24/7 en houden gasten online zonder
+              verrassingen.
+            </p>
+            <div class="d-flex flex-wrap gap-3 fade-up delay-2">
+              <a class="btn btn-lg cta-primary" href="#contact" data-i18n="hero.ctaPrimary">Offerte aanvragen</a>
+              <a class="btn btn-lg cta-outline" href="#reliability" data-i18n="hero.ctaSecondary">Bekijk onze uptime-aanpak</a>
+            </div>
+            <div class="d-flex flex-wrap gap-3 mt-4">
+              <span class="stat-chip" data-i18n="hero.stat1">99,95% SLA</span>
+              <span class="stat-chip" data-i18n="hero.stat2">Twee Starlink-schotels</span>
+              <span class="stat-chip" data-i18n="hero.stat3">5G-failover</span>
+              <span class="stat-chip" data-i18n="hero.stat4">24/7 NOC</span>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="glass-card p-4 floating">
+              <h5 class="fw-semibold" data-i18n="hero.snapshot.title">Dekkingsoverzicht</h5>
+              <p class="text-white-50 mb-4" data-i18n="hero.snapshot.desc">Voorbeeldopstelling voor een landelijk festival met 2.000 gasten.</p>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span data-i18n="hero.snapshot.capacity">Capaciteit</span>
+                <span class="fw-semibold" data-i18n="hero.snapshot.capacityValue">2.000 apparaten</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span data-i18n="hero.snapshot.throughput">Gem. doorvoer</span>
+                <span class="fw-semibold" data-i18n="hero.snapshot.throughputValue">450 Mbps</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span data-i18n="hero.snapshot.setup">Opbouwtijd</span>
+                <span class="fw-semibold" data-i18n="hero.snapshot.setupValue">6 uur</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <span data-i18n="hero.snapshot.support">Support</span>
+                <span class="fw-semibold" data-i18n="hero.snapshot.supportValue">Op locatie + remote</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5 pattern-bg" id="services">
+      <div class="container py-4">
+        <div class="row mb-4">
+          <div class="col-lg-8">
+            <p class="section-label" data-i18n="services.label">Diensten</p>
+            <h2 class="fw-bold" data-i18n="services.title">WiFi voor events met hoge eisen.</h2>
+            <p class="text-muted" data-i18n="services.lead">
+              We ontwerpen, leveren en beheren een complete connectiviteitsstack zodat je eventteams zich kunnen
+              focussen op de ervaring.
+            </p>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="card service-card h-100 fade-up delay-1">
+              <div class="card-body">
+                <h5 class="fw-semibold" data-i18n="services.card1.title">Event-wifi</h5>
+                <p class="text-muted" data-i18n="services.card1.body">Premium gastnetwerken met captive portals, bandbreedtebeheer en live monitoring.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="card service-card h-100 fade-up delay-2">
+              <div class="card-body">
+                <h5 class="fw-semibold" data-i18n="services.card2.title">Productienetwerken</h5>
+                <p class="text-muted" data-i18n="services.card2.body">Aparte VLANs voor leveranciers, ticketing, cashless, livestreams en pers.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="card service-card h-100 fade-up delay-3">
+              <div class="card-body">
+                <h5 class="fw-semibold" data-i18n="services.card3.title">Snelle uitrol</h5>
+                <p class="text-muted" data-i18n="services.card3.body">Modulaire kits met snel op te bouwen masten en redundante stroomvoorziening voor afgelegen locaties.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="card service-card h-100 fade-up delay-4">
+              <div class="card-body">
+                <h5 class="fw-semibold" data-i18n="services.card4.title">24/7 NOC</h5>
+                <p class="text-muted" data-i18n="services.card4.body">Realtime telemetry, automatische failover en engineers on-call tijdens je event.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reliability py-5" id="reliability">
+      <div class="container py-4">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <p class="section-label text-white-50" data-i18n="reliability.label">Betrouwbaarheid</p>
+            <h2 class="fw-bold" data-i18n="reliability.title">Starlink + 5G-redundantie. Gegarandeerde uptime.</h2>
+            <p class="text-white-50" data-i18n="reliability.lead">
+              Twee Starlink-schotels met bonded routing leveren de primaire bandbreedte. Een 5G-verbinding staat
+              klaar voor automatische failover, zodat kritieke diensten live blijven met een 99,95% SLA.
+            </p>
+            <ul class="list-unstyled text-white-50">
+              <li class="mb-2" data-i18n="reliability.item1">• Layer-3 bonding over meerdere uplinks</li>
+              <li class="mb-2" data-i18n="reliability.item2">• Realtime QoS voor POS, staff en productie</li>
+              <li class="mb-2" data-i18n="reliability.item3">• Live health-dashboard en proactieve alerts</li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <div class="diagram fade-up">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <span class="badge text-bg-light" data-i18n="reliability.diagram.primaryLabel">Primair</span>
+                <span class="fw-semibold" data-i18n="reliability.diagram.primaryValue">Twee Starlink-schotels</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <span class="badge text-bg-warning" data-i18n="reliability.diagram.backupLabel">Back-up</span>
+                <span class="fw-semibold" data-i18n="reliability.diagram.backupValue">5G + LTE-router</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge text-bg-info" data-i18n="reliability.diagram.outputLabel">Output</span>
+                <span class="fw-semibold" data-i18n="reliability.diagram.outputValue">Beheerde WiFi-mesh</span>
+              </div>
+              <div class="mt-4 small text-white-50" data-i18n="reliability.diagram.note">Automatische omschakeling in minder dan 2 seconden.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5" id="use-cases">
+      <div class="container py-4">
+        <div class="row mb-4">
+          <div class="col-lg-7">
+            <p class="section-label" data-i18n="useCases.label">Toepassingen</p>
+            <h2 class="fw-bold" data-i18n="useCases.title">Ontworpen voor landelijke locaties en events met hoge dichtheid.</h2>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="card use-case-card h-100 fade-up delay-1">
+              <div class="card-body">
+                <h5 class="fw-semibold" data-i18n="useCases.card1.title">Festivals &amp; markten</h5>
+                <p class="text-muted" data-i18n="useCases.card1.body">Betalingsterminals, gast-wifi en livestreamnetwerken, ook zonder glasvezel.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="card use-case-card h-100 fade-up delay-2">
+              <div class="card-body">
+                <h5 class="fw-semibold" data-i18n="useCases.card2.title">Bedrijfsretraites</h5>
+                <p class="text-muted" data-i18n="useCases.card2.body">Betrouwbare conferencing, beveiligde VPN-toegang en snelle opbouw voor executive teams.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="card use-case-card h-100 fade-up delay-3">
+              <div class="card-body">
+                <h5 class="fw-semibold" data-i18n="useCases.card3.title">Sport- en buitenevenementen</h5>
+                <p class="text-muted" data-i18n="useCases.card3.body">Live scoring, media-uplink en broadcast-klare connectiviteit onderweg.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5 pattern-bg" id="pricing">
+      <div class="container py-4">
+        <div class="row mb-4">
+          <div class="col-lg-7">
+            <p class="section-label" data-i18n="pricing.label">Pakketten</p>
+            <h2 class="fw-bold" data-i18n="pricing.title">Transparante pakketten die meeschalen.</h2>
+            <p class="text-muted" data-i18n="pricing.lead">Elke deployment bevat monitoring, redundantie en ondersteuning op locatie.</p>
+          </div>
+        </div>
+        <div class="row g-4 align-items-stretch">
+          <div class="col-lg-4">
+            <div class="plan-card h-100 p-4">
+              <h5 class="fw-semibold" data-i18n="pricing.card1.title">Trailblazer</h5>
+              <p class="text-muted" data-i18n="pricing.card1.subtitle">Tot 800 gasten</p>
+              <h3 class="fw-bold" data-i18n="pricing.card1.price">Vanaf € 2.500</h3>
+              <ul class="list-unstyled text-muted">
+                <li class="mb-2" data-i18n="pricing.card1.item1">• Enkele Starlink + 5G-back-up</li>
+                <li class="mb-2" data-i18n="pricing.card1.item2">• 6 access points</li>
+                <li class="mb-2" data-i18n="pricing.card1.item3">• Monitoring op afstand</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="plan-card featured h-100 p-4">
+              <div class="d-flex justify-content-between">
+                <h5 class="fw-semibold" data-i18n="pricing.card2.title">Summit</h5>
+                <span class="badge text-bg-warning" data-i18n="pricing.card2.badge">Meest geboekt</span>
+              </div>
+              <p class="text-muted" data-i18n="pricing.card2.subtitle">Tot 2.500 gasten</p>
+              <h3 class="fw-bold" data-i18n="pricing.card2.price">Vanaf € 4.800</h3>
+              <ul class="list-unstyled text-muted">
+                <li class="mb-2" data-i18n="pricing.card2.item1">• Twee Starlink + bonded 5G</li>
+                <li class="mb-2" data-i18n="pricing.card2.item2">• 12 access points</li>
+                <li class="mb-2" data-i18n="pricing.card2.item3">• Engineer op locatie</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="plan-card h-100 p-4">
+              <h5 class="fw-semibold" data-i18n="pricing.card3.title">Frontier</h5>
+              <p class="text-muted" data-i18n="pricing.card3.subtitle">3.000+ gasten</p>
+              <h3 class="fw-bold" data-i18n="pricing.card3.price">Maatwerk</h3>
+              <ul class="list-unstyled text-muted">
+                <li class="mb-2" data-i18n="pricing.card3.item1">• Multi-site mesh + redundantie</li>
+                <li class="mb-2" data-i18n="pricing.card3.item2">• Dedicated NOC-kanaal</li>
+                <li class="mb-2" data-i18n="pricing.card3.item3">• SLA-uitbreidingen</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5" id="faq">
+      <div class="container py-4">
+        <div class="row mb-4">
+          <div class="col-lg-6">
+            <p class="section-label" data-i18n="faq.label">FAQ</p>
+            <h2 class="fw-bold" data-i18n="faq.title">Vragen, beantwoord.</h2>
+          </div>
+        </div>
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" data-i18n="faq.q1">
+                Hoe snel kunnen jullie op locatie uitrollen?
+              </button>
+            </h2>
+            <div id="faqOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body" data-i18n="faq.a1">
+                De meeste events zijn binnen 6-12 uur live, afhankelijk van terrein en toegang. We kunnen hardware
+                vooraf klaarzetten voor activaties op dezelfde dag.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo" data-i18n="faq.q2">
+                Wat dekt de 99,95% SLA?
+              </button>
+            </h2>
+            <div id="faqTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body" data-i18n="faq.a2">
+                Deze dekt de uptime van de managed WiFi-dienst met redundante uplinks en gemonitorde routing.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree" data-i18n="faq.q3">
+                Kunnen jullie gast- en stafnetwerken scheiden?
+              </button>
+            </h2>
+            <div id="faqThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body" data-i18n="faq.a3">
+                Ja. We configureren aparte SSID's en VLANs met QoS-prioriteit voor POS, staff en media.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5" id="contact">
+      <div class="container py-4">
+        <div class="cta-band mb-5">
+          <div class="row align-items-center">
+            <div class="col-lg-8">
+              <h2 class="fw-bold" data-i18n="contact.cta.title">Klaar om je volgende event te verbinden?</h2>
+              <p class="mb-0" data-i18n="contact.cta.lead">Deel je datum en locatie — we leveren binnen 24 uur een deploymentplan.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+              <a class="btn btn-dark btn-lg" href="mailto:hello@pilowifi.com">hello@pilowifi.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-5">
+            <h3 class="fw-semibold" data-i18n="contact.info.title">Offerte aanvragen</h3>
+            <p class="text-muted" data-i18n="contact.info.lead">Vertel ons over je locatie en we sturen een plan op maat terug.</p>
+            <div class="d-grid gap-3">
+              <div class="d-flex justify-content-between">
+                <span class="fw-semibold" data-i18n="contact.info.responseLabel">Reactietijd</span>
+                <span data-i18n="contact.info.responseValue">binnen 24 uur</span>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span class="fw-semibold" data-i18n="contact.info.coverageLabel">Dekking</span>
+                <span data-i18n="contact.info.coverageValue">EU + afgelegen locaties</span>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span class="fw-semibold" data-i18n="contact.info.supportLabel">Support</span>
+                <span data-i18n="contact.info.supportValue">Op locatie + remote NOC</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <form class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label" data-i18n="contact.form.nameLabel">Volledige naam</label>
+                <input type="text" class="form-control" placeholder="Alex Morgan" data-i18n-placeholder="contact.form.namePlaceholder" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" data-i18n="contact.form.companyLabel">Bedrijf</label>
+                <input type="text" class="form-control" placeholder="Eventbedrijf" data-i18n-placeholder="contact.form.companyPlaceholder" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" data-i18n="contact.form.dateLabel">Eventdatum</label>
+                <input type="date" class="form-control" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" data-i18n="contact.form.attendeesLabel">Geschat aantal bezoekers</label>
+                <input type="number" class="form-control" placeholder="1500" data-i18n-placeholder="contact.form.attendeesPlaceholder" />
+              </div>
+              <div class="col-12">
+                <label class="form-label" data-i18n="contact.form.locationLabel">Locatie</label>
+                <input type="text" class="form-control" placeholder="Regio, land" data-i18n-placeholder="contact.form.locationPlaceholder" />
+              </div>
+              <div class="col-12">
+                <label class="form-label" data-i18n="contact.form.notesLabel">Opmerkingen</label>
+                <textarea class="form-control" rows="4" placeholder="Stroomvoorziening, indeling, speciale wensen" data-i18n-placeholder="contact.form.notesPlaceholder"></textarea>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-dark btn-lg" type="submit" data-i18n="contact.form.submit">Verstuur aanvraag</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer py-4">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <h5 class="fw-semibold">PiloWiFi</h5>
+            <p class="text-white-50 mb-0" data-i18n="footer.tagline">Professionele WiFi voor events, powered by Starlink + 5G.</p>
+          </div>
+          <div class="col-md-6 text-md-end mt-3 mt-md-0">
+            <a class="me-3" href="#services" data-i18n="footer.services">Diensten</a>
+            <a class="me-3" href="#reliability" data-i18n="footer.reliability">Betrouwbaarheid</a>
+            <a class="me-3" href="#pricing" data-i18n="footer.plans">Pakketten</a>
+            <a href="#contact" data-i18n="footer.contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const translations = {
+        nl: {
+          meta: {
+            title: "PiloWiFi — Professionele event-wifi overal",
+            description: "PiloWiFi levert professionele event-wifi overal met Starlink en 5G-back-up, ondersteund door een 99,95% SLA."
+          },
+          "nav.badge": "Starlink-gecertificeerd",
+          "nav.services": "Diensten",
+          "nav.reliability": "Betrouwbaarheid",
+          "nav.useCases": "Toepassingen",
+          "nav.plans": "Pakketten",
+          "nav.faq": "FAQ",
+          "nav.cta": "Offerte aanvragen",
+          "hero.label": "Zakelijke eventconnectiviteit",
+          "hero.title": "Professionele event-wifi, overal.",
+          "hero.lead": "PiloWiFi brengt Starlink-gestuurd breedband naar landelijke locaties met automatische 5G-back-up en een 99,95% SLA. We installeren binnen enkele uren, monitoren 24/7 en houden gasten online zonder verrassingen.",
+          "hero.ctaPrimary": "Offerte aanvragen",
+          "hero.ctaSecondary": "Bekijk onze uptime-aanpak",
+          "hero.stat1": "99,95% SLA",
+          "hero.stat2": "Twee Starlink-schotels",
+          "hero.stat3": "5G-failover",
+          "hero.stat4": "24/7 NOC",
+          "hero.snapshot.title": "Dekkingsoverzicht",
+          "hero.snapshot.desc": "Voorbeeldopstelling voor een landelijk festival met 2.000 gasten.",
+          "hero.snapshot.capacity": "Capaciteit",
+          "hero.snapshot.capacityValue": "2.000 apparaten",
+          "hero.snapshot.throughput": "Gem. doorvoer",
+          "hero.snapshot.throughputValue": "450 Mbps",
+          "hero.snapshot.setup": "Opbouwtijd",
+          "hero.snapshot.setupValue": "6 uur",
+          "hero.snapshot.support": "Support",
+          "hero.snapshot.supportValue": "Op locatie + remote",
+          "services.label": "Diensten",
+          "services.title": "WiFi voor events met hoge eisen.",
+          "services.lead": "We ontwerpen, leveren en beheren een complete connectiviteitsstack zodat je eventteams zich kunnen focussen op de ervaring.",
+          "services.card1.title": "Event-wifi",
+          "services.card1.body": "Premium gastnetwerken met captive portals, bandbreedtebeheer en live monitoring.",
+          "services.card2.title": "Productienetwerken",
+          "services.card2.body": "Aparte VLANs voor leveranciers, ticketing, cashless, livestreams en pers.",
+          "services.card3.title": "Snelle uitrol",
+          "services.card3.body": "Modulaire kits met snel op te bouwen masten en redundante stroomvoorziening voor afgelegen locaties.",
+          "services.card4.title": "24/7 NOC",
+          "services.card4.body": "Realtime telemetry, automatische failover en engineers on-call tijdens je event.",
+          "reliability.label": "Betrouwbaarheid",
+          "reliability.title": "Starlink + 5G-redundantie. Gegarandeerde uptime.",
+          "reliability.lead": "Twee Starlink-schotels met bonded routing leveren de primaire bandbreedte. Een 5G-verbinding staat klaar voor automatische failover, zodat kritieke diensten live blijven met een 99,95% SLA.",
+          "reliability.item1": "• Layer-3 bonding over meerdere uplinks",
+          "reliability.item2": "• Realtime QoS voor POS, staff en productie",
+          "reliability.item3": "• Live health-dashboard en proactieve alerts",
+          "reliability.diagram.primaryLabel": "Primair",
+          "reliability.diagram.primaryValue": "Twee Starlink-schotels",
+          "reliability.diagram.backupLabel": "Back-up",
+          "reliability.diagram.backupValue": "5G + LTE-router",
+          "reliability.diagram.outputLabel": "Output",
+          "reliability.diagram.outputValue": "Beheerde WiFi-mesh",
+          "reliability.diagram.note": "Automatische omschakeling in minder dan 2 seconden.",
+          "useCases.label": "Toepassingen",
+          "useCases.title": "Ontworpen voor landelijke locaties en events met hoge dichtheid.",
+          "useCases.card1.title": "Festivals & markten",
+          "useCases.card1.body": "Betalingsterminals, gast-wifi en livestreamnetwerken, ook zonder glasvezel.",
+          "useCases.card2.title": "Bedrijfsretraites",
+          "useCases.card2.body": "Betrouwbare conferencing, beveiligde VPN-toegang en snelle opbouw voor executive teams.",
+          "useCases.card3.title": "Sport- en buitenevenementen",
+          "useCases.card3.body": "Live scoring, media-uplink en broadcast-klare connectiviteit onderweg.",
+          "pricing.label": "Pakketten",
+          "pricing.title": "Transparante pakketten die meeschalen.",
+          "pricing.lead": "Elke deployment bevat monitoring, redundantie en ondersteuning op locatie.",
+          "pricing.card1.title": "Trailblazer",
+          "pricing.card1.subtitle": "Tot 800 gasten",
+          "pricing.card1.price": "Vanaf € 2.500",
+          "pricing.card1.item1": "• Enkele Starlink + 5G-back-up",
+          "pricing.card1.item2": "• 6 access points",
+          "pricing.card1.item3": "• Monitoring op afstand",
+          "pricing.card2.title": "Summit",
+          "pricing.card2.badge": "Meest geboekt",
+          "pricing.card2.subtitle": "Tot 2.500 gasten",
+          "pricing.card2.price": "Vanaf € 4.800",
+          "pricing.card2.item1": "• Twee Starlink + bonded 5G",
+          "pricing.card2.item2": "• 12 access points",
+          "pricing.card2.item3": "• Engineer op locatie",
+          "pricing.card3.title": "Frontier",
+          "pricing.card3.subtitle": "3.000+ gasten",
+          "pricing.card3.price": "Maatwerk",
+          "pricing.card3.item1": "• Multi-site mesh + redundantie",
+          "pricing.card3.item2": "• Dedicated NOC-kanaal",
+          "pricing.card3.item3": "• SLA-uitbreidingen",
+          "faq.label": "FAQ",
+          "faq.title": "Vragen, beantwoord.",
+          "faq.q1": "Hoe snel kunnen jullie op locatie uitrollen?",
+          "faq.a1": "De meeste events zijn binnen 6-12 uur live, afhankelijk van terrein en toegang. We kunnen hardware vooraf klaarzetten voor activaties op dezelfde dag.",
+          "faq.q2": "Wat dekt de 99,95% SLA?",
+          "faq.a2": "Deze dekt de uptime van de managed WiFi-dienst met redundante uplinks en gemonitorde routing.",
+          "faq.q3": "Kunnen jullie gast- en stafnetwerken scheiden?",
+          "faq.a3": "Ja. We configureren aparte SSID's en VLANs met QoS-prioriteit voor POS, staff en media.",
+          "contact.cta.title": "Klaar om je volgende event te verbinden?",
+          "contact.cta.lead": "Deel je datum en locatie — we leveren binnen 24 uur een deploymentplan.",
+          "contact.info.title": "Offerte aanvragen",
+          "contact.info.lead": "Vertel ons over je locatie en we sturen een plan op maat terug.",
+          "contact.info.responseLabel": "Reactietijd",
+          "contact.info.responseValue": "binnen 24 uur",
+          "contact.info.coverageLabel": "Dekking",
+          "contact.info.coverageValue": "EU + afgelegen locaties",
+          "contact.info.supportLabel": "Support",
+          "contact.info.supportValue": "Op locatie + remote NOC",
+          "contact.form.nameLabel": "Volledige naam",
+          "contact.form.companyLabel": "Bedrijf",
+          "contact.form.dateLabel": "Eventdatum",
+          "contact.form.attendeesLabel": "Geschat aantal bezoekers",
+          "contact.form.locationLabel": "Locatie",
+          "contact.form.notesLabel": "Opmerkingen",
+          "contact.form.submit": "Verstuur aanvraag",
+          "contact.form.namePlaceholder": "Alex Morgan",
+          "contact.form.companyPlaceholder": "Eventbedrijf",
+          "contact.form.attendeesPlaceholder": "1500",
+          "contact.form.locationPlaceholder": "Regio, land",
+          "contact.form.notesPlaceholder": "Stroomvoorziening, indeling, speciale wensen",
+          "footer.tagline": "Professionele WiFi voor events, powered by Starlink + 5G.",
+          "footer.services": "Diensten",
+          "footer.reliability": "Betrouwbaarheid",
+          "footer.plans": "Pakketten",
+          "footer.contact": "Contact"
+        },
+        en: {
+          meta: {
+            title: "PiloWiFi — Enterprise Event WiFi Anywhere",
+            description: "PiloWiFi delivers enterprise-grade event WiFi anywhere with Starlink and 5G backup, backed by a 99,95% SLA."
+          },
+          "nav.badge": "Starlink Certified",
+          "nav.services": "Services",
+          "nav.reliability": "Reliability",
+          "nav.useCases": "Use Cases",
+          "nav.plans": "Plans",
+          "nav.faq": "FAQ",
+          "nav.cta": "Request a quote",
+          "hero.label": "Enterprise event connectivity",
+          "hero.title": "Enterprise-grade event WiFi anywhere.",
+          "hero.lead": "PiloWiFi brings Starlink-powered broadband to rural venues with automated 5G backup and a 99,95% SLA. We deploy in hours, monitor 24/7, and keep guests online without surprises.",
+          "hero.ctaPrimary": "Request a quote",
+          "hero.ctaSecondary": "See our uptime model",
+          "hero.stat1": "99,95% SLA",
+          "hero.stat2": "Dual Starlink dishes",
+          "hero.stat3": "5G failover",
+          "hero.stat4": "24/7 NOC",
+          "hero.snapshot.title": "Coverage Snapshot",
+          "hero.snapshot.desc": "Sample deployment for a 2,000-guest rural festival.",
+          "hero.snapshot.capacity": "Capacity",
+          "hero.snapshot.capacityValue": "2,000 devices",
+          "hero.snapshot.throughput": "Avg Throughput",
+          "hero.snapshot.throughputValue": "450 Mbps",
+          "hero.snapshot.setup": "Setup Time",
+          "hero.snapshot.setupValue": "6 hours",
+          "hero.snapshot.support": "Support",
+          "hero.snapshot.supportValue": "On-site + remote",
+          "services.label": "Services",
+          "services.title": "WiFi engineered for high-stakes events.",
+          "services.lead": "We design, deploy, and manage a complete connectivity stack so your event teams can focus on the experience.",
+          "services.card1.title": "Event WiFi",
+          "services.card1.body": "Premium guest networks with captive portals, bandwidth control, and live monitoring.",
+          "services.card2.title": "Production Networks",
+          "services.card2.body": "Separate VLANs for vendors, ticketing, cashless, livestreams, and press.",
+          "services.card3.title": "Rapid Deployment",
+          "services.card3.body": "Modular kits with quick-mount towers and redundant power for remote sites.",
+          "services.card4.title": "24/7 NOC",
+          "services.card4.body": "Real-time telemetry, automated failover, and on-call engineers during your event.",
+          "reliability.label": "Reliability",
+          "reliability.title": "Starlink + 5G redundancy. Guaranteed uptime.",
+          "reliability.lead": "Two Starlink dishes with bonded routing deliver primary bandwidth. A 5G link stands by for automatic failover, keeping critical services live with a 99,95% SLA.",
+          "reliability.item1": "• Layer-3 bonding across multiple uplinks",
+          "reliability.item2": "• Real-time QoS for POS, staff, and production",
+          "reliability.item3": "• Live health dashboard and proactive alerts",
+          "reliability.diagram.primaryLabel": "Primary",
+          "reliability.diagram.primaryValue": "Dual Starlink Dishes",
+          "reliability.diagram.backupLabel": "Backup",
+          "reliability.diagram.backupValue": "5G + LTE Router",
+          "reliability.diagram.outputLabel": "Output",
+          "reliability.diagram.outputValue": "Managed WiFi Mesh",
+          "reliability.diagram.note": "Automated switchover in under 2 seconds.",
+          "useCases.label": "Use Cases",
+          "useCases.title": "Designed for rural locations and high-density events.",
+          "useCases.card1.title": "Festivals & Markets",
+          "useCases.card1.body": "Payment terminals, guest WiFi, and livestream networks even when there is no fiber.",
+          "useCases.card2.title": "Corporate Retreats",
+          "useCases.card2.body": "Reliable conferencing, secure VPN access, and fast setup for executive teams.",
+          "useCases.card3.title": "Sports & Outdoor Events",
+          "useCases.card3.body": "Live scoring, media uplink, and broadcast-ready connectivity on the move.",
+          "pricing.label": "Plans",
+          "pricing.title": "Transparent packages with custom scale.",
+          "pricing.lead": "Every deployment includes monitoring, redundancy, and on-site support.",
+          "pricing.card1.title": "Trailblazer",
+          "pricing.card1.subtitle": "Up to 800 guests",
+          "pricing.card1.price": "From €2,500",
+          "pricing.card1.item1": "• Single Starlink + 5G backup",
+          "pricing.card1.item2": "• 6 access points",
+          "pricing.card1.item3": "• Remote monitoring",
+          "pricing.card2.title": "Summit",
+          "pricing.card2.badge": "Most booked",
+          "pricing.card2.subtitle": "Up to 2,500 guests",
+          "pricing.card2.price": "From €4,800",
+          "pricing.card2.item1": "• Dual Starlink + bonded 5G",
+          "pricing.card2.item2": "• 12 access points",
+          "pricing.card2.item3": "• On-site engineer",
+          "pricing.card3.title": "Frontier",
+          "pricing.card3.subtitle": "3,000+ guests",
+          "pricing.card3.price": "Custom",
+          "pricing.card3.item1": "• Multi-site mesh + redundancy",
+          "pricing.card3.item2": "• Dedicated NOC channel",
+          "pricing.card3.item3": "• SLA enhancements",
+          "faq.label": "FAQ",
+          "faq.title": "Questions, answered.",
+          "faq.q1": "How fast can you deploy on site?",
+          "faq.a1": "Most events are live within 6-12 hours depending on terrain and access. We can pre-stage hardware for same-day activations.",
+          "faq.q2": "What does the 99,95% SLA cover?",
+          "faq.a2": "It covers connectivity uptime for the managed WiFi service with redundant uplinks and monitored routing.",
+          "faq.q3": "Can you separate guest and staff networks?",
+          "faq.a3": "Yes. We configure separate SSIDs and VLANs with QoS prioritization for POS, staff, and media.",
+          "contact.cta.title": "Ready to light up your next event?",
+          "contact.cta.lead": "Share your date and location — we will design a deployment plan within 24 hours.",
+          "contact.info.title": "Request a quote",
+          "contact.info.lead": "Tell us about your venue and we will return a custom coverage plan.",
+          "contact.info.responseLabel": "Response time",
+          "contact.info.responseValue": "within 24 hours",
+          "contact.info.coverageLabel": "Coverage",
+          "contact.info.coverageValue": "EU + remote locations",
+          "contact.info.supportLabel": "Support",
+          "contact.info.supportValue": "On-site + remote NOC",
+          "contact.form.nameLabel": "Full name",
+          "contact.form.companyLabel": "Company",
+          "contact.form.dateLabel": "Event date",
+          "contact.form.attendeesLabel": "Estimated attendees",
+          "contact.form.locationLabel": "Venue location",
+          "contact.form.notesLabel": "Notes",
+          "contact.form.submit": "Send request",
+          "contact.form.namePlaceholder": "Alex Morgan",
+          "contact.form.companyPlaceholder": "Event Co.",
+          "contact.form.attendeesPlaceholder": "1500",
+          "contact.form.locationPlaceholder": "Region, country",
+          "contact.form.notesPlaceholder": "Power availability, layout, special needs",
+          "footer.tagline": "Enterprise WiFi for events, powered by Starlink + 5G.",
+          "footer.services": "Services",
+          "footer.reliability": "Reliability",
+          "footer.plans": "Plans",
+          "footer.contact": "Contact"
+        },
+        de: {
+          meta: {
+            title: "PiloWiFi — Professionelles Event-WLAN überall",
+            description: "PiloWiFi liefert professionelles Event-WLAN überall mit Starlink und 5G-Backup, abgesichert durch eine 99,95% SLA."
+          },
+          "nav.badge": "Starlink-zertifiziert",
+          "nav.services": "Leistungen",
+          "nav.reliability": "Zuverlässigkeit",
+          "nav.useCases": "Einsatzbereiche",
+          "nav.plans": "Pakete",
+          "nav.faq": "FAQ",
+          "nav.cta": "Angebot anfragen",
+          "hero.label": "Enterprise-Event-Konnektivität",
+          "hero.title": "Enterprise-Event-WLAN überall.",
+          "hero.lead": "PiloWiFi bringt Starlink-gestütztes Breitband an ländliche Standorte mit automatischem 5G-Backup und einer 99,95% SLA. Wir liefern in wenigen Stunden, überwachen 24/7 und halten Gäste ohne Überraschungen online.",
+          "hero.ctaPrimary": "Angebot anfragen",
+          "hero.ctaSecondary": "Unsere Uptime-Strategie",
+          "hero.stat1": "99,95% SLA",
+          "hero.stat2": "Zwei Starlink-Schüsseln",
+          "hero.stat3": "5G-Failover",
+          "hero.stat4": "24/7 NOC",
+          "hero.snapshot.title": "Abdeckungsübersicht",
+          "hero.snapshot.desc": "Beispiel-Deployment für ein ländliches Festival mit 2.000 Gästen.",
+          "hero.snapshot.capacity": "Kapazität",
+          "hero.snapshot.capacityValue": "2.000 Geräte",
+          "hero.snapshot.throughput": "Ø Durchsatz",
+          "hero.snapshot.throughputValue": "450 Mbps",
+          "hero.snapshot.setup": "Aufbauzeit",
+          "hero.snapshot.setupValue": "6 Stunden",
+          "hero.snapshot.support": "Support",
+          "hero.snapshot.supportValue": "Vor Ort + remote",
+          "services.label": "Leistungen",
+          "services.title": "WLAN für Events mit hohen Anforderungen.",
+          "services.lead": "Wir planen, liefern und betreiben einen kompletten Connectivity-Stack, damit sich Ihre Event-Teams auf das Erlebnis konzentrieren können.",
+          "services.card1.title": "Event-WLAN",
+          "services.card1.body": "Premium-Gastnetzwerke mit Captive Portal, Bandbreitensteuerung und Live-Monitoring.",
+          "services.card2.title": "Produktionsnetzwerke",
+          "services.card2.body": "Separate VLANs für Dienstleister, Ticketing, Cashless, Livestreams und Presse.",
+          "services.card3.title": "Schneller Aufbau",
+          "services.card3.body": "Modulare Kits mit schnell montierbaren Masten und redundanter Stromversorgung für Remote-Standorte.",
+          "services.card4.title": "24/7 NOC",
+          "services.card4.body": "Echtzeit-Telemetrie, automatisches Failover und On-Call-Engineers während Ihres Events.",
+          "reliability.label": "Zuverlässigkeit",
+          "reliability.title": "Starlink + 5G-Redundanz. Garantierte Uptime.",
+          "reliability.lead": "Zwei Starlink-Schüsseln mit gebondetem Routing liefern die primäre Bandbreite. Ein 5G-Link steht für automatisches Failover bereit und hält kritische Dienste mit 99,95% SLA live.",
+          "reliability.item1": "• Layer-3-Bonding über mehrere Uplinks",
+          "reliability.item2": "• Echtzeit-QoS für POS, Staff und Produktion",
+          "reliability.item3": "• Live-Health-Dashboard und proaktive Alerts",
+          "reliability.diagram.primaryLabel": "Primär",
+          "reliability.diagram.primaryValue": "Zwei Starlink-Schüsseln",
+          "reliability.diagram.backupLabel": "Backup",
+          "reliability.diagram.backupValue": "5G + LTE-Router",
+          "reliability.diagram.outputLabel": "Output",
+          "reliability.diagram.outputValue": "Managed-WLAN-Mesh",
+          "reliability.diagram.note": "Automatische Umschaltung in unter 2 Sekunden.",
+          "useCases.label": "Einsatzbereiche",
+          "useCases.title": "Konzipiert für ländliche Standorte und Events mit hoher Dichte.",
+          "useCases.card1.title": "Festivals & Märkte",
+          "useCases.card1.body": "Zahlungsterminals, Gast-WLAN und Livestream-Netze – auch ohne Glasfaser.",
+          "useCases.card2.title": "Firmen-Retreats",
+          "useCases.card2.body": "Zuverlässige Konferenzen, sichere VPN-Zugänge und schneller Aufbau für Executive-Teams.",
+          "useCases.card3.title": "Sport- & Outdoor-Events",
+          "useCases.card3.body": "Live-Scoring, Media-Uplink und broadcast-fähige Konnektivität unterwegs.",
+          "pricing.label": "Pakete",
+          "pricing.title": "Transparente Pakete, die mitwachsen.",
+          "pricing.lead": "Jedes Deployment umfasst Monitoring, Redundanz und Support vor Ort.",
+          "pricing.card1.title": "Trailblazer",
+          "pricing.card1.subtitle": "Bis zu 800 Gäste",
+          "pricing.card1.price": "Ab € 2.500",
+          "pricing.card1.item1": "• Einzelner Starlink + 5G-Backup",
+          "pricing.card1.item2": "• 6 Access Points",
+          "pricing.card1.item3": "• Remote-Monitoring",
+          "pricing.card2.title": "Summit",
+          "pricing.card2.badge": "Meist gebucht",
+          "pricing.card2.subtitle": "Bis zu 2.500 Gäste",
+          "pricing.card2.price": "Ab € 4.800",
+          "pricing.card2.item1": "• Zwei Starlink + gebondetes 5G",
+          "pricing.card2.item2": "• 12 Access Points",
+          "pricing.card2.item3": "• Engineer vor Ort",
+          "pricing.card3.title": "Frontier",
+          "pricing.card3.subtitle": "3.000+ Gäste",
+          "pricing.card3.price": "Individuell",
+          "pricing.card3.item1": "• Multi-Site-Mesh + Redundanz",
+          "pricing.card3.item2": "• Dedizierter NOC-Kanal",
+          "pricing.card3.item3": "• SLA-Erweiterungen",
+          "faq.label": "FAQ",
+          "faq.title": "Fragen, beantwortet.",
+          "faq.q1": "Wie schnell können Sie vor Ort deployen?",
+          "faq.a1": "Die meisten Events sind in 6-12 Stunden live, abhängig von Gelände und Zugang. Wir können Hardware vorab bereitstellen für Same-Day-Aktivierungen.",
+          "faq.q2": "Was deckt die 99,95% SLA ab?",
+          "faq.a2": "Sie deckt die Uptime des Managed-WLAN-Services mit redundanten Uplinks und überwachten Routen.",
+          "faq.q3": "Können Sie Gast- und Staff-Netze trennen?",
+          "faq.a3": "Ja. Wir konfigurieren separate SSIDs und VLANs mit QoS-Priorisierung für POS, Staff und Media.",
+          "contact.cta.title": "Bereit, Ihr nächstes Event zu vernetzen?",
+          "contact.cta.lead": "Teilen Sie Datum und Standort — wir erstellen innerhalb von 24 Stunden einen Deployment-Plan.",
+          "contact.info.title": "Angebot anfragen",
+          "contact.info.lead": "Erzählen Sie uns von Ihrem Standort und wir schicken einen maßgeschneiderten Abdeckungsplan.",
+          "contact.info.responseLabel": "Antwortzeit",
+          "contact.info.responseValue": "innerhalb von 24 Stunden",
+          "contact.info.coverageLabel": "Abdeckung",
+          "contact.info.coverageValue": "EU + abgelegene Standorte",
+          "contact.info.supportLabel": "Support",
+          "contact.info.supportValue": "Vor Ort + Remote-NOC",
+          "contact.form.nameLabel": "Vollständiger Name",
+          "contact.form.companyLabel": "Unternehmen",
+          "contact.form.dateLabel": "Eventdatum",
+          "contact.form.attendeesLabel": "Geschätzte Teilnehmerzahl",
+          "contact.form.locationLabel": "Veranstaltungsort",
+          "contact.form.notesLabel": "Notizen",
+          "contact.form.submit": "Anfrage senden",
+          "contact.form.namePlaceholder": "Alex Morgan",
+          "contact.form.companyPlaceholder": "Eventfirma",
+          "contact.form.attendeesPlaceholder": "1500",
+          "contact.form.locationPlaceholder": "Region, Land",
+          "contact.form.notesPlaceholder": "Stromversorgung, Layout, besondere Anforderungen",
+          "footer.tagline": "Professionelles WLAN für Events, powered by Starlink + 5G.",
+          "footer.services": "Leistungen",
+          "footer.reliability": "Zuverlässigkeit",
+          "footer.plans": "Pakete",
+          "footer.contact": "Kontakt"
+        }
+      };
+
+      const textNodes = document.querySelectorAll("[data-i18n]");
+      const placeholderNodes = document.querySelectorAll("[data-i18n-placeholder]");
+      const languageButtons = document.querySelectorAll("[data-lang]");
+
+      function setLanguage(lang, options = {}) {
+        const { updateUrl = true } = options;
+        const dict = translations[lang];
+        if (!dict) {
+          return;
+        }
+
+        document.documentElement.lang = lang;
+        document.title = dict.meta.title;
+
+        const description = document.querySelector('meta[name="description"]');
+        if (description) {
+          description.setAttribute("content", dict.meta.description);
+        }
+
+        textNodes.forEach((node) => {
+          const key = node.dataset.i18n;
+          if (dict[key] !== undefined) {
+            node.textContent = dict[key];
+          }
+        });
+
+        placeholderNodes.forEach((node) => {
+          const key = node.dataset.i18nPlaceholder;
+          if (dict[key] !== undefined) {
+            node.setAttribute("placeholder", dict[key]);
+          }
+        });
+
+        languageButtons.forEach((button) => {
+          const isActive = button.dataset.lang === lang;
+          button.classList.toggle("btn-dark", isActive);
+          button.classList.toggle("btn-outline-dark", !isActive);
+          if (isActive) {
+            button.setAttribute("aria-current", "page");
+          } else {
+            button.removeAttribute("aria-current");
+          }
+        });
+
+        if (updateUrl) {
+          const url = new URL(window.location);
+          url.searchParams.set("lang", lang);
+          window.history.replaceState({}, "", url);
+        }
+
+        localStorage.setItem("lang", lang);
+      }
+
+      function normalizeLang(lang) {
+        if (!lang) {
+          return null;
+        }
+        return lang.toLowerCase().split("-")[0];
+      }
+
+      function getLanguageFromQuery() {
+        const params = new URLSearchParams(window.location.search);
+        const lang = normalizeLang(params.get("lang"));
+        return translations[lang] ? lang : null;
+      }
+
+      function getLanguageFromNavigator() {
+        const lang = normalizeLang(
+          Array.isArray(navigator.languages) && navigator.languages.length > 0
+            ? navigator.languages[0]
+            : navigator.language
+        );
+        return translations[lang] ? lang : null;
+      }
+
+      const queryLang = getLanguageFromQuery();
+      const storedLang = localStorage.getItem("lang");
+      const browserLang = getLanguageFromNavigator();
+      const initialLang = queryLang || (translations[storedLang] ? storedLang : null) || browserLang || "nl";
+      setLanguage(initialLang, { updateUrl: false });
+
+      languageButtons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.preventDefault();
+          setLanguage(button.dataset.lang);
+        });
+      });
+    </script>
+  </body>
+</html>
