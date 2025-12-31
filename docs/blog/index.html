@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blog - JarnoWiFi</title>
+    <meta name="description" content="Field notes and deployment stories from JarnoWiFi." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      :root {
+        --ink: #111827;
+        --night: #0b1a2a;
+        --teal: #1b8ea6;
+        --mist: #e7edf1;
+      }
+
+      body {
+        font-family: "Work Sans", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: radial-gradient(circle at top, #f7f3ea 0%, #eef3f7 45%, #ffffff 75%);
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Space Grotesk", "Segoe UI", sans-serif;
+        letter-spacing: -0.02em;
+      }
+
+      .page-shell {
+        padding-top: 6.5rem;
+        padding-bottom: 4rem;
+      }
+
+      .section-label {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        color: var(--teal);
+        font-weight: 600;
+      }
+
+      .post-meta {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: rgba(17, 24, 39, 0.6);
+      }
+
+      .tag-pill {
+        background: rgba(27, 142, 166, 0.12);
+        color: var(--teal);
+        border-radius: 999px;
+        padding: 0.25rem 0.75rem;
+        font-weight: 600;
+        font-size: 0.8rem;
+      }
+
+      .post-content p {
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+      }
+
+      .post-gallery img {
+        object-fit: cover;
+        border-radius: 1rem;
+        border: 1px solid rgba(15, 23, 42, 0.08);
+      }
+
+      .blog-card {
+        border: none;
+        border-radius: 1.25rem;
+        box-shadow: 0 18px 30px rgba(15, 23, 42, 0.08);
+        overflow: hidden;
+      }
+
+      .blog-card__cover {
+        object-fit: cover;
+      }
+
+      .blog-link {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .blog-link:hover {
+        color: var(--teal);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-white border-bottom fixed-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="/">JarnoWiFi</a>
+        <div class="ms-auto">
+          <a class="btn btn-sm btn-outline-dark" href="/" data-home-link>Back to home</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="page-shell">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <div class="alert alert-info" role="status" data-post-status>Loading post...</div>
+
+            <article class="d-none" data-post-article>
+              <p class="section-label mb-2">Blog</p>
+              <h1 class="fw-bold mb-3" data-post-title></h1>
+              <div class="d-flex flex-wrap align-items-center gap-2 mb-4">
+                <span class="post-meta" data-post-date></span>
+                <div class="d-flex flex-wrap gap-2" data-post-tags></div>
+              </div>
+              <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-sm mb-4 d-none" data-post-cover>
+                <img class="w-100 h-100" alt="" loading="lazy" data-post-cover-img />
+              </div>
+              <div class="post-content text-muted" data-post-content></div>
+              <div class="post-gallery row g-3 mt-4 d-none" data-post-gallery></div>
+            </article>
+
+            <div class="mt-5 d-none" data-post-list>
+              <h4 class="fw-semibold mb-3">More posts</h4>
+              <div class="row g-4" data-post-list-container></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const homeLink = document.querySelector("[data-home-link]");
+      const postStatus = document.querySelector("[data-post-status]");
+      const postArticle = document.querySelector("[data-post-article]");
+      const postTitle = document.querySelector("[data-post-title]");
+      const postDate = document.querySelector("[data-post-date]");
+      const postTags = document.querySelector("[data-post-tags]");
+      const postCover = document.querySelector("[data-post-cover]");
+      const postCoverImg = document.querySelector("[data-post-cover-img]");
+      const postContent = document.querySelector("[data-post-content]");
+      const postGallery = document.querySelector("[data-post-gallery]");
+      const postList = document.querySelector("[data-post-list]");
+      const postListContainer = document.querySelector("[data-post-list-container]");
+
+      function formatDate(dateString) {
+        if (!dateString) {
+          return "";
+        }
+        const date = new Date(dateString);
+        if (Number.isNaN(date.getTime())) {
+          return dateString;
+        }
+        return date.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "numeric"
+        });
+      }
+
+      function setStatus(message, style) {
+        if (!postStatus) {
+          return;
+        }
+        postStatus.textContent = message;
+        postStatus.classList.remove("alert-info", "alert-danger");
+        postStatus.classList.add(style === "error" ? "alert-danger" : "alert-info");
+      }
+
+      function renderTags(tags) {
+        if (!postTags) {
+          return;
+        }
+        postTags.innerHTML = "";
+        (tags || []).forEach((tag) => {
+          const chip = document.createElement("span");
+          chip.className = "tag-pill";
+          chip.textContent = tag;
+          postTags.appendChild(chip);
+        });
+      }
+
+      function normalizeAssetPath(path) {
+        if (!path) {
+          return "";
+        }
+        if (path.startsWith("http://") || path.startsWith("https://") || path.startsWith("/")) {
+          return path;
+        }
+        if (path.startsWith("./")) {
+          return "/" + path.slice(2);
+        }
+        return "/" + path;
+      }
+
+      function renderContent(content) {
+        if (!postContent) {
+          return;
+        }
+        postContent.innerHTML = "";
+        (content || []).forEach((paragraph) => {
+          const p = document.createElement("p");
+          p.textContent = paragraph;
+          postContent.appendChild(p);
+        });
+      }
+
+      function renderGallery(images) {
+        if (!postGallery) {
+          return;
+        }
+        postGallery.innerHTML = "";
+        if (!Array.isArray(images) || images.length === 0) {
+          postGallery.classList.add("d-none");
+          return;
+        }
+        postGallery.classList.remove("d-none");
+        images.forEach((image) => {
+          const col = document.createElement("div");
+          col.className = "col-6 col-md-4";
+          const ratio = document.createElement("div");
+          ratio.className = "ratio ratio-4x3";
+          const img = document.createElement("img");
+          img.className = "w-100 h-100";
+          img.src = normalizeAssetPath(image);
+          img.alt = "Blog image";
+          img.loading = "lazy";
+          ratio.appendChild(img);
+          col.appendChild(ratio);
+          postGallery.appendChild(col);
+        });
+      }
+
+      function createPostCard(post) {
+        const col = document.createElement("div");
+        col.className = "col-md-6";
+        const card = document.createElement("article");
+        card.className = "card blog-card h-100 position-relative";
+        const linkTarget = post.id ? `/blog/${encodeURIComponent(post.id)}` : "";
+
+        if (post.cover) {
+          const ratio = document.createElement("div");
+          ratio.className = "ratio ratio-16x9";
+          const img = document.createElement("img");
+          img.className = "w-100 h-100 blog-card__cover";
+          img.src = normalizeAssetPath(post.cover);
+          img.alt = post.title || "";
+          img.loading = "lazy";
+          ratio.appendChild(img);
+          card.appendChild(ratio);
+        }
+
+        const body = document.createElement("div");
+        body.className = "card-body d-flex flex-column";
+
+        const meta = document.createElement("p");
+        meta.className = "post-meta mb-2";
+        meta.textContent = formatDate(post.date);
+        body.appendChild(meta);
+
+        if (linkTarget) {
+          const titleLink = document.createElement("a");
+          titleLink.className = "fw-semibold blog-link stretched-link";
+          titleLink.textContent = post.title || "";
+          titleLink.href = linkTarget;
+          titleLink.setAttribute("aria-label", post.title || "Open post");
+          body.appendChild(titleLink);
+        }
+
+        if (post.excerpt) {
+          const excerpt = document.createElement("p");
+          excerpt.className = "text-muted mt-2 mb-0";
+          excerpt.textContent = post.excerpt;
+          body.appendChild(excerpt);
+        }
+
+        card.appendChild(body);
+        col.appendChild(card);
+        return col;
+      }
+
+      function renderPostList(posts) {
+        if (!postList || !postListContainer) {
+          return;
+        }
+        postListContainer.innerHTML = "";
+        posts.forEach((post) => {
+          postListContainer.appendChild(createPostCard(post));
+        });
+        postList.classList.remove("d-none");
+      }
+
+      function setHomeLink() {
+        if (!homeLink) {
+          return;
+        }
+        const storedLang = localStorage.getItem("lang");
+        const lang = storedLang || "nl";
+        homeLink.setAttribute("href", `/?lang=${lang}#blog`);
+      }
+
+      function getPostId() {
+        const params = new URLSearchParams(window.location.search);
+        const queryId = params.get("id");
+        if (queryId) {
+          return queryId;
+        }
+        const path = window.location.pathname.replace(/\/+/g, "/");
+        const parts = path.split("/").filter(Boolean);
+        const blogIndex = parts.indexOf("blog");
+        if (blogIndex === -1 || blogIndex === parts.length - 1) {
+          return "";
+        }
+        return decodeURIComponent(parts[blogIndex + 1]);
+      }
+
+      async function loadPost() {
+        const postId = getPostId();
+        setHomeLink();
+
+        try {
+          const response = await fetch("/data/blog-posts.json", { cache: "no-store" });
+          if (!response.ok) {
+            throw new Error("Post data request failed");
+          }
+          const data = await response.json();
+          const posts = Array.isArray(data.posts) ? data.posts : [];
+          const post = posts.find((item) => item.id === postId);
+
+          if (!postId) {
+            setStatus("Select a post to read.", "info");
+            renderPostList(posts);
+            return;
+          }
+
+          if (!post) {
+            setStatus("Post not found. Browse other posts below.", "error");
+            renderPostList(posts);
+            return;
+          }
+
+          if (postTitle) {
+            postTitle.textContent = post.title || "";
+          }
+          if (postDate) {
+            postDate.textContent = formatDate(post.date);
+          }
+          renderTags(post.tags || []);
+          renderContent(post.content || []);
+          renderGallery(post.images || []);
+
+          if (postCover && postCoverImg && post.cover) {
+            postCoverImg.src = normalizeAssetPath(post.cover);
+            postCoverImg.alt = post.title || "";
+            postCover.classList.remove("d-none");
+          }
+
+          if (postArticle) {
+            postArticle.classList.remove("d-none");
+          }
+
+          if (postStatus) {
+            postStatus.classList.add("d-none");
+          }
+        } catch (error) {
+          console.error("Post load error:", error);
+          setStatus("Unable to load this post. Please try again later.", "error");
+        }
+      }
+
+      loadPost();
+    </script>
+  </body>
+</html>

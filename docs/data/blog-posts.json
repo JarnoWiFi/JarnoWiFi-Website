@@ -10,7 +10,15 @@
         "img/grootse-markt-2025/1748943179728.jpeg",
         "img/20240508_194215-1536x1152.webp"
       ],
-      "tags": ["Deployment", "Monitoring", "Field Ops"]
+      "tags": ["Deployment", "Monitoring", "Field Ops"],
+      "content": [
+        "This deployment started with a simple brief: deliver stable guest WiFi for 2,000 people in a rural field with no wired internet. The solution had to be resilient against weather, power changes, and high demand spikes during headline moments.",
+        "We began by mapping the site into coverage zones and traffic profiles. The bar and POS areas needed low latency, the production zone required protected capacity, and the main audience area needed broad coverage. That shaped the access point layout and VLAN plan before any hardware went on site.",
+        "For backhaul, we used dual uplinks and bonded routing to keep the service stable. One link was prioritized for critical services, while guest traffic was balanced across the available bandwidth. This allowed us to keep payment terminals and staff comms steady even when guest load peaked.",
+        "On site, we ran a staged deployment. Core routing and monitoring came online first, followed by guest WiFi coverage in the main lanes. We validated each zone with live throughput checks and RF tuning before expanding the footprint.",
+        "During the event, we watched the network in real time and adjusted channel plans as the venue filled. Traffic shaping kept live streaming and staff tools responsive, while guests still saw strong connectivity throughout the evening.",
+        "Post event, we collected metrics and notes for future builds. The main takeaway: a clear RF plan and a strict separation between guest and production traffic makes rural deployments much more predictable."
+      ]
     }
   ]
 }

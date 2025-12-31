@@ -1558,7 +1558,8 @@
         const col = document.createElement("div");
         col.className = "col-md-6 col-lg-4";
         const card = document.createElement("article");
-        card.className = "card blog-card h-100";
+        card.className = "card blog-card h-100 position-relative";
+        const linkTarget = post.id ? `/blog/${encodeURIComponent(post.id)}` : "";
 
         if (post.cover) {
           const ratio = document.createElement("div");
@@ -1582,10 +1583,19 @@
           body.appendChild(meta);
         }
 
-        const title = document.createElement("h5");
-        title.className = "fw-semibold";
-        title.textContent = post.title || "";
-        body.appendChild(title);
+        if (linkTarget) {
+          const titleLink = document.createElement("a");
+          titleLink.className = "fw-semibold blog-link stretched-link";
+          titleLink.textContent = post.title || "";
+          titleLink.href = linkTarget;
+          titleLink.setAttribute("aria-label", post.title || "Open post");
+          body.appendChild(titleLink);
+        } else {
+          const title = document.createElement("h5");
+          title.className = "fw-semibold";
+          title.textContent = post.title || "";
+          body.appendChild(title);
+        }
 
         if (post.excerpt) {
           const excerpt = document.createElement("p");
