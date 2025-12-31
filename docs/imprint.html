@@ -68,9 +68,9 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-white border-bottom fixed-top">
       <div class="container">
-        <a class="navbar-brand fw-bold" href="index.html">JarnoWiFi</a>
+        <a class="navbar-brand fw-bold" href="/">JarnoWiFi</a>
         <div class="ms-auto d-flex flex-column flex-lg-row align-items-lg-center gap-2">
-          <a class="btn btn-sm btn-outline-dark" href="index.html" data-home-link data-i18n="nav.home">Zurück zur Startseite</a>
+          <a class="btn btn-sm btn-outline-dark" href="/" data-home-link data-i18n="nav.home">Zurück zur Startseite</a>
           <div class="d-flex gap-2">
             <a class="btn btn-sm btn-outline-dark" href="?lang=nl" data-lang="nl">NL</a>
             <a class="btn btn-sm btn-outline-dark" href="?lang=en" data-lang="en">EN</a>
@@ -259,7 +259,7 @@
         });
 
         if (homeLink) {
-          homeLink.setAttribute("href", `index.html?lang=${lang}`);
+          homeLink.setAttribute("href", `/?lang=${lang}`);
         }
 
         if (updateUrl) {

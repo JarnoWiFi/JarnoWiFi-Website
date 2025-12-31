@@ -276,6 +276,6 @@ if (wants_json()) {
     send_json(200, true, 'Message sent.', null, $smtpDebug);
 }
 
-header('Location: index.html?lang=' . $lang . '#contact');
+header('Location: /?lang=' . $lang . '#contact');
 header('Content-Type: text/plain; charset=UTF-8');
 echo 'Message sent.';
