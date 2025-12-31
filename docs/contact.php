@@ -252,7 +252,7 @@ $from = 'system@treudler.net';
 $secure = 'tls';
 $useTls = true;
 $port = 587;
-$pass = quoH4oghoma8foobieW3looghahgh8;
+$pass = $smtpPass;
 $to = 'joshua@treudler.net';
 
 [$ok, $error] = smtp_send($host, $port, $user ?? '', $pass ?? '', $from ?? 'system@jarnowifi.net', $to, $subject, $body, $useTls);
