@@ -581,30 +581,35 @@
             </div>
           </div>
           <div class="col-lg-7">
-            <form class="row g-3">
+            <form class="row g-3" action="contact.php" method="post" accept-charset="UTF-8">
+              <input type="hidden" name="lang" value="" data-lang-field />
               <div class="col-md-6">
                 <label class="form-label" data-i18n="contact.form.nameLabel">Volledige naam</label>
-                <input type="text" class="form-control" placeholder="Alex Morgan" data-i18n-placeholder="contact.form.namePlaceholder" />
+                <input type="text" class="form-control" name="full_name" placeholder="Alex Morgan" data-i18n-placeholder="contact.form.namePlaceholder" />
               </div>
               <div class="col-md-6">
                 <label class="form-label" data-i18n="contact.form.companyLabel">Bedrijf</label>
-                <input type="text" class="form-control" placeholder="Eventbedrijf" data-i18n-placeholder="contact.form.companyPlaceholder" />
+                <input type="text" class="form-control" name="company" placeholder="Eventbedrijf" data-i18n-placeholder="contact.form.companyPlaceholder" />
               </div>
               <div class="col-md-6">
                 <label class="form-label" data-i18n="contact.form.dateLabel">Eventdatum</label>
-                <input type="date" class="form-control" />
+                <input type="date" class="form-control" name="event_date" />
               </div>
               <div class="col-md-6">
                 <label class="form-label" data-i18n="contact.form.attendeesLabel">Geschat aantal bezoekers</label>
-                <input type="number" class="form-control" placeholder="1500" data-i18n-placeholder="contact.form.attendeesPlaceholder" />
+                <input type="number" class="form-control" name="attendees" placeholder="1500" data-i18n-placeholder="contact.form.attendeesPlaceholder" />
               </div>
               <div class="col-12">
                 <label class="form-label" data-i18n="contact.form.locationLabel">Locatie</label>
-                <input type="text" class="form-control" placeholder="Regio, land" data-i18n-placeholder="contact.form.locationPlaceholder" />
+                <input type="text" class="form-control" name="location" placeholder="Regio, land" data-i18n-placeholder="contact.form.locationPlaceholder" />
               </div>
               <div class="col-12">
                 <label class="form-label" data-i18n="contact.form.notesLabel">Opmerkingen</label>
-                <textarea class="form-control" rows="4" placeholder="Stroomvoorziening, indeling, speciale wensen" data-i18n-placeholder="contact.form.notesPlaceholder"></textarea>
+                <textarea class="form-control" name="notes" rows="4" placeholder="Stroomvoorziening, indeling, speciale wensen" data-i18n-placeholder="contact.form.notesPlaceholder"></textarea>
+              </div>
+              <div class="col-12 d-none">
+                <label class="form-label" for="website-field">Website</label>
+                <input type="text" class="form-control" id="website-field" name="website" autocomplete="off" />
               </div>
               <div class="col-12">
                 <button class="btn btn-dark btn-lg" type="submit" data-i18n="contact.form.submit">Verstuur aanvraag</button>
@@ -755,7 +760,7 @@
           "contact.form.submit": "Verstuur aanvraag",
           "contact.form.namePlaceholder": "Alex Morgan",
           "contact.form.companyPlaceholder": "Eventbedrijf",
-          "contact.form.attendeesPlaceholder": "1500",
+          "contact.form.attendeesPlaceholder": "300",
           "contact.form.locationPlaceholder": "Regio, land",
           "contact.form.notesPlaceholder": "Stroomvoorziening, indeling, speciale wensen",
           "footer.tagline": "Professionele WiFi voor events, powered by Starlink + 5G.",
@@ -880,7 +885,7 @@
           "contact.form.submit": "Send request",
           "contact.form.namePlaceholder": "Alex Morgan",
           "contact.form.companyPlaceholder": "Event Co.",
-          "contact.form.attendeesPlaceholder": "1500",
+          "contact.form.attendeesPlaceholder": "300",
           "contact.form.locationPlaceholder": "Region, country",
           "contact.form.notesPlaceholder": "Power availability, layout, special needs",
           "footer.tagline": "Enterprise WiFi for events, powered by Starlink + 5G.",
@@ -1005,7 +1010,7 @@
           "contact.form.submit": "Anfrage senden",
           "contact.form.namePlaceholder": "Alex Morgan",
           "contact.form.companyPlaceholder": "Eventfirma",
-          "contact.form.attendeesPlaceholder": "1500",
+          "contact.form.attendeesPlaceholder": "300",
           "contact.form.locationPlaceholder": "Region, Land",
           "contact.form.notesPlaceholder": "Stromversorgung, Layout, besondere Anforderungen",
           "footer.tagline": "Professionelles WLAN für Events, powered by Starlink + 5G.",
@@ -1020,6 +1025,7 @@
       const textNodes = document.querySelectorAll("[data-i18n]");
       const placeholderNodes = document.querySelectorAll("[data-i18n-placeholder]");
       const languageButtons = document.querySelectorAll("[data-lang]");
+      const langField = document.querySelector("[data-lang-field]");
 
       function setLanguage(lang, options = {}) {
         const { updateUrl = true } = options;
@@ -1030,6 +1036,9 @@
 
         document.documentElement.lang = lang;
         document.title = dict.meta.title;
+        if (langField) {
+          langField.value = lang;
+        }
 
         const description = document.querySelector('meta[name="description"]');
         if (description) {
@@ -1097,6 +1106,9 @@
       const browserLang = getLanguageFromNavigator();
       const initialLang = queryLang || (translations[storedLang] ? storedLang : null) || browserLang || "nl";
       setLanguage(initialLang, { updateUrl: false });
+      if (langField) {
+        langField.value = initialLang;
+      }
 
       languageButtons.forEach((button) => {
         button.addEventListener("click", (event) => {

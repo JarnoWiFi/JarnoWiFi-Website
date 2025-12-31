@@ -32,6 +32,7 @@ jobs:
         run: |
           ssh root@krakatau.treudler.net "\
             cd /root/docker/jarnowifi/website && \
+            export SMTP_PASS='${{ secrets.SMTP_PASS }}' && \
             docker compose down && \
             docker compose up -d \
           "
