@@ -55,6 +55,29 @@
         "De rode streepjes is packetloss en de zwarte lijn is de latency. Het groene gedeelte is 100 ms.",
         "Al met al is het erg interessant materiaal. Heb ik het zelf nodig? Niet echt. Maar het kan wel handig zijn tijdens noodsituaties, en wellicht ga ik het uitlenen samen met wat handige wifi-hardware. Benieuwd naar het stroomverbruik? Die heb ik gepost in deze blog."
       ]
+    },
+    {
+      "id": "starlink-power-consumption",
+      "title": "Starlink Power Consumption: How Much Does It Use?",
+      "date": "2024-03-19",
+      "excerpt": "Measuring the power usage of Starlink during download and upload operations, with peaks up to 80 watts.",
+      "cover": "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240319_123526-225x300.jpg",
+      "images": [
+        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240319_123526-225x300.jpg",
+        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240319_123550-225x300.jpg",
+        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240319_123605-225x300.jpg",
+        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240319_123611-225x300.jpg"
+      ],
+      "tags": ["Starlink", "Power Consumption"],
+      "content": [
+        "Misschien ben je wel benieuwd hoeveel vermogen Starlink gebruikt. Spoiler: best veel.",
+        "De Starlink-router gebruikt ongeveer 10 watt wanneer deze in gebruik is. Ik heb pieken gezien in de buurt van 80 watt.",
+        "Hier heb ik een filmpje die laat zien hoeveel vermogen Starlink gebruikt tijdens het downloaden en uploaden:",
+        "<div style=\"position: relative; padding-top: 56.25%;\"><iframe style=\"border: 0; position: absolute; top: 0; height: 100%; width: 100%;\" src=\"https://iframe.mediadelivery.net/embed/220943/5ce49524-2aed-4cba-bdc8-2e77f47fc4e9?autoplay=false&loop=false&muted=false&preload=false&responsive=true\" allowfullscreen=\"allowfullscreen\"></iframe></div>",
+        "Het is interessant om te zien dat tijdens het uploaden Starlink het meeste vermogen gebruikt. Dit is ook wel logisch aangezien hij flink wat kilometers omhoog moet stralen.",
+        "Starlink gebruikt dus tussen de 30 en 80 watt. 80 watt bij uploaden en 30 watt idle.",
+        "PS. De snelheid is in het bovenstaande filmpje relatief laag. Dit komt omdat de Starlink nog de optimale positie moet vinden. Na een kwartier gaat de snelheid vaak flink hoger."
+      ]
     }
   ]
 }
