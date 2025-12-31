@@ -15,6 +15,7 @@ services:
     image: php:8.2-fpm-alpine
     volumes:
       - ./docs:/var/www/html:ro
+      - ./php-fpm-env.conf:/usr/local/etc/php-fpm.d/zz-env.conf:ro
     environment:
       SMTP_PASS: ${SMTP_PASS}
     restart: unless-stopped
