@@ -208,11 +208,32 @@ if ($honeypot !== '') {
 }
 
 $fullName = trim((string) ($_POST['full_name'] ?? ''));
+$email = trim((string) ($_POST['email'] ?? ''));
 $company = trim((string) ($_POST['company'] ?? ''));
 $eventDate = trim((string) ($_POST['event_date'] ?? ''));
 $attendees = trim((string) ($_POST['attendees'] ?? ''));
 $location = trim((string) ($_POST['location'] ?? ''));
 $notes = trim((string) ($_POST['notes'] ?? ''));
+
+if ($email === '') {
+    if (wants_json()) {
+        send_json(400, false, 'Please provide an email address.', null, $smtpDebug);
+    }
+    http_response_code(400);
+    header('Content-Type: text/plain; charset=UTF-8');
+    echo 'Please provide an email address.';
+    exit;
+}
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if (wants_json()) {
+        send_json(400, false, 'Please provide a valid email address.', null, $smtpDebug);
+    }
+    http_response_code(400);
+    header('Content-Type: text/plain; charset=UTF-8');
+    echo 'Please provide a valid email address.';
+    exit;
+}
 
 if ($fullName === '' && $company === '' && $eventDate === '' && $attendees === '' && $location === '' && $notes === '') {
     if (wants_json()) {
@@ -234,6 +255,7 @@ $bodyLines = [
     'New contact request',
     '',
     'Name: ' . value_or_na($fullName),
+    'Email: ' . value_or_na($email),
     'Company: ' . value_or_na($company),
     'Event date: ' . value_or_na($eventDate),
     'Estimated attendees: ' . value_or_na($attendees),
