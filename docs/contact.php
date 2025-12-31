@@ -252,7 +252,7 @@ $from = 'system@pilowifi.net';
 $secure = 'tls';
 $useTls = true;
 $port = 587;
-$pass = $smtpPass;
+$pass = 'quoH4oghoma8foobieW3looghahgh8';
 $to = 'contact@pilowifi.net';
 
 [$ok, $error] = smtp_send($host, $port, $user ?? '', $pass ?? '', $from ?? 'system@pilowifi.net', $to, $subject, $body, $useTls);
