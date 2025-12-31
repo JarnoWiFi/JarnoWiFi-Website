@@ -699,7 +699,10 @@
         </div>
         <div class="row g-4">
           <div class="col-12">
-            <h4 class="fw-semibold mb-3" data-i18n="blog.localTitle">Featured posts</h4>
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+              <h4 class="fw-semibold mb-0" data-i18n="blog.localTitle">Featured posts</h4>
+              <a class="text-decoration-none" href="/blog" data-i18n="blog.allLink">All posts</a>
+            </div>
             <div class="row g-4" data-blog-local></div>
             <p class="text-muted small mb-0 d-none" data-blog-local-status data-i18n="blog.empty">No posts yet.</p>
           </div>
@@ -1008,6 +1011,7 @@
           "blog.title": "Updates uit het veld.",
           "blog.lead": "Korte updates uit het veld en notities van recente deployments.",
           "blog.localTitle": "Uitgelichte posts",
+          "blog.allLink": "Alle posts",
           "blog.empty": "Nog geen posts.",
           "blog.localError": "Laden van posts is mislukt.",
           "pricing.label": "Pakketten",
@@ -1169,6 +1173,7 @@
           "blog.title": "Field notes and deployments.",
           "blog.lead": "Short updates and field notes from recent deployments.",
           "blog.localTitle": "Featured posts",
+          "blog.allLink": "All posts",
           "blog.empty": "No posts yet.",
           "blog.localError": "Unable to load posts right now.",
           "pricing.label": "Plans",
@@ -1330,6 +1335,7 @@
           "blog.title": "Feldnotizen und Deployments.",
           "blog.lead": "Kurze Updates und Notizen aus aktuellen Deployments.",
           "blog.localTitle": "Ausgewaehlte Beitraege",
+          "blog.allLink": "Alle Beitraege",
           "blog.empty": "Noch keine Beitraege.",
           "blog.localError": "Beitraege konnten nicht geladen werden.",
           "pricing.label": "Pakete",
