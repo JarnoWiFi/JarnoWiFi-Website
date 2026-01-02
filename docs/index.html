@@ -348,15 +348,15 @@
         </button>
         <div class="collapse navbar-collapse" id="piloNavbar">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link" href="#services" data-i18n="nav.services">Diensten</a></li>
-            <li class="nav-item"><a class="nav-link" href="#reliability" data-i18n="nav.reliability">Betrouwbaarheid</a></li>
-            <li class="nav-item"><a class="nav-link" href="#use-cases" data-i18n="nav.useCases">Toepassingen</a></li>
-            <li class="nav-item"><a class="nav-link" href="#pricing" data-i18n="nav.plans">Pakketten</a></li>
-            <li class="nav-item"><a class="nav-link" href="#blog" data-i18n="nav.blog">Blog</a></li>
-            <li class="nav-item"><a class="nav-link" href="#faq" data-i18n="nav.faq">FAQ</a></li>
+            <li class="nav-item"><a class="nav-link" href="#services" data-bs-toggle="collapse" data-bs-target="#piloNavbar" data-i18n="nav.services">Diensten</a></li>
+            <li class="nav-item"><a class="nav-link" href="#reliability" data-bs-toggle="collapse" data-bs-target="#piloNavbar" data-i18n="nav.reliability">Betrouwbaarheid</a></li>
+            <li class="nav-item"><a class="nav-link" href="#use-cases" data-bs-toggle="collapse" data-bs-target="#piloNavbar" data-i18n="nav.useCases">Toepassingen</a></li>
+            <li class="nav-item"><a class="nav-link" href="#pricing" data-bs-toggle="collapse" data-bs-target="#piloNavbar" data-i18n="nav.plans">Pakketten</a></li>
+            <li class="nav-item"><a class="nav-link" href="#blog" data-bs-toggle="collapse" data-bs-target="#piloNavbar" data-i18n="nav.blog">Blog</a></li>
+            <li class="nav-item"><a class="nav-link" href="#faq" data-bs-toggle="collapse" data-bs-target="#piloNavbar" data-i18n="nav.faq">FAQ</a></li>
           </ul>
           <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 ms-lg-3 mt-3 mt-lg-0">
-            <a class="btn btn-sm btn-dark" href="#contact" data-i18n="nav.cta">Offerte aanvragen</a>
+            <a class="btn btn-sm btn-dark" href="#contact" data-bs-toggle="collapse" data-bs-target="#piloNavbar" data-i18n="nav.cta">Offerte aanvragen</a>
             <div class="d-flex gap-2">
               <a class="btn btn-sm btn-dark" href="/?lang=nl" data-lang="nl">NL</a>
               <a class="btn btn-sm btn-outline-dark" href="/?lang=en" data-lang="en">EN</a>
@@ -1810,6 +1810,11 @@
           event.preventDefault();
           setLanguage(button.dataset.lang, { updateUrl: false });
           cleanHomeUrl();
+          const navbarCollapse = document.getElementById('piloNavbar');
+          const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+          if (bsCollapse) {
+            bsCollapse.hide();
+          }
         });
       });
 
