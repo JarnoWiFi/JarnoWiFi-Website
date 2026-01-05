@@ -75,6 +75,10 @@
         font-weight: 500;
       }
 
+      section {
+        scroll-margin-top: 96px;
+      }
+
       .navbar {
         background-color: rgba(255, 255, 255, 0.94) !important;
         backdrop-filter: blur(12px);
@@ -527,8 +531,12 @@
             <div class="card service-card h-100 fade-up delay-1">
               <div class="card-body">
                 <h5 class="fw-semibold" data-i18n="hardware.backhaul.title">Straalverbinding</h5>
+                <p class="text-muted mb-3" data-i18n="hardware.backhaul.body">Richtverbinding voor locaties zonder glasvezel, met line-of-sight planning en spectrumcontrole.</p>
                 <ul class="list-unstyled text-muted mb-0">
                   <li class="mb-2" data-i18n="hardware.backhaul.item1">Meerdere point-to-point straalverbindingen</li>
+                  <li class="mb-2" data-i18n="hardware.backhaul.item2">Tot 10 Gbps bij vrije zichtverbinding; licentievrij of gelicenseerd spectrum</li>
+                  <li class="mb-2" data-i18n="hardware.backhaul.item3">Site survey met Fresnel-check en mastplaatsing</li>
+                  <li class="mb-0" data-i18n="hardware.backhaul.item4">Redundante straalverbinding mogelijk naast Starlink/5G-failover</li>
                 </ul>
               </div>
             </div>
@@ -1200,7 +1208,11 @@
           "hardware.title": "Onze hardware in het veld.",
           "hardware.lead": "Transparant overzicht van de apparatuur die we inzetten per event.",
           "hardware.backhaul.title": "Straalverbinding",
+          "hardware.backhaul.body": "Richtverbinding voor locaties zonder glasvezel, met line-of-sight planning en spectrumcontrole.",
           "hardware.backhaul.item1": "Meerdere point-to-point straalverbindingen",
+          "hardware.backhaul.item2": "Tot 10 Gbps bij vrije zichtverbinding; licentievrij of gelicenseerd spectrum",
+          "hardware.backhaul.item3": "Site survey met Fresnel-check en mastplaatsing",
+          "hardware.backhaul.item4": "Redundante straalverbinding mogelijk naast Starlink/5G-failover",
           "hardware.ap.title": "Wi-Fi access points",
           "hardware.ap.item1": "Outdoor access points voor gast-wifi",
           "hardware.ap.item2": "Outdoor access points voor productie en staff",
@@ -1409,7 +1421,11 @@
           "hardware.title": "The kit we deploy on site.",
           "hardware.lead": "A transparent overview of the equipment we bring to each event.",
           "hardware.backhaul.title": "Point-to-point link",
+          "hardware.backhaul.body": "Microwave backhaul for sites without fiber, with line-of-sight planning and spectrum checks.",
           "hardware.backhaul.item1": "Multiple point-to-point radio links",
+          "hardware.backhaul.item2": "Up to 10 Gbps on clear line of sight; unlicensed or licensed bands",
+          "hardware.backhaul.item3": "Site survey with Fresnel clearance and mast placement",
+          "hardware.backhaul.item4": "Redundant radio path available alongside Starlink/5G for failover",
           "hardware.ap.title": "Wi-Fi access points",
           "hardware.ap.item1": "Outdoor access points for guest WiFi",
           "hardware.ap.item2": "Outdoor access points for production and staff",
@@ -1618,7 +1634,11 @@
           "hardware.title": "Unsere Hardware im Einsatz.",
           "hardware.lead": "Transparenter Überblick über die Ausstattung pro Event.",
           "hardware.backhaul.title": "Richtfunk",
+          "hardware.backhaul.body": "Richtfunk-Backhaul für Standorte ohne Glasfaser mit Line-of-Sight-Planung und Spektrum-Check.",
           "hardware.backhaul.item1": "Mehrere Punkt-zu-Punkt-Richtfunkstrecken",
+          "hardware.backhaul.item2": "Bis zu 10 Gbps bei freier Sichtlinie; lizenzfreie oder lizenzierte Bänder",
+          "hardware.backhaul.item3": "Site Survey mit Fresnel-Prüfung und Mast-Positionierung für stabile Links",
+          "hardware.backhaul.item4": "Redundanter Richtfunkpfad neben Starlink/5G für Failover",
           "hardware.ap.title": "Wi-Fi Access Points",
           "hardware.ap.item1": "Outdoor-Access-Points fuer Gast-WLAN",
           "hardware.ap.item2": "Outdoor-Access-Points fuer Produktion und Staff",
@@ -1910,6 +1930,31 @@
           const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
           if (bsCollapse) {
             bsCollapse.hide();
+          }
+        });
+      });
+
+      const navbarElement = document.querySelector(".navbar");
+      const navbarCollapse = document.getElementById("piloNavbar");
+      const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          const targetId = link.getAttribute("href").slice(1);
+          const target = document.getElementById(targetId);
+          if (!target) {
+            return;
+          }
+          event.preventDefault();
+          const offset = (navbarElement?.offsetHeight || 0) + 8;
+          const targetTop = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: targetTop, behavior: "smooth" });
+
+          if (navbarCollapse) {
+            const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+            if (bsCollapse) {
+              bsCollapse.hide();
+            }
           }
         });
       });
