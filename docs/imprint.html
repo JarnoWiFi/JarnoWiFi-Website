@@ -78,16 +78,12 @@
         min-height: 280px;
         border-radius: 1.5rem;
         overflow: hidden;
-        background: linear-gradient(135deg, rgba(11, 26, 42, 0.92), rgba(18, 49, 71, 0.82));
+        background: linear-gradient(135deg, rgba(11, 26, 42, 0.92), rgba(18, 49, 71, 0.82)), url('/img/background-video-1-webbg-20fps-420p.mp4') center/cover no-repeat;
         box-shadow: 0 24px 36px rgba(15, 23, 42, 0.16);
       }
 
       .hero-video__media {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        display: none;
       }
 
       .hero-video__overlay {
@@ -116,12 +112,6 @@
           padding: 2.5rem 0;
         }
       }
-
-      @media (prefers-reduced-motion: reduce) {
-        .hero-video__media {
-          display: none;
-        }
-      }
     </style>
   </head>
   <body>
@@ -141,17 +131,6 @@
 
     <main class="page-shell">
       <section class="hero-video mb-5">
-        <video
-          class="hero-video__media"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          aria-hidden="true"
-        >
-          <source src="https://cdn.treudler.net/jarnowifi/website/background-video-1-compressed-by-50-percent.mp4" type="video/mp4" />
-        </video>
         <div class="hero-video__overlay"></div>
         <div class="container hero-video__content">
           <div class="row justify-content-center">
@@ -189,6 +168,14 @@
                 <div>
                   <span class="fw-semibold" data-i18n="impressum.contact.nocLabel">NOC</span>:
                   <span data-i18n="impressum.contact.nocValue">noc@jarnowifi.net</span>
+                </div>
+                <div>
+                  <span class="fw-semibold" data-i18n="impressum.contact.salesLabel">Sales/Vertrieb</span>:
+                  <a href="tel:+4969175549116" data-i18n="impressum.contact.salesValue">+49 69 1755 491 160</a>
+                </div>
+                <div>
+                  <span class="fw-semibold" data-i18n="impressum.contact.incidentsLabel">Incidents/Störungen</span>:
+                  <a href="tel:+4969175549116" data-i18n="impressum.contact.incidentsValue">+49 69 1755 491 161</a>
                 </div>
                 <div>
                   <span class="fw-semibold" data-i18n="impressum.contact.webLabel">Website</span>:
@@ -233,6 +220,10 @@
           "impressum.contact.emailValue": "contact@jarnowifi.net",
           "impressum.contact.nocLabel": "NOC",
           "impressum.contact.nocValue": "noc@jarnowifi.net",
+          "impressum.contact.salesLabel": "Sales/Vertrieb",
+          "impressum.contact.salesValue": "+49 69 1755 491 160",
+          "impressum.contact.incidentsLabel": "Incidents/Storingen",
+          "impressum.contact.incidentsValue": "+49 69 1755 491 161",
           "impressum.contact.webLabel": "Website",
           "impressum.contact.webValue": "jarnowifi.net",
           "impressum.represented.title": "Vertegenwoordiger",
@@ -261,6 +252,10 @@
           "impressum.contact.emailValue": "contact@jarnowifi.net",
           "impressum.contact.nocLabel": "NOC",
           "impressum.contact.nocValue": "noc@jarnowifi.net",
+          "impressum.contact.salesLabel": "Sales",
+          "impressum.contact.salesValue": "+49 69 1755 491 160",
+          "impressum.contact.incidentsLabel": "Incidents",
+          "impressum.contact.incidentsValue": "+49 69 1755 491 161",
           "impressum.contact.webLabel": "Website",
           "impressum.contact.webValue": "jarnowifi.net",
           "impressum.represented.title": "Authorized representative",
@@ -289,6 +284,10 @@
           "impressum.contact.emailValue": "contact@jarnowifi.net",
           "impressum.contact.nocLabel": "NOC",
           "impressum.contact.nocValue": "noc@jarnowifi.net",
+          "impressum.contact.salesLabel": "Sales/Vertrieb",
+          "impressum.contact.salesValue": "+49 69 1755 491 160",
+          "impressum.contact.incidentsLabel": "Incidents/Störungen",
+          "impressum.contact.incidentsValue": "+49 69 1755 491 161",
           "impressum.contact.webLabel": "Website",
           "impressum.contact.webValue": "jarnowifi.net",
           "impressum.represented.title": "Vertretungsberechtigte Person",
