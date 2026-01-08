@@ -54,6 +54,40 @@
         --mist: #e7edf1;
       }
 
+      html,
+      body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      body {
+        touch-action: pan-y;
+      }
+
+      img,
+      video,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .d-flex.justify-content-between > * {
+        min-width: 0;
+        overflow-wrap: anywhere;
+      }
+
+      @media (max-width: 575.98px) {
+        .d-flex.justify-content-between {
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+
+        .d-flex.justify-content-between > :last-child {
+          text-align: left;
+        }
+      }
+
       body {
         font-family: "Work Sans", "Segoe UI", sans-serif;
         color: var(--ink);
