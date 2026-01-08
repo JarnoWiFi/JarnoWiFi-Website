@@ -2052,11 +2052,16 @@
 
       const navbarElement = document.querySelector(".navbar");
       const navbarCollapse = document.getElementById("piloNavbar");
-      const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+      const navLinks = document.querySelectorAll('a[href^="#"]');
 
       navLinks.forEach((link) => {
         link.addEventListener("click", (event) => {
-          const targetId = link.getAttribute("href").slice(1);
+          const href = link.getAttribute("href");
+          if (!href || href === "#") {
+            return;
+          }
+
+          const targetId = href.slice(1);
           const target = document.getElementById(targetId);
           if (!target) {
             return;
@@ -2064,7 +2069,8 @@
           event.preventDefault();
           const offset = (navbarElement?.offsetHeight || 0) + 8;
           const targetTop = target.getBoundingClientRect().top + window.scrollY - offset;
-          window.scrollTo({ top: targetTop, behavior: "smooth" });
+          const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          window.scrollTo({ top: targetTop, behavior: prefersReducedMotion ? "auto" : "smooth" });
 
           if (navbarCollapse) {
             const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
