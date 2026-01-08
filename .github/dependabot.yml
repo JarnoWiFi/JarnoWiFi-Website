@@ -1,12 +1,5 @@
 version: 2
 updates:
-  # Keep Docker image tags in docker-compose.yml up to date
-  - package-ecosystem: "docker"
-    directory: "/"
-    schedule:
-      interval: "daily"
-    open-pull-requests-limit: 5
-
   # Keep GitHub Actions used in workflows up to date
   - package-ecosystem: "github-actions"
     directory: "/"
