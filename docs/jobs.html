@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Jobs — JarnoWiFi</title>
-    <meta name="description" content="Open roles at JarnoWiFi — field engineers, NOC support, and commercial roles." />
+    <meta name="description" content="Open roles at JarnoWiFi — field engineers and commercial roles." />
     <link rel="alternate" hreflang="nl" href="?lang=nl" />
     <link rel="alternate" hreflang="en" href="?lang=en" />
     <link rel="alternate" hreflang="de" href="?lang=de" />
@@ -71,7 +71,8 @@
       .hero-video__content {
         position: relative;
         z-index: 1;
-        padding: 3.5rem 0;
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
         color: #ffffff;
       }
 
@@ -94,7 +95,8 @@
         }
 
         .hero-video__content {
-          padding: 2.5rem 0;
+          padding-top: 2.5rem;
+          padding-bottom: 2.5rem;
         }
       }
     </style>
@@ -144,7 +146,7 @@
           <div class="hero-video">
             <div class="hero-video__overlay"></div>
             <div class="container hero-video__content">
-              <div class="row justify-content-center">
+              <div class="row justify-content-center mx-0">
                 <div class="col-lg-9">
                   <p class="section-label mb-2" data-i18n="jobs.label">Jobs</p>
                   <h1 class="fw-bold mb-3" data-i18n="jobs.title">Help build reliable event connectivity</h1>
@@ -166,11 +168,18 @@
               <p class="text-muted mb-3" data-i18n="jobs.overview.body">
                 JarnoWiFi operates small, fast teams on site. We care about uptime, clear communication, and clean deployments. If you like networks, hardware, and real-world constraints, you’ll fit in.
               </p>
+              <h6 class="fw-semibold" data-i18n="jobs.benefits.title">Benefits</h6>
+              <ul class="text-muted mb-3">
+                <li data-i18n="jobs.benefits.b1">Employee hosting for your own hardware (lab + test time)</li>
+                <li data-i18n="jobs.benefits.b2">Free accommodation on multi-day deployments</li>
+                <li data-i18n="jobs.benefits.b3">On-site access: take part in event programs while on duty</li>
+                <li data-i18n="jobs.benefits.b4">Subsidies for rental cars on deployments (when needed)</li>
+              </ul>
               <div class="d-flex flex-wrap gap-2">
                 <span class="pill" data-i18n="jobs.pill1">On-site deployments</span>
                 <span class="pill" data-i18n="jobs.pill2">Starlink + 5G redundancy</span>
                 <span class="pill" data-i18n="jobs.pill3">Benelux + Germany</span>
-                <span class="pill" data-i18n="jobs.pill4">Freelance / contract</span>
+                <span class="pill" data-i18n="jobs.pill4">Freelance</span>
               </div>
             </div>
 
@@ -178,7 +187,7 @@
               <div class="d-flex align-items-start justify-content-between flex-wrap gap-3">
                 <div>
                   <h3 class="fw-bold mb-1" data-i18n="jobs.field.title">Freelance Field Engineer (Event WiFi)</h3>
-                  <div class="text-muted" data-i18n="jobs.field.meta">On-site • Freelance / contract • Weekends sometimes</div>
+                  <div class="text-muted" data-i18n="jobs.field.meta">On-site • Freelance • Weekends sometimes</div>
                 </div>
                 <a class="btn btn-sm btn-dark" href="mailto:jobs@jarnowifi.net?subject=Application%3A%20Freelance%20Field%20Engineer" data-i18n="jobs.apply">Apply via email</a>
               </div>
@@ -209,45 +218,11 @@
               </div>
             </div>
 
-            <div class="card job-card p-4 mb-4" id="noc-support">
-              <div class="d-flex align-items-start justify-content-between flex-wrap gap-3">
-                <div>
-                  <h3 class="fw-bold mb-1" data-i18n="jobs.noc.title">NOC Support (On-call)</h3>
-                  <div class="text-muted" data-i18n="jobs.noc.meta">Remote • Freelance / contract • Evenings & weekends</div>
-                </div>
-                <a class="btn btn-sm btn-dark" href="mailto:jobs@jarnowifi.net?subject=Application%3A%20NOC%20Support" data-i18n="jobs.apply">Apply via email</a>
-              </div>
-              <hr />
-              <p class="text-muted" data-i18n="jobs.noc.summary">
-                You monitor live deployments, respond to alerts, and help field engineers resolve incidents quickly (connectivity, routing, RF, vendor issues).
-              </p>
-              <div class="row g-4">
-                <div class="col-md-6">
-                  <h6 class="fw-semibold" data-i18n="jobs.responsibilities">Responsibilities</h6>
-                  <ul class="text-muted mb-0">
-                    <li data-i18n="jobs.noc.r1">Watch dashboards, interpret telemetry, and triage alerts.</li>
-                    <li data-i18n="jobs.noc.r2">Guide on-site staff via chat/phone; keep incident notes and timelines.</li>
-                    <li data-i18n="jobs.noc.r3">Coordinate failovers and controlled changes (uplink swaps, QoS changes).</li>
-                    <li data-i18n="jobs.noc.r4">Post-event handoff: short incident summaries and improvements.</li>
-                  </ul>
-                </div>
-                <div class="col-md-6">
-                  <h6 class="fw-semibold" data-i18n="jobs.requirements">Requirements</h6>
-                  <ul class="text-muted mb-0">
-                    <li data-i18n="jobs.noc.req1">Solid troubleshooting: TCP/IP, routing, DNS, WiFi basics.</li>
-                    <li data-i18n="jobs.noc.req2">Comfortable making safe changes under a change window.</li>
-                    <li data-i18n="jobs.noc.req3">Strong written communication (clear status updates).</li>
-                    <li data-i18n="jobs.noc.req4">Availability during some evenings/weekends (rotating schedule).</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
             <div class="card job-card p-4 mb-4" id="sales">
               <div class="d-flex align-items-start justify-content-between flex-wrap gap-3">
                 <div>
                   <h3 class="fw-bold mb-1" data-i18n="jobs.sales.title">Sales / Account (Event Connectivity)</h3>
-                  <div class="text-muted" data-i18n="jobs.sales.meta">Remote • Freelance / contract • Commission-based</div>
+                  <div class="text-muted" data-i18n="jobs.sales.meta">Remote • Freelance • Commission-based</div>
                 </div>
                 <a class="btn btn-sm btn-dark" href="mailto:jobs@jarnowifi.net?subject=Application%3A%20Sales%20%2F%20Account" data-i18n="jobs.apply">Apply via email</a>
               </div>
@@ -281,7 +256,7 @@
               <div class="d-flex align-items-start justify-content-between flex-wrap gap-3">
                 <div>
                   <h3 class="fw-bold mb-1" data-i18n="jobs.hos.title">Head of Sales (Event Connectivity)</h3>
-                  <div class="text-muted" data-i18n="jobs.hos.meta">Remote • Freelance / contract</div>
+                  <div class="text-muted" data-i18n="jobs.hos.meta">Remote • Freelance</div>
                 </div>
                 <a class="btn btn-sm btn-dark" href="mailto:jobs@jarnowifi.net?subject=Application%3A%20Head%20of%20Sales" data-i18n="jobs.apply">Apply via email</a>
               </div>
@@ -355,7 +330,7 @@
         nl: {
           meta: {
             title: "Vacatures — JarnoWiFi",
-            description: "Open rollen bij JarnoWiFi — field engineers, NOC support en commerciële rollen."
+            description: "Open rollen bij JarnoWiFi — field engineers en commerciële rollen."
           },
           "nav.home": "Terug naar start",
           "nav.badge": "Event-wifi",
@@ -378,16 +353,21 @@
           "jobs.lead": "We leveren managed wifi voor markten, kampen, festivals en afgelegen locaties — met Starlink, 5G-failover en strakke operatie.",
           "jobs.overview.title": "Hoe we werken",
           "jobs.overview.body": "JarnoWiFi werkt met kleine, snelle teams op locatie. We geven om uptime, duidelijke communicatie en nette deployments. Hou je van netwerken, hardware en echte omstandigheden, dan pas je erbij.",
+          "jobs.benefits.title": "Voordelen",
+          "jobs.benefits.b1": "Medewerker-hosting voor eigen hardware (lab + testtijd)",
+          "jobs.benefits.b2": "Gratis overnachtingen bij meerdaagse deployments",
+          "jobs.benefits.b3": "Toegang op locatie: meedoen aan eventprogramma’s tijdens je dienst",
+          "jobs.benefits.b4": "Toeslagen voor huurauto’s bij deployments (waar nodig)",
           "jobs.pill1": "Op locatie",
           "jobs.pill2": "Starlink + 5G redundant",
           "jobs.pill3": "Benelux + Duitsland",
-          "jobs.pill4": "Freelance / contract",
+          "jobs.pill4": "Freelance",
           "jobs.apply": "Solliciteer via e-mail",
           "jobs.responsibilities": "Verantwoordelijkheden",
           "jobs.requirements": "Vereisten",
 
           "jobs.field.title": "Freelance Field Engineer (Event WiFi)",
-          "jobs.field.meta": "Op locatie • Freelance / contract • Soms weekenden",
+          "jobs.field.meta": "Op locatie • Freelance • Soms weekenden",
           "jobs.field.summary": "Je bouwt en draait de on-site netwerkstack: AP’s plaatsen, routing/uplinks opzetten, dekking verifiëren en het event live houden.",
           "jobs.field.r1": "AP-layouts bouwen, hardware monteren, veilig bekabelen, labelen en documenteren.",
           "jobs.field.r2": "WAN-links live zetten (Starlink, 5G/LTE, glasvezel/kabel waar aanwezig) en failover testen.",
@@ -398,20 +378,8 @@
           "jobs.field.req3": "Duidelijke, rustige communicatie onder druk.",
           "jobs.field.req4": "Rijbewijs en bereid te reizen in NL/DE/BE.",
 
-          "jobs.noc.title": "NOC Support (On-call)",
-          "jobs.noc.meta": "Remote • Freelance / contract • Avonden & weekenden",
-          "jobs.noc.summary": "Je monitort live deployments, reageert op alerts en helpt field engineers incidenten snel oplossen (connectiviteit, routing, RF, vendor issues).",
-          "jobs.noc.r1": "Dashboards bewaken, telemetry interpreteren en alerts triageren.",
-          "jobs.noc.r2": "On-site teams begeleiden via chat/telefoon; incidentnotities en tijdlijn bijhouden.",
-          "jobs.noc.r3": "Failovers en gecontroleerde changes coördineren (uplink swaps, QoS aanpassingen).",
-          "jobs.noc.r4": "Post-event handoff: korte incident-samenvattingen en verbeterpunten.",
-          "jobs.noc.req1": "Sterk in troubleshooting: TCP/IP, routing, DNS, WiFi basics.",
-          "jobs.noc.req2": "Comfortabel met veilige changes binnen een change window.",
-          "jobs.noc.req3": "Sterke schriftelijke communicatie (heldere statusupdates).",
-          "jobs.noc.req4": "Beschikbaarheid op sommige avonden/weekenden (roulatie).",
-
           "jobs.sales.title": "Sales / Account (Event Connectivity)",
-          "jobs.sales.meta": "Remote • Freelance / contract • Provisiebasis",
+          "jobs.sales.meta": "Remote • Freelance • Provisiebasis",
           "jobs.sales.summary": "Je helpt organisatoren en locaties hun behoefte scherp te krijgen, vertaalt requirements naar duidelijke voorstellen en houdt communicatie strak voor en tijdens een event.",
           "jobs.sales.r1": "Leads kwalificeren en requirements ophalen (datum, locatie, bezoekers, leveranciers).",
           "jobs.sales.r2": "Pricing en scope afstemmen met ops; voorstellen en SLA’s opstellen.",
@@ -423,7 +391,7 @@
           "jobs.sales.req4": "Vloeiend Duits + Engels of Nederlands + Engels is vereist.",
 
           "jobs.hos.title": "Head of Sales (Event Connectivity)",
-          "jobs.hos.meta": "Remote • Freelance / contract",
+          "jobs.hos.meta": "Remote • Freelance",
           "jobs.hos.summary": "Je bent eigenaar van de hele commerciële pipeline: de juiste events vinden, snel kwalificeren en requirements omzetten in duidelijke voorstellen die closen.",
           "jobs.hos.r1": "Bouw en onderhoud een stabiele pipeline van events en locaties.",
           "jobs.hos.r2": "Discovery calls draaien, requirements vastleggen en de juiste scope voorstellen.",
@@ -441,7 +409,7 @@
         en: {
           meta: {
             title: "Jobs — JarnoWiFi",
-            description: "Open roles at JarnoWiFi — field engineers, NOC support, and commercial roles."
+            description: "Open roles at JarnoWiFi — field engineers and commercial roles."
           },
           "nav.home": "Back to home",
           "nav.badge": "Wifi solutions",
@@ -464,16 +432,21 @@
           "jobs.lead": "We deploy managed WiFi for markets, camps, festivals and remote venues — powered by Starlink, 5G failover and disciplined operations.",
           "jobs.overview.title": "How we work",
           "jobs.overview.body": "JarnoWiFi operates small, fast teams on site. We care about uptime, clear communication, and clean deployments. If you like networks, hardware, and real-world constraints, you’ll fit in.",
+          "jobs.benefits.title": "Benefits",
+          "jobs.benefits.b1": "Employee hosting for your own hardware (lab + test time)",
+          "jobs.benefits.b2": "Free accommodation on multi-day deployments",
+          "jobs.benefits.b3": "On-site access: take part in event programs while on duty",
+          "jobs.benefits.b4": "Subsidies for rental cars on deployments (when needed)",
           "jobs.pill1": "On-site deployments",
           "jobs.pill2": "Starlink + 5G redundancy",
           "jobs.pill3": "Benelux + Germany",
-          "jobs.pill4": "Freelance / contract",
+          "jobs.pill4": "Freelance",
           "jobs.apply": "Apply via email",
           "jobs.responsibilities": "Responsibilities",
           "jobs.requirements": "Requirements",
 
           "jobs.field.title": "Freelance Field Engineer (Event WiFi)",
-          "jobs.field.meta": "On-site • Freelance / contract • Weekends sometimes",
+          "jobs.field.meta": "On-site • Freelance • Weekends sometimes",
           "jobs.field.summary": "You deploy and operate the on-site network stack: mounting APs, setting up routing/uplinks, verifying coverage, and keeping the event live.",
           "jobs.field.r1": "Build AP layouts, mount hardware, run safe cabling, label and document.",
           "jobs.field.r2": "Bring up WAN links (Starlink, 5G/LTE, fiber/cable when present) and verify failover.",
@@ -484,20 +457,8 @@
           "jobs.field.req3": "Clear, calm communication under time pressure.",
           "jobs.field.req4": "Driver’s license and ability to travel in NL/DE/BE.",
 
-          "jobs.noc.title": "NOC Support (On-call)",
-          "jobs.noc.meta": "Remote • Freelance / contract • Evenings & weekends",
-          "jobs.noc.summary": "You monitor live deployments, respond to alerts, and help field engineers resolve incidents quickly (connectivity, routing, RF, vendor issues).",
-          "jobs.noc.r1": "Watch dashboards, interpret telemetry, and triage alerts.",
-          "jobs.noc.r2": "Guide on-site staff via chat/phone; keep incident notes and timelines.",
-          "jobs.noc.r3": "Coordinate failovers and controlled changes (uplink swaps, QoS changes).",
-          "jobs.noc.r4": "Post-event handoff: short incident summaries and improvements.",
-          "jobs.noc.req1": "Solid troubleshooting: TCP/IP, routing, DNS, WiFi basics.",
-          "jobs.noc.req2": "Comfortable making safe changes under a change window.",
-          "jobs.noc.req3": "Strong written communication (clear status updates).",
-          "jobs.noc.req4": "Availability during some evenings/weekends (rotating schedule).",
-
           "jobs.sales.title": "Sales / Account (Event Connectivity)",
-          "jobs.sales.meta": "Remote • Freelance / contract • Commission-based",
+          "jobs.sales.meta": "Remote • Freelance • Commission-based",
           "jobs.sales.summary": "You help organizers and venues understand what they need, translate requirements into clear proposals, and keep communication sharp before and during an event.",
           "jobs.sales.r1": "Qualify leads and collect requirements (date, venue, attendance, vendors).",
           "jobs.sales.r2": "Coordinate pricing and scope with ops; write proposals and SLAs.",
@@ -509,7 +470,7 @@
           "jobs.sales.req4": "Fluent German + English or Dutch + English required.",
 
           "jobs.hos.title": "Head of Sales (Event Connectivity)",
-          "jobs.hos.meta": "Remote • Freelance / contract",
+          "jobs.hos.meta": "Remote • Freelance",
           "jobs.hos.summary": "You own the full commercial pipeline: finding the right events, qualifying quickly, and turning requirements into clear, closeable proposals.",
           "jobs.hos.r1": "Build and maintain a steady pipeline of events and venues.",
           "jobs.hos.r2": "Run discovery calls, capture requirements, and propose the right scope.",
@@ -527,7 +488,7 @@
         de: {
           meta: {
             title: "Jobs — JarnoWiFi",
-            description: "Offene Rollen bei JarnoWiFi — Field Engineers, NOC Support und kommerzielle Rollen."
+            description: "Offene Rollen bei JarnoWiFi — Field Engineers und kommerzielle Rollen."
           },
           "nav.home": "Zurück zur Startseite",
           "nav.badge": "Event-WLAN",
@@ -550,16 +511,21 @@
           "jobs.lead": "Wir liefern Managed WiFi für Märkte, Camps, Festivals und Remote-Locations — mit Starlink, 5G-Failover und sauberem Betrieb.",
           "jobs.overview.title": "Wie wir arbeiten",
           "jobs.overview.body": "JarnoWiFi arbeitet mit kleinen, schnellen Teams vor Ort. Uns zählen Uptime, klare Kommunikation und saubere Deployments. Wenn du Netzwerke, Hardware und echte Constraints magst, passt du gut.",
+          "jobs.benefits.title": "Vorteile",
+          "jobs.benefits.b1": "Mitarbeiter-Hosting für eigene Hardware (Lab + Testzeit)",
+          "jobs.benefits.b2": "Kostenlose Übernachtungen bei mehrtägigen Deployments",
+          "jobs.benefits.b3": "Vor-Ort Zugang: Teilnahme an Programmen diverser Events während deiner Schicht",
+          "jobs.benefits.b4": "Zuschüsse zu Mietwagen bei Deployments (bei Bedarf)",
           "jobs.pill1": "Vor-Ort Deployments",
           "jobs.pill2": "Starlink + 5G Redundanz",
           "jobs.pill3": "Benelux + Deutschland",
-          "jobs.pill4": "Freelance / Vertrag",
+          "jobs.pill4": "Freelance",
           "jobs.apply": "Per E-Mail bewerben",
           "jobs.responsibilities": "Aufgaben",
           "jobs.requirements": "Voraussetzungen",
 
           "jobs.field.title": "Freelance Field Engineer (Event WiFi)",
-          "jobs.field.meta": "Vor Ort • Freelance / Vertrag • Teilweise Wochenenden",
+          "jobs.field.meta": "Vor Ort • Freelance • Teilweise Wochenenden",
           "jobs.field.summary": "Du baust und betreibst den On-site Netzwerk-Stack: APs montieren, Routing/Uplinks konfigurieren, Abdeckung prüfen und das Event stabil halten.",
           "jobs.field.r1": "AP-Layouts umsetzen, Hardware montieren, sicher verkabeln, labeln und dokumentieren.",
           "jobs.field.r2": "WAN-Uplinks in Betrieb nehmen (Starlink, 5G/LTE, Glasfaser/Kabel wenn vorhanden) und Failover testen.",
@@ -570,20 +536,8 @@
           "jobs.field.req3": "Ruhige, klare Kommunikation unter Zeitdruck.",
           "jobs.field.req4": "Führerschein und Reisebereitschaft in NL/DE/BE.",
 
-          "jobs.noc.title": "NOC Support (Rufbereitschaft)",
-          "jobs.noc.meta": "Remote • Freelance / Vertrag • Abends & Wochenende",
-          "jobs.noc.summary": "Du überwachst Live-Deployments, reagierst auf Alerts und unterstützt Field Engineers beim schnellen Lösen von Incidents (Connectivity, Routing, RF, Vendor-Themen).",
-          "jobs.noc.r1": "Dashboards überwachen, Telemetrie interpretieren und Alerts triagieren.",
-          "jobs.noc.r2": "Vor-Ort Teams via Chat/Telefon unterstützen; Incident-Notizen und Timeline führen.",
-          "jobs.noc.r3": "Failovers und kontrollierte Changes koordinieren (Uplink-Wechsel, QoS-Anpassungen).",
-          "jobs.noc.r4": "Post-Event Übergabe: kurze Incident-Summaries und Verbesserungen.",
-          "jobs.noc.req1": "Starkes Troubleshooting: TCP/IP, Routing, DNS, WiFi Basics.",
-          "jobs.noc.req2": "Sichere Changes innerhalb eines Change-Windows durchführen.",
-          "jobs.noc.req3": "Starke schriftliche Kommunikation (klare Statusupdates).",
-          "jobs.noc.req4": "Verfügbarkeit an einigen Abenden/Wochenenden (Rota).",
-
           "jobs.sales.title": "Sales / Account (Event Connectivity)",
-          "jobs.sales.meta": "Remote • Freelance / Vertrag • Provisionsbasis",
+          "jobs.sales.meta": "Remote • Freelance • Provisionsbasis",
           "jobs.sales.summary": "Du hilfst Veranstaltern und Locations, Anforderungen zu klären, übersetzt sie in klare Angebote und hältst die Kommunikation vor und während des Events sauber.",
           "jobs.sales.r1": "Leads qualifizieren und Anforderungen aufnehmen (Datum, Location, Besucher, Dienstleister).",
           "jobs.sales.r2": "Pricing und Scope mit Ops abstimmen; Angebote und SLAs schreiben.",
@@ -595,7 +549,7 @@
           "jobs.sales.req4": "Fließend Deutsch + Englisch oder Niederländisch + Englisch erforderlich.",
 
           "jobs.hos.title": "Head of Sales (Event Connectivity)",
-          "jobs.hos.meta": "Remote • Freelance / Vertrag",
+          "jobs.hos.meta": "Remote • Freelance",
           "jobs.hos.summary": "Du verantwortest die komplette Commercial-Pipeline: die richtigen Events finden, schnell qualifizieren und Requirements in klare, abschließbare Angebote übersetzen.",
           "jobs.hos.r1": "Eine stabile Pipeline aus Events und Locations aufbauen und pflegen.",
           "jobs.hos.r2": "Discovery Calls führen, Requirements aufnehmen und den passenden Scope vorschlagen.",
