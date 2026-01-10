@@ -22,6 +22,8 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+
+    <link href="/site.css" rel="stylesheet" />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-D6BR389F7B"></script>
     <script>
@@ -33,35 +35,6 @@
     </script>
 
     <style>
-      :root {
-        --ink: #111827;
-        --night: #0b1a2a;
-        --teal: #1b8ea6;
-        --mist: #e7edf1;
-      }
-
-      body {
-        font-family: "Work Sans", "Segoe UI", sans-serif;
-        color: var(--ink);
-        background: radial-gradient(circle at top, #f7f3ea 0%, #eef3f7 45%, #ffffff 75%);
-      }
-
-      h1,
-      h2,
-      h3,
-      h4 {
-        font-family: "Space Grotesk", "Segoe UI", sans-serif;
-        letter-spacing: -0.02em;
-      }
-
-      .section-label {
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 0.25em;
-        color: var(--teal);
-        font-weight: 600;
-      }
-
       .info-card {
         border-radius: 1.2rem;
         border: 1px solid var(--mist);
@@ -117,13 +90,37 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-white border-bottom fixed-top">
       <div class="container">
-        <a class="navbar-brand fw-bold" href="/">JarnoWiFi</a>
-        <div class="ms-auto d-flex flex-column flex-lg-row align-items-lg-center gap-2">
-          <a class="btn btn-sm btn-outline-dark" href="/" data-home-link data-i18n="nav.home">Zurück zur Startseite</a>
-          <div class="d-flex gap-2">
-            <a class="btn btn-sm btn-outline-dark" href="?lang=nl" data-lang="nl">NL</a>
-            <a class="btn btn-sm btn-outline-dark" href="?lang=en" data-lang="en">EN</a>
-            <a class="btn btn-sm btn-dark" href="?lang=de" data-lang="de">DE</a>
+        <a class="navbar-brand fw-bold" href="/" data-home-link>
+          JarnoWiFi
+          <span class="badge-pill ms-2" data-i18n="nav.badge">Event-WLAN</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#piloNavbar"
+          aria-controls="piloNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="piloNavbar">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="/#services" data-i18n="nav.services">Leistungen</a></li>
+            <li class="nav-item"><a class="nav-link" href="/#reliability" data-i18n="nav.reliability">Zuverlässigkeit</a></li>
+            <li class="nav-item"><a class="nav-link" href="/#use-cases" data-i18n="nav.useCases">Einsatzbereiche</a></li>
+            <li class="nav-item"><a class="nav-link" href="/#pricing" data-i18n="nav.plans">Pakete</a></li>
+            <li class="nav-item"><a class="nav-link" href="/#blog" data-i18n="nav.blog">Blog</a></li>
+            <li class="nav-item"><a class="nav-link" href="/#faq" data-i18n="nav.faq">FAQ</a></li>
+          </ul>
+          <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 ms-lg-3 mt-3 mt-lg-0">
+            <a class="btn btn-sm btn-dark" href="/#contact" data-i18n="nav.cta">Angebot anfragen</a>
+            <div class="d-flex gap-2">
+              <a class="btn btn-sm btn-outline-dark" href="?lang=nl" data-lang="nl">NL</a>
+              <a class="btn btn-sm btn-outline-dark" href="?lang=en" data-lang="en">EN</a>
+              <a class="btn btn-sm btn-dark" href="?lang=de" data-lang="de">DE</a>
+            </div>
           </div>
         </div>
       </div>
@@ -199,6 +196,31 @@
       </div>
     </main>
 
+    <footer class="footer py-4">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <h5 class="fw-semibold">JarnoWiFi</h5>
+            <p class="text-white-50 mb-0" data-i18n="footer.tagline">Professionelles WLAN für Events, powered by Starlink + 5G.</p>
+          </div>
+          <div class="col-md-6 text-md-end mt-3 mt-md-0">
+            <a class="me-3" href="/#services" data-i18n="footer.services">Leistungen</a>
+            <a class="me-3" href="/#reliability" data-i18n="footer.reliability">Zuverlässigkeit</a>
+            <a class="me-3" href="/#pricing" data-i18n="footer.plans">Pakete</a>
+            <a class="me-3" href="/jobs" data-i18n="footer.jobs">Jobs</a>
+            <a class="me-3" href="/imprint" data-i18n="footer.impressum">Impressum</a>
+            <a href="/#contact" data-i18n="footer.contact">Kontakt</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
     <script>
       const translations = {
         nl: {
@@ -207,6 +229,21 @@
             description: "Impressum van JarnoWiFi."
           },
           "nav.home": "Terug naar start",
+          "nav.badge": "Event-wifi",
+          "nav.services": "Diensten",
+          "nav.reliability": "Betrouwbaarheid",
+          "nav.useCases": "Toepassingen",
+          "nav.plans": "Pakketten",
+          "nav.blog": "Blog",
+          "nav.faq": "FAQ",
+          "nav.cta": "Offerte aanvragen",
+          "footer.tagline": "Professionele WiFi voor events, powered by Starlink + 5G.",
+          "footer.services": "Diensten",
+          "footer.reliability": "Betrouwbaarheid",
+          "footer.plans": "Pakketten",
+          "footer.jobs": "Jobs",
+          "footer.impressum": "Impressum",
+          "footer.contact": "Contact",
           "impressum.label": "Impressum",
           "impressum.title": "Impressum",
           "impressum.provider.title": "Aanbieder",
@@ -239,6 +276,21 @@
             description: "Imprint for JarnoWiFi."
           },
           "nav.home": "Back to home",
+          "nav.badge": "Wifi solutions",
+          "nav.services": "Services",
+          "nav.reliability": "Reliability",
+          "nav.useCases": "Use cases",
+          "nav.plans": "Plans",
+          "nav.blog": "Blog",
+          "nav.faq": "FAQ",
+          "nav.cta": "Request a quote",
+          "footer.tagline": "Enterprise WiFi for events, powered by Starlink + 5G.",
+          "footer.services": "Services",
+          "footer.reliability": "Reliability",
+          "footer.plans": "Plans",
+          "footer.jobs": "Jobs",
+          "footer.impressum": "Imprint",
+          "footer.contact": "Contact",
           "impressum.label": "Imprint",
           "impressum.title": "Imprint",
           "impressum.provider.title": "Provider",
@@ -271,6 +323,21 @@
             description: "Impressum von JarnoWiFi."
           },
           "nav.home": "Zurück zur Startseite",
+          "nav.badge": "Event-WLAN",
+          "nav.services": "Leistungen",
+          "nav.reliability": "Zuverlässigkeit",
+          "nav.useCases": "Einsatzbereiche",
+          "nav.plans": "Pakete",
+          "nav.blog": "Blog",
+          "nav.faq": "FAQ",
+          "nav.cta": "Angebot anfragen",
+          "footer.tagline": "Professionelles WLAN für Events, powered by Starlink + 5G.",
+          "footer.services": "Leistungen",
+          "footer.reliability": "Zuverlässigkeit",
+          "footer.plans": "Pakete",
+          "footer.jobs": "Jobs",
+          "footer.impressum": "Impressum",
+          "footer.contact": "Kontakt",
           "impressum.label": "Impressum",
           "impressum.title": "Impressum",
           "impressum.provider.title": "Anbieter",
