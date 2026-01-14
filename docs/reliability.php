@@ -4,7 +4,7 @@
     <?php
       $metaTitle = 'Reliability — JarnoWiFi';
       $metaDescriptionKey = 'reliabilityPage.lead';
-      $metaImage = '/img/people/jarno.jpeg';
+      $metaImage = '/img/logo.jpeg';
     ?>
     <?php include 'partials/meta-common.php'; ?>
     <title>Reliability — JarnoWiFi</title>

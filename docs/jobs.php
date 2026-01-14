@@ -7,7 +7,7 @@
       // Use translated jobs lead as description via metaDescriptionKey
       $metaDescriptionKey = 'jobs.lead';
       // Use a stable image present in the repo
-      $metaImage = '/img/people/jarno.jpeg';
+      $metaImage = '/img/logo.jpeg';
     ?>
     <?php include 'partials/meta-common.php'; ?>
     <title>Jobs — JarnoWiFi</title>
@@ -55,6 +55,42 @@
                 <span class="pill" data-i18n="jobs.pill2">Starlink + 5G redundancy</span>
                 <span class="pill" data-i18n="jobs.pill3">Benelux + Germany</span>
                 <span class="pill" data-i18n="jobs.pill4">Freelance</span>
+              </div>
+            </div>
+
+            <div class="card job-card featured p-4 mb-4" id="head-of-sales">
+              <div class="d-flex align-items-start justify-content-between flex-wrap gap-3">
+                <div>
+                  <span class="badge bg-warning text-dark mb-2">Featured Position</span>
+                  <h3 class="fw-bold mb-1" data-i18n="jobs.hos.title">Head of Sales (Event Connectivity)</h3>
+                  <div class="text-muted" data-i18n="jobs.hos.meta">Remote • Freelance</div>
+                </div>
+                <a class="btn btn-sm cta-primary" href="mailto:jobs@jarnowifi.net?subject=Application%3A%20Head%20of%20Sales" data-i18n="jobs.apply">Apply via email</a>
+              </div>
+              <hr />
+              <p class="text-muted" data-i18n="jobs.hos.summary">
+                You own the full commercial pipeline: finding the right events, qualifying quickly, and turning requirements into clear, closeable proposals.
+              </p>
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <h6 class="fw-semibold" data-i18n="jobs.responsibilities">Responsibilities</h6>
+                  <ul class="text-muted mb-0">
+                    <li data-i18n="jobs.hos.r1">Build and maintain a steady pipeline of events and venues.</li>
+                    <li data-i18n="jobs.hos.r2">Run discovery calls, capture requirements, and propose the right scope.</li>
+                    <li data-i18n="jobs.hos.r3">Own pricing, proposals, and handoff into operations.</li>
+                    <li data-i18n="jobs.hos.r4">Create a simple sales cadence with clean CRM notes and forecasts.</li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <h6 class="fw-semibold" data-i18n="jobs.requirements">Requirements</h6>
+                  <ul class="text-muted mb-0">
+                    <li data-i18n="jobs.hos.req1">Proven B2B sales leadership or senior account experience.</li>
+                    <li data-i18n="jobs.hos.req2">Strong writing: proposals that are clear and precise.</li>
+                    <li data-i18n="jobs.hos.req3">Comfortable selling an ops-heavy, reliability-first service.</li>
+                    <li data-i18n="jobs.hos.req4">Fluent German + English or Dutch + English required.</li>
+                    <li data-i18n="jobs.hos.req5">Experience with municipal tenders (RFPs) and public procurement is a plus.</li>
+                  </ul>
+                </div>
               </div>
             </div>
 
@@ -123,41 +159,6 @@
                     <li data-i18n="jobs.sales.req3">Comfortable with customer calls and remote discovery sessions.</li>
                     <li data-i18n="jobs.sales.req4">Fluent German + English or Dutch + English required.</li>
                     <li data-i18n="jobs.sales.req5">Comfortable working with municipal tenders (RFPs) and procurement processes.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="card job-card p-4 mb-4" id="head-of-sales">
-              <div class="d-flex align-items-start justify-content-between flex-wrap gap-3">
-                <div>
-                  <h3 class="fw-bold mb-1" data-i18n="jobs.hos.title">Head of Sales (Event Connectivity)</h3>
-                  <div class="text-muted" data-i18n="jobs.hos.meta">Remote • Freelance</div>
-                </div>
-                <a class="btn btn-sm btn-dark" href="mailto:jobs@jarnowifi.net?subject=Application%3A%20Head%20of%20Sales" data-i18n="jobs.apply">Apply via email</a>
-              </div>
-              <hr />
-              <p class="text-muted" data-i18n="jobs.hos.summary">
-                You own the full commercial pipeline: finding the right events, qualifying quickly, and turning requirements into clear, closeable proposals.
-              </p>
-              <div class="row g-4">
-                <div class="col-md-6">
-                  <h6 class="fw-semibold" data-i18n="jobs.responsibilities">Responsibilities</h6>
-                  <ul class="text-muted mb-0">
-                    <li data-i18n="jobs.hos.r1">Build and maintain a steady pipeline of events and venues.</li>
-                    <li data-i18n="jobs.hos.r2">Run discovery calls, capture requirements, and propose the right scope.</li>
-                    <li data-i18n="jobs.hos.r3">Own pricing, proposals, and handoff into operations.</li>
-                    <li data-i18n="jobs.hos.r4">Create a simple sales cadence with clean CRM notes and forecasts.</li>
-                  </ul>
-                </div>
-                <div class="col-md-6">
-                  <h6 class="fw-semibold" data-i18n="jobs.requirements">Requirements</h6>
-                  <ul class="text-muted mb-0">
-                    <li data-i18n="jobs.hos.req1">Proven B2B sales leadership or senior account experience.</li>
-                    <li data-i18n="jobs.hos.req2">Strong writing: proposals that are clear and precise.</li>
-                    <li data-i18n="jobs.hos.req3">Comfortable selling an ops-heavy, reliability-first service.</li>
-                    <li data-i18n="jobs.hos.req4">Fluent German + English or Dutch + English required.</li>
-                    <li data-i18n="jobs.hos.req5">Experience with municipal tenders (RFPs) and public procurement is a plus.</li>
                   </ul>
                 </div>
               </div>

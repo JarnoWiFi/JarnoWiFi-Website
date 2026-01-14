@@ -4,7 +4,7 @@
     <?php
       $metaTitle = 'JarnoWiFi — Professionele event-wifi overal';
       $metaDescriptionKey = 'hero.lead';
-      $metaImage = '/img/people/jarno.jpeg';
+      $metaImage = '/img/logo.jpeg';
     ?>
     <?php include 'partials/meta-common.php'; ?>
     <title>JarnoWiFi — Professionele event-wifi overal</title>
