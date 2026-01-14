@@ -57,10 +57,18 @@
 
 <!-- SEO Meta Tags -->
 <meta name="description" content="JarnoWiFi levert professionele wifi voor markten, kampen en festivals met Starlink en 5G-back-up." />
-<link rel="alternate" hreflang="nl" href="/?lang=nl" />
-<link rel="alternate" hreflang="en" href="/?lang=en" />
-<link rel="alternate" hreflang="de" href="/?lang=de" />
-<link rel="alternate" hreflang="x-default" href="/?lang=nl" />
+<?php
+  $path = $_SERVER['REQUEST_URI'];
+  $baseUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+  
+  // Extract current page without language prefix
+  $page = preg_replace('#^/[a-z]{2}(/|$)#', '/', $path);
+  $page = $page === '/' ? '/' : rtrim($page, '/');
+?>
+<link rel="alternate" hreflang="nl" href="<?= $baseUrl ?>/nl<?= $page ?>" />
+<link rel="alternate" hreflang="en" href="<?= $baseUrl ?>/en<?= $page ?>" />
+<link rel="alternate" hreflang="de" href="<?= $baseUrl ?>/de<?= $page ?>" />
+<link rel="alternate" hreflang="x-default" href="<?= $baseUrl ?>/nl<?= $page ?>" />
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
