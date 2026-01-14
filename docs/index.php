@@ -25,8 +25,8 @@
               JarnoWiFi levert professionele wifi voor markten, zomerkampen en festivals met satellietinternet via Starlink en 5G-back-up, ondersteund door een 99,98%-SLA.
             </p>
             <div class="d-flex flex-wrap gap-3 fade-up delay-2">
-              <a class="btn btn-lg cta-primary" href="#contact" data-i18n="hero.ctaPrimary">Offerte aanvragen</a>
-              <a class="btn btn-lg cta-outline" href="/reliability" data-i18n="hero.ctaSecondary">Bekijk onze uptime-aanpak</a>
+              <a class="btn btn-lg cta-primary" href="#pricing" data-i18n="hero.ctaPrimary">Offerte aanvragen</a>
+              <a class="btn btn-lg cta-outline" href="/jobs" data-i18n="hero.jobsLink">Vacatures</a>
             </div>
             <div class="d-flex flex-wrap gap-3 mt-4">
               <span class="stat-chip" data-i18n="hero.stat1">99,98% SLA</span>
