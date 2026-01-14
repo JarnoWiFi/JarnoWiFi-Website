@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <?php
+      // Page-specific meta
+      $metaTitle = 'Jobs — JarnoWiFi';
+      // Use translated jobs lead as description via metaDescriptionKey
+      $metaDescriptionKey = 'jobs.lead';
+      // Use a stable image present in the repo
+      $metaImage = '/img/people/jarno.jpeg';
+    ?>
     <?php include 'partials/meta-common.php'; ?>
     <title>Jobs — JarnoWiFi</title>
   </head>

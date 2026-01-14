@@ -1,6 +1,11 @@
 <!doctype html>
 <html lang="nl">
   <head>
+    <?php
+      $metaTitle = 'JarnoWiFi — Professionele event-wifi overal';
+      $metaDescriptionKey = 'hero.lead';
+      $metaImage = '/img/people/jarno.jpeg';
+    ?>
     <?php include 'partials/meta-common.php'; ?>
     <title>JarnoWiFi — Professionele event-wifi overal</title>
   </head>

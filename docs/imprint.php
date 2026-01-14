@@ -1,6 +1,11 @@
 <!doctype html>
 <html lang="de">
   <head>
+    <?php
+      $metaTitle = 'Impressum — JarnoWiFi';
+      $metaDescription = 'Rechtliche Angaben und Kontaktinformationen zu JarnoWiFi.';
+      $metaImage = '/img/people/jarno.jpeg';
+    ?>
     <?php include 'partials/meta-common.php'; ?>
     <title>Impressum — JarnoWiFi</title>
   </head>

@@ -41,14 +41,62 @@ function t($key, $fallback = '') {
 </script>
 
 <!-- SEO Meta Tags -->
-<meta name="description" content="<?= htmlspecialchars(t('meta.description', 'JarnoWiFi levert professionele wifi voor markten, kampen en festivals met Starlink en 5G-back-up.')) ?>" />
 <?php
   $baseUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
-  
+
   // Extract current page without language prefix
   $page = preg_replace('#^/[a-z]{2}(/|$)#', '/', $path);
   $page = $page === '/' ? '/' : rtrim($page, '/');
+
+  // Compute per-page meta values with safe fallbacks
+  $computedTitle = isset($metaTitle) && is_string($metaTitle) && $metaTitle !== ''
+    ? $metaTitle
+    : t('meta.title', 'JarnoWiFi — Enterprise Event WiFi Anywhere');
+
+  // Allow pages to provide a translation key for description
+  if (isset($metaDescriptionKey) && is_string($metaDescriptionKey) && $metaDescriptionKey !== '') {
+    $computedDescription = t($metaDescriptionKey, t('meta.description', 'JarnoWiFi delivers professional WiFi for markets, camps, and festivals with Starlink and 5G backup.'));
+  } else {
+    $computedDescription = isset($metaDescription) && is_string($metaDescription) && $metaDescription !== ''
+      ? $metaDescription
+      : t('meta.description', 'JarnoWiFi delivers professional WiFi for markets, camps, and festivals with Starlink and 5G backup.');
+  }
+
+  $computedUrl = isset($metaUrl) && is_string($metaUrl) && $metaUrl !== ''
+    ? $metaUrl
+    : $baseUrl . $_SERVER['REQUEST_URI'];
+
+  $rawImage = isset($metaImage) && is_string($metaImage) && $metaImage !== ''
+    ? $metaImage
+    : '/img/people/jarno.jpeg';
+  $computedImage = (strpos($rawImage, 'http://') === 0 || strpos($rawImage, 'https://') === 0)
+    ? $rawImage
+    : $baseUrl . $rawImage;
+
+  // Map locale for OpenGraph
+  $ogLocaleMap = [
+    'nl' => 'nl_NL',
+    'en' => 'en_US',
+    'de' => 'de_DE'
+  ];
+  $ogLocale = $ogLocaleMap[$currentLang] ?? 'nl_NL';
 ?>
+<meta name="description" content="<?= htmlspecialchars($computedDescription) ?>" />
+<link rel="canonical" href="<?= htmlspecialchars($computedUrl) ?>" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="<?= htmlspecialchars($computedTitle) ?>" />
+<meta property="og:description" content="<?= htmlspecialchars($computedDescription) ?>" />
+<meta property="og:url" content="<?= htmlspecialchars($computedUrl) ?>" />
+<meta property="og:image" content="<?= htmlspecialchars($computedImage) ?>" />
+<meta property="og:locale" content="<?= htmlspecialchars($ogLocale) ?>" />
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="<?= htmlspecialchars($computedTitle) ?>" />
+<meta name="twitter:description" content="<?= htmlspecialchars($computedDescription) ?>" />
+<meta name="twitter:image" content="<?= htmlspecialchars($computedImage) ?>" />
 <link rel="alternate" hreflang="nl" href="<?= $baseUrl ?>/nl<?= $page ?>" />
 <link rel="alternate" hreflang="en" href="<?= $baseUrl ?>/en<?= $page ?>" />
 <link rel="alternate" hreflang="de" href="<?= $baseUrl ?>/de<?= $page ?>" />

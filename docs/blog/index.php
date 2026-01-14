@@ -1,6 +1,11 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <?php
+      $metaTitle = 'Blog — JarnoWiFi';
+      $metaDescriptionKey = 'blog.lead';
+      $metaImage = '/img/people/joshua.jpeg';
+    ?>
     <?php include '../partials/meta-common.php'; ?>
     <title>Blog - JarnoWiFi</title>
   </head>
