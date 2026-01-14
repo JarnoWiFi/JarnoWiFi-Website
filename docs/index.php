@@ -75,9 +75,9 @@
                 <h5 class="fw-semibold" data-i18n="services.card1.title">Event-wifi</h5>
                 <p class="text-muted" data-i18n="services.card1.body">Premium gastnetwerken met captive portals, bandbreedtebeheer en live monitoring.</p>
                 <div class="service-thumbs mt-3" aria-label="Example photos">
-                  <img src="img/20240508_193246-1536x2048.webp" class="service-thumb enlargeable" alt="Example event WiFi" loading="lazy" />
-                  <img src="img/20240508_193251-1536x2048.webp" class="service-thumb enlargeable" alt="Example guest network" loading="lazy" />
-                  <img src="img/20240508_194215-1536x1152.webp" class="service-thumb enlargeable" alt="Example access point" loading="lazy" />
+                  <img src="/img/20240508_193246-1536x2048.webp" class="service-thumb enlargeable" alt="Example event WiFi" loading="lazy" />
+                  <img src="/img/20240508_193251-1536x2048.webp" class="service-thumb enlargeable" alt="Example guest network" loading="lazy" />
+                  <img src="/img/20240508_194215-1536x1152.webp" class="service-thumb enlargeable" alt="Example access point" loading="lazy" />
                 </div>
               </div>
             </div>
@@ -88,9 +88,9 @@
                 <h5 class="fw-semibold" data-i18n="services.card2.title">Productienetwerken</h5>
                 <p class="text-muted" data-i18n="services.card2.body">Aparte VLANs voor leveranciers, ticketing, cashless, livestreams en pers.</p>
                 <div class="service-thumbs mt-3" aria-label="Example photos">
-                  <img src="img/20240508_194215-1536x1152.webp" class="service-thumb enlargeable" alt="Example production network" loading="lazy" />
-                  <img src="img/20240508_204101-1536x2048.webp" class="service-thumb enlargeable" alt="Example network hardware" loading="lazy" />
-                  <img src="img/20240508_193246-1536x2048.webp" class="service-thumb enlargeable" alt="Example uplink" loading="lazy" />
+                  <img src="/img/20240508_194215-1536x1152.webp" class="service-thumb enlargeable" alt="Example production network" loading="lazy" />
+                  <img src="/img/20240508_204101-1536x2048.webp" class="service-thumb enlargeable" alt="Example network hardware" loading="lazy" />
+                  <img src="/img/20240508_193246-1536x2048.webp" class="service-thumb enlargeable" alt="Example uplink" loading="lazy" />
                 </div>
               </div>
             </div>
@@ -101,9 +101,9 @@
                 <h5 class="fw-semibold" data-i18n="services.card3.title">Snelle uitrol</h5>
                 <p class="text-muted" data-i18n="services.card3.body">Modulaire kits met snel op te bouwen masten en redundante stroomvoorziening voor afgelegen locaties.</p>
                 <div class="service-thumbs mt-3" aria-label="Example photos">
-                  <img src="img/20240508_204101-1536x2048.webp" class="service-thumb enlargeable" alt="Example rapid deployment" loading="lazy" />
-                  <img src="img/20240508_193251-1536x2048.webp" class="service-thumb enlargeable" alt="Example site build" loading="lazy" />
-                  <img src="img/20240508_194215-1536x1152.webp" class="service-thumb enlargeable" alt="Example outdoor setup" loading="lazy" />
+                  <img src="/img/20240508_204101-1536x2048.webp" class="service-thumb enlargeable" alt="Example rapid deployment" loading="lazy" />
+                  <img src="/img/20240508_193251-1536x2048.webp" class="service-thumb enlargeable" alt="Example site build" loading="lazy" />
+                  <img src="/img/20240508_194215-1536x1152.webp" class="service-thumb enlargeable" alt="Example outdoor setup" loading="lazy" />
                 </div>
               </div>
             </div>
@@ -114,9 +114,9 @@
                 <h5 class="fw-semibold" data-i18n="services.card4.title">24/7 NOC</h5>
                 <p class="text-muted" data-i18n="services.card4.body">Realtime telemetry, automatische failover en engineers on-call tijdens je event.</p>
                 <div class="service-thumbs mt-3" aria-label="Example photos">
-                  <img src="img/20240508_194215-1536x1152.webp" class="service-thumb enlargeable" alt="Example monitoring" loading="lazy" />
-                  <img src="img/20240508_193246-1536x2048.webp" class="service-thumb enlargeable" alt="Example on-site ops" loading="lazy" />
-                  <img src="img/20240508_204101-1536x2048.webp" class="service-thumb enlargeable" alt="Example support" loading="lazy" />
+                  <img src="/img/20240508_194215-1536x1152.webp" class="service-thumb enlargeable" alt="Example monitoring" loading="lazy" />
+                  <img src="/img/20240508_193246-1536x2048.webp" class="service-thumb enlargeable" alt="Example on-site ops" loading="lazy" />
+                  <img src="/img/20240508_204101-1536x2048.webp" class="service-thumb enlargeable" alt="Example support" loading="lazy" />
                 </div>
               </div>
             </div>
@@ -341,7 +341,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="ratio ratio-4x3 rounded-4 overflow-hidden shadow-sm">
               <img
-                src="img/grootse-markt-2025/1748943099642.jpeg"
+                src="/img/grootse-markt-2025/1748943099642.jpeg"
                 class="w-100 h-100 gallery-img enlargeable"
                 alt="Event WiFi deployment"
                 data-i18n-alt="gallery.alt1"
@@ -352,7 +352,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="ratio ratio-4x3 rounded-4 overflow-hidden shadow-sm">
               <img
-                src="img/grootse-markt-2025/1748943179728.jpeg"
+                src="/img/grootse-markt-2025/1748943179728.jpeg"
                 class="w-100 h-100 gallery-img enlargeable"
                 alt="Networking gear on-site"
                 data-i18n-alt="gallery.alt2"
@@ -363,7 +363,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="ratio ratio-4x3 rounded-4 overflow-hidden shadow-sm">
               <img
-                src="img/grootse-markt-2025/1748943274377.jpeg"
+                src="/img/grootse-markt-2025/1748943274377.jpeg"
                 class="w-100 h-100 gallery-img enlargeable"
                 alt="Event connectivity setup"
                 data-i18n-alt="gallery.alt3"
@@ -374,7 +374,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="ratio ratio-4x3 rounded-4 overflow-hidden shadow-sm">
               <img
-                src="img/grootse-markt-2025/1748943404515.jpeg"
+                src="/img/grootse-markt-2025/1748943404515.jpeg"
                 class="w-100 h-100 gallery-img enlargeable"
                 alt="Live event WiFi coverage"
                 data-i18n-alt="gallery.alt4"
@@ -385,7 +385,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="ratio ratio-4x3 rounded-4 overflow-hidden shadow-sm">
               <img
-                src="img/20240508_193246-1536x2048.webp"
+                src="/img/20240508_193246-1536x2048.webp"
                 class="w-100 h-100 gallery-img enlargeable"
                 alt="Outdoor access points"
                 data-i18n-alt="gallery.alt6"
@@ -396,7 +396,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="ratio ratio-4x3 rounded-4 overflow-hidden shadow-sm">
               <img
-                src="img/20240508_193251-1536x2048.webp"
+                src="/img/20240508_193251-1536x2048.webp"
                 class="w-100 h-100 gallery-img enlargeable"
                 alt="Antenna setup on site"
                 data-i18n-alt="gallery.alt7"
@@ -407,7 +407,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="ratio ratio-4x3 rounded-4 overflow-hidden shadow-sm">
               <img
-                src="img/20240508_194215-1536x1152.webp"
+                src="/img/20240508_194215-1536x1152.webp"
                 class="w-100 h-100 gallery-img enlargeable"
                 alt="Network cabinet on site"
                 data-i18n-alt="gallery.alt8"
@@ -418,7 +418,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="ratio ratio-4x3 rounded-4 overflow-hidden shadow-sm">
               <img
-                src="img/20240508_204101-1536x2048.webp"
+                src="/img/20240508_204101-1536x2048.webp"
                 class="w-100 h-100 gallery-img enlargeable"
                 alt="WiFi testing on site"
                 data-i18n-alt="gallery.alt9"
@@ -429,7 +429,7 @@
           <div class="col-12 col-md-8 col-lg-6">
             <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-sm">
               <img
-                src="img/grootse-markt-2025/1748943441915.jpeg"
+                src="/img/grootse-markt-2025/1748943441915.jpeg"
                 class="w-100 h-100 gallery-img enlargeable"
                 alt="Event operations team"
                 data-i18n-alt="gallery.alt5"
