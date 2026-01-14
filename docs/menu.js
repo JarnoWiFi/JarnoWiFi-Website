@@ -37,8 +37,9 @@ function setCurrentLanguage(placeholder) {
     if (!langDropdown.dataset.listenerAttached) {
       langDropdown.addEventListener('change', function(e) {
         const selectedLang = this.value;
-        // Save language preference to localStorage
+        // Save language preference to both localStorage and cookie
         localStorage.setItem('preferredLanguage', selectedLang);
+        document.cookie = `preferredLanguage=${selectedLang};path=/;max-age=31536000;SameSite=Lax`;
         // Get current path and replace language prefix
         let path = window.location.pathname;
         path = path.replace(/^\/[a-z]{2}(?:\/|$)/, '/');

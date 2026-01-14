@@ -3,22 +3,6 @@
   <head>
     <?php include 'partials/meta-common.php'; ?>
     <title>JarnoWiFi — Professionele event-wifi overal</title>
-    <script>
-      // Check for stored language preference or browser language on homepage
-      if (window.location.pathname === '/' || window.location.pathname === '/nl/' || window.location.pathname === '/nl') {
-        const stored = localStorage.getItem('preferredLanguage');
-        if (stored && stored !== 'nl') {
-          window.location.pathname = '/' + stored + '/';
-        } else if (!stored) {
-          // No stored preference - check browser language
-          const browserLang = navigator.language.toLowerCase().split('-')[0];
-          const supported = ['nl', 'en', 'de'];
-          if (supported.includes(browserLang) && browserLang !== 'nl') {
-            window.location.pathname = '/' + browserLang + '/';
-          }
-        }
-      }
-    </script>
   </head>
   <body>
     <div data-include="header" data-active="home"></div>
