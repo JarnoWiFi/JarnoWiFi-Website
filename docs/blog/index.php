@@ -16,8 +16,6 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-9">
-            <div class="alert alert-info" role="status" data-post-status>Loading post...</div>
-
             <article class="d-none" data-post-article>
               <p class="section-label mb-2">Blog</p>
               <h1 class="fw-bold mb-3" data-post-title></h1>
