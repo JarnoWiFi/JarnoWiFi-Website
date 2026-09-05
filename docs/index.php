@@ -5,6 +5,7 @@ require __DIR__ . '/partials/blog.php';
 $metaTitleKey       = 'meta.title';
 $metaDescriptionKey = 'meta.description';
 $metaImage          = '/img/opt/og-default.png';
+$preloadImage       = '/img/opt/hero-poster.webp'; // hero background, LCP
 $activeNav          = '';
 
 $faqKeys = ['1', '2', '3', '4', '5', '6', '7'];
@@ -65,8 +66,7 @@ $gallery = [
 
     <main id="main">
       <section class="hero text-white" id="home">
-        <img class="hero-bg-media" src="/img/opt/hero-poster.webp" alt="" width="1100" height="620" fetchpriority="high" />
-        <video class="hero-bg-media hero-bg-video" muted loop playsinline preload="none"
+        <video class="hero-bg-video" muted loop playsinline preload="none"
                poster="/img/opt/hero-poster.webp" aria-hidden="true" data-hero-video hidden>
           <source src="/img/background-video-1-webbg-20fps-420p.mp4" type="video/mp4" />
         </video>
