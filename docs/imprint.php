@@ -1,28 +1,28 @@
+<?php
+require __DIR__ . '/partials/i18n-boot.php';
+
+$metaTitle       = t('impressum.title') . ' — JarnoWiFi';
+$metaDescription = t('impressum.title') . ' — JarnoWiFi';
+$metaImage       = '/img/opt/og-default.png';
+$activeNav       = 'imprint';
+?>
 <!doctype html>
-<html lang="de">
+<html lang="<?= e($currentLang) ?>">
   <head>
-    <?php
-      $metaTitle = 'Impressum — JarnoWiFi';
-      $metaDescription = 'Rechtliche Angaben und Kontaktinformationen zu JarnoWiFi.';
-      $metaImage = '/img/logo.jpeg';
-    ?>
-    <?php include 'partials/meta-common.php'; ?>
-    <title>Impressum — JarnoWiFi</title>
+    <?php include __DIR__ . '/partials/meta-common.php'; ?>
   </head>
   <body>
-    <div data-include="header" data-active="imprint"></div>
+    <?php include __DIR__ . '/partials/header.php'; ?>
 
-    <main class="page-shell">
-      <section class="mb-5">
-        <div class="container">
-          <div class="hero-video">
-            <div class="hero-video__overlay"></div>
-            <div class="container hero-video__content">
-              <div class="row justify-content-center mx-0">
-                <div class="col-lg-8">
-                  <p class="section-label mb-2" data-i18n="impressum.label">Impressum</p>
-                  <h1 class="fw-bold mb-3" data-i18n="impressum.title"><span class="text-gradient">Impressum</span></h1>
-                </div>
+    <main id="main" class="page-shell">
+      <section class="container mb-5">
+        <div class="hero-video">
+          <div class="hero-video__overlay"></div>
+          <div class="container hero-video__content">
+            <div class="row justify-content-center mx-0">
+              <div class="col-lg-8">
+                <p class="section-label mb-2"><?= te('impressum.label') ?></p>
+                <h1 class="fw-bold mb-0"><span class="text-gradient"><?= te('impressum.title') ?></span></h1>
               </div>
             </div>
           </div>
@@ -32,82 +32,70 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-8">
-            <div class="card info-card p-4 mb-4">
-              <h5 class="fw-semibold" data-i18n="impressum.provider.title">Anbieter</h5>
+            <section class="card info-card p-4 mb-4">
+              <h2 class="h5 fw-semibold"><?= te('impressum.provider.title') ?></h2>
               <div class="text-muted">
-                <div data-i18n="impressum.provider.value">Jarno Sulmann trading as JarnoWiFi</div>
-                <div class="mt-3 fw-semibold" data-i18n="impressum.represented.title">Vertretungsberechtigte Person</div>
-                <div data-i18n="impressum.represented.value">Jarno Sulmann, Joshua Treudler</div>
-                <div class="mt-3" data-i18n="impressum.address.title">Adresse</div>
-                <div data-i18n="impressum.address.line1">Penningkruid 71</div>
-                <div data-i18n="impressum.address.line2">7765 BS Weiteveen</div>
-                <div data-i18n="impressum.address.line3">Niederlande</div>
+                <p class="mb-3"><?= te('impressum.provider.value') ?></p>
+                <h3 class="h6 fw-semibold"><?= te('impressum.represented.title') ?></h3>
+                <p class="mb-3"><?= te('impressum.represented.value') ?></p>
+                <h3 class="h6 fw-semibold"><?= te('impressum.address.title') ?></h3>
+                <address class="mb-0">
+                  <?= te('impressum.address.line1') ?><br />
+                  <?= te('impressum.address.line2') ?><br />
+                  <?= te('impressum.address.line3') ?>
+                </address>
               </div>
-            </div>
+            </section>
 
-            <div class="card info-card p-4 mb-4">
-              <h5 class="fw-semibold" data-i18n="impressum.contact.title">Kontakt</h5>
-              <div class="text-muted">
-                <div>
-                  <span class="fw-semibold" data-i18n="impressum.contact.emailLabel">E-Mail</span>:
-                  <span data-i18n="impressum.contact.emailValue">contact@jarnowifi.net</span>
+            <section class="card info-card p-4 mb-4">
+              <h2 class="h5 fw-semibold"><?= te('impressum.contact.title') ?></h2>
+              <dl class="text-muted contact-list mb-0">
+                <div class="contact-row">
+                  <dt><?= te('impressum.contact.emailLabel') ?></dt>
+                  <dd class="mb-0"><a href="mailto:<?= te('impressum.contact.emailValue') ?>"><?= te('impressum.contact.emailValue') ?></a></dd>
                 </div>
-                <div>
-                  <span class="fw-semibold" data-i18n="impressum.contact.nocLabel">NOC</span>:
-                  <span data-i18n="impressum.contact.nocValue">noc@jarnowifi.net</span>
+                <div class="contact-row">
+                  <dt><?= te('impressum.contact.nocLabel') ?></dt>
+                  <dd class="mb-0"><a href="mailto:<?= te('impressum.contact.nocValue') ?>"><?= te('impressum.contact.nocValue') ?></a></dd>
                 </div>
-                <div>
-                  <span class="fw-semibold" data-i18n="impressum.contact.salesLabel">Vertrieb</span>:
-                  <a href="tel:+4969175549160" data-i18n="impressum.contact.salesValue">+49 69 1755 491 160</a>
+                <div class="contact-row">
+                  <dt><?= te('impressum.contact.salesLabel') ?></dt>
+                  <dd class="mb-0"><a href="tel:+4969175549160"><?= te('impressum.contact.salesValue') ?></a></dd>
                 </div>
-                <div>
-                  <span class="fw-semibold" data-i18n="impressum.contact.incidentsLabel">Störungen</span>:
-                  <a href="tel:+4969175549160" data-i18n="impressum.contact.incidentsValue">+49 69 1755 491 161</a>
+                <div class="contact-row">
+                  <dt><?= te('impressum.contact.incidentsLabel') ?></dt>
+                  <dd class="mb-0"><a href="tel:+4969175549161"><?= te('impressum.contact.incidentsValue') ?></a></dd>
                 </div>
-                <div>
-                  <span class="fw-semibold" data-i18n="impressum.contact.webLabel">Website</span>:
-                  <span data-i18n="impressum.contact.webValue">jarnowifi.net</span>
+                <div class="contact-row">
+                  <dt><?= te('impressum.contact.webLabel') ?></dt>
+                  <dd class="mb-0"><?= te('impressum.contact.webValue') ?></dd>
                 </div>
-              </div>
-            </div>
+              </dl>
+            </section>
 
-            <div class="card info-card p-4 mb-4">
-              <h5 class="fw-semibold" data-i18n="impressum.responsible.title">Verantwortlich für die Website</h5>
-              <p class="text-muted mb-0" data-i18n="impressum.responsible.value">Joshua Treudler</p>
-            </div>
+            <section class="card info-card p-4 mb-4">
+              <h2 class="h5 fw-semibold"><?= te('impressum.responsible.title') ?></h2>
+              <p class="text-muted mb-0"><?= te('impressum.responsible.value') ?></p>
+            </section>
 
-            <div class="card info-card p-4 mb-4">
-              <h5 class="fw-semibold" data-i18n="impressum.register.title">Registereintrag</h5>
-              <p class="text-muted mb-0" data-i18n="impressum.register.value">Nicht im Handelsregister eingetragen.</p>
-            </div>
+            <section class="card info-card p-4 mb-4">
+              <h2 class="h5 fw-semibold"><?= te('impressum.register.title') ?></h2>
+              <p class="text-muted mb-0"><?= te('impressum.register.value') ?></p>
+            </section>
 
-            <div class="card info-card p-4 mb-4">
-              <h5 class="fw-semibold" data-i18n="impressum.vat.title">BTW</h5>
-              <p class="text-muted mb-0" data-i18n="impressum.vat.value">KOR (kleineondernemersregeling), geen btw vermeld.</p>
-            </div>
-
+            <section class="card info-card p-4">
+              <h2 class="h5 fw-semibold"><?= te('impressum.vat.title') ?></h2>
+              <p class="text-muted mb-0"><?= te('impressum.vat.value') ?></p>
+            </section>
           </div>
         </div>
       </div>
     </main>
 
-    <?php include 'partials/footer.php'; ?>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-
-    <script type="module">
-      import { i18n } from '/js/i18n.js';
-      
-      document.addEventListener('DOMContentLoaded', async () => {
-        await import('/menu.js');
-        await i18n.init();
-        await window.loadHeader({ active: 'imprint' });
-        await window.loadFooter();
-      });
-    </script>
+    <?php
+      include __DIR__ . '/partials/footer.php';
+      include __DIR__ . '/partials/consent.php';
+      include __DIR__ . '/partials/scripts.php';
+    ?>
   </body>
 </html>

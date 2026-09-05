@@ -1,62 +1,95 @@
 {
   "posts": [
     {
-      "id": "starlink-review",
-      "title": "Starlink: Mijn Ervaringen met Satellietinternet",
+      "slug": "starlink-review",
+      "lang": "nl",
       "date": "2024-03-14",
-      "excerpt": "Ik was altijd al nieuwsgierig naar Starlink. Onlangs heeft Starlink de prijzen aanzienlijk verlaagd. Voor de eenmalige kosten heb ik €288 betaald, inclusief een ethernetadapter.",
-      "cover": "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240314_175558-768x1024.png",
-      "images": [
-        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240314_175558-768x1024.png",
-        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240314_182522-768x1024.jpg",
-        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240314_182527-768x1024.jpg",
-        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240314_182551-768x1024.jpg",
-        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240314_182742-768x1024.jpg",
-        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/Screenshot_20240314_183056_Starlink-473x1024.png",
-        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/Screenshot_20240314_183148_Starlink-473x1024.png",
-        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/Screenshot_20240314_183159_Starlink-473x1024.png",
-        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/Screenshot_20240314_183335_Starlink-473x1024.png",
-        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/Screenshot_20240314_184014_Starlink-473x1024.png",
-        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/WhatsApp-Image-2024-03-14-at-19.32.36.jpeg",
-        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/16029289517-300x160.png",
-        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/WhatsApp-Image-2024-03-14-at-19.08.33-1024x282.jpeg",
-        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240314_201314-1-768x1024.jpg"
-      ],
+      "title": "Starlink in de praktijk: onze eerste ervaringen",
+      "excerpt": "We waren al langer nieuwsgierig naar Starlink. Toen de prijzen flink omlaag gingen hebben we een kit besteld: € 288 eenmalig, inclusief ethernetadapter. Dit zijn de meetresultaten.",
       "tags": ["Starlink", "Satellietinternet"],
-      "content": [
-        "Ik was altijd al nieuwsgierig naar Starlink. Onlangs heeft Starlink de prijzen aanzienlijk verlaagd. Voor de eenmalige kosten heb ik €288 betaald, inclusief een ethernetadapter.",
-        "Er zijn eigenlijk twee interessante abonnementen beschikbaar: Residential en Mobile Regionaal (Roam). Residential kost €50 per maand, terwijl Mobile Regionaal €59 per maand kost. Ik heb gekozen voor Mobile Regionaal (Roam).",
-        "Wat is het verschil? Hoewel je €9 per maand meer betaalt, kun je met dit abonnement op elk moment pauzeren en alleen betalen wanneer je het nodig hebt. Aangezien ik thuis glasvezel heb, is de kans dat ik Starlink thuis daadwerkelijk nodig heb, laag. Bovendien hebben de 'roam'-abonnementen een 'best effort'-beperking, wat betekent dat als het netwerk erg druk is, je minder prioriteit krijgt en lagere snelheden kunt ervaren. De kans op deze situatie in Europa is echter niet erg hoog, gezien het lagere aantal Starlink-gebruikers in vergelijking met de VS.",
-        "Levertijd Ik heb de Starlink-kit inclusief ethernetadapter op 5 maart besteld en uiteindelijk was alles compleet op 14 maart. Tijdens het bestellen deed zich een probleem voor (ik heb geprobeerd een andere bank te kiezen, wat niet had gehoeven), waardoor er wat vertraging ontstond. Desondanks vind ik een levertijd van 9 dagen redelijk. De levering werd uitgevoerd door DHL.",
-        "Unboxing Dit is het eigenlijk… ik had een soort Apple-achtige unboxing verwacht, maar veel zit er niet in: – De Starlink schotel zelf – Router – Lange kabel van de router naar de schotel",
-        "Installatie (let niet op de tuin, moet nog netjes worden gemaakt in de lente) Het is slechts een kwestie van de schotel naar buiten te plaatsen en ervoor te zorgen dat hij een goed zicht op de hemel heeft, en binnen 5 minuten ben je online. Zodra je de stroom inschakelt, begint hij met het zoeken naar satellieten en dan ben je verbonden. Het kan echter tot 15 minuten duren voordat hij een optimale verbinding tot stand brengt.",
-        "Starlink App In de Starlink-app kun je de status van de schotel en de router bekijken. Ook kun je hier je wifi-instellingen aanpassen en snelheidstests uitvoeren. Verder heb je de app eigenlijk niet nodig.",
-        "Welke snelheden kun je verwachten? In de korte peridode dat ik heb kunnen testen, haal ik rond 200-300 Mbps download en 20-30 Mbps upload met een ping van tussen 30 en 50 ms. UPDATE: na 24 uur actief krijg ik snelheden boven 300 Mbps: Je krijgt zowel een IPv4 als een IPv6 adres, beide met een locatie in Nederland, zodat je toegang hebt tot Nederlandse content. De ping is, zoals verwacht, niet altijd superstabiel. Af en toe kan er een beetje packet loss optreden, wat bij realtime applicaties zoals VoIP of videobellen voor kleine haperingen kan zorgen.",
-        "De rode streepjes is packetloss en de zwarte lijn is de latency. Het groene gedeelte is 100 ms.",
-        "Al met al is het erg interessant materiaal. Heb ik het zelf nodig? Niet echt. Maar het kan wel handig zijn tijdens noodsituaties, en wellicht ga ik het uitlenen samen met wat handige wifi-hardware. Benieuwd naar het stroomverbruik? Die heb ik gepost in deze blog."
+      "cover": "starlink-01",
+      "coverAlt": "De Starlink-schotel opgesteld in de tuin",
+      "sections": [
+        {
+          "body": [
+            "We waren al langer nieuwsgierig naar Starlink. Toen Starlink de prijzen aanzienlijk verlaagde, hebben we een kit besteld: voor de eenmalige kosten betaalden we € 288, inclusief een ethernetadapter.",
+            "Er zijn twee interessante abonnementen: Residential en Mobile Regionaal (Roam). Op het moment van schrijven kostte Residential € 50 per maand en Mobile Regionaal € 59 per maand. Wij kozen voor Mobile Regionaal."
+          ]
+        },
+        {
+          "heading": "Waarom Roam?",
+          "body": [
+            "Je betaalt € 9 per maand meer, maar je kunt het abonnement op elk moment pauzeren en dus alleen betalen wanneer je het nodig hebt. Dat past bij eventwerk, waar de kit tussen twee klussen stil kan staan.",
+            "Let op: Roam-abonnementen hebben een 'best effort'-status. Is het netwerk in een cel druk, dan krijg je minder prioriteit en lagere snelheden. In Europa is dat op dit moment minder snel een probleem dan in de VS, maar het is wel precies de reden dat we Starlink nooit als enige uplink inzetten."
+          ]
+        },
+        {
+          "heading": "Levertijd",
+          "body": [
+            "We bestelden de kit inclusief ethernetadapter op 5 maart; op 14 maart was alles compleet. Tijdens het bestellen ging er iets mis met de betaling, waardoor er wat vertraging ontstond. Negen dagen levertijd vinden we alsnog redelijk. De levering werd uitgevoerd door DHL."
+          ]
+        },
+        {
+          "heading": "Uitpakken en installeren",
+          "body": [
+            "Veel zit er niet in de doos: de schotel zelf, de router en een lange kabel van de router naar de schotel.",
+            "De installatie is een kwestie van de schotel buiten neerzetten met vrij zicht op de hemel. Zodra de stroom erop gaat begint hij satellieten te zoeken en binnen vijf minuten ben je online. Het kan wel tot een kwartier duren voordat de verbinding optimaal is."
+          ],
+          "images": ["starlink-02", "starlink-03", "starlink-04"]
+        },
+        {
+          "heading": "De Starlink-app",
+          "body": [
+            "In de app zie je de status van de schotel en de router, pas je de wifi-instellingen aan en voer je snelheidstests uit. Verder heb je de app niet nodig."
+          ],
+          "images": ["starlink-app-01", "starlink-app-02", "starlink-app-03"]
+        },
+        {
+          "heading": "Welke snelheden kun je verwachten?",
+          "body": [
+            "In de periode dat we hebben kunnen testen haalden we rond 200-300 Mbps download en 20-30 Mbps upload, met een ping tussen 30 en 50 ms. Na 24 uur actief te zijn geweest kwamen de snelheden boven de 300 Mbps uit.",
+            "Je krijgt zowel een IPv4- als een IPv6-adres, beide met een locatie in Nederland, zodat Nederlandse diensten gewoon bereikbaar zijn.",
+            "De ping is niet altijd stabiel. Af en toe treedt er wat packet loss op, wat bij realtime toepassingen zoals VoIP of videobellen kleine haperingen kan geven. In de grafiek hieronder zijn de rode streepjes packet loss en is de zwarte lijn de latency; het groene gedeelte loopt tot 100 ms."
+          ],
+          "images": ["starlink-latency"]
+        },
+        {
+          "heading": "Wat betekent dit voor events?",
+          "body": [
+            "Starlink is een uitstekende uplink voor locaties zonder vaste lijn, maar de combinatie van best-effort prioriteit en incidentele packet loss is precies waarom we op events altijd een 5G-verbinding als back-up meenemen. Kassa's en ticketing mogen niet afhangen van één pad.",
+            "Benieuwd naar het stroomverbruik? Dat hebben we in een aparte post gemeten."
+          ]
+        }
       ]
     },
     {
-      "id": "starlink-power-consumption",
-      "title": "Starlink Power Consumption: How Much Does It Use?",
+      "slug": "starlink-power-consumption",
+      "lang": "nl",
       "date": "2024-03-19",
-      "excerpt": "Measuring the power usage of Starlink during download and upload operations, with peaks up to 80 watts.",
-      "cover": "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240319_123526-225x300.jpg",
-      "images": [
-        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240319_123526-225x300.jpg",
-        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240319_123550-225x300.jpg",
-        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240319_123605-225x300.jpg",
-        "https://bunny-wp-pullzone-xdnmfyhref.b-cdn.net/wp-content/uploads/2024/03/20240319_123611-225x300.jpg"
-      ],
-      "tags": ["Starlink", "Power Consumption"],
-      "content": [
-        "Misschien ben je wel benieuwd hoeveel vermogen Starlink gebruikt. Spoiler: best veel.",
-        "De Starlink-router gebruikt ongeveer 10 watt wanneer deze in gebruik is. Ik heb pieken gezien in de buurt van 80 watt.",
-        "Hier heb ik een filmpje die laat zien hoeveel vermogen Starlink gebruikt tijdens het downloaden en uploaden:",
-        "<div style=\"position: relative; padding-top: 56.25%;\"><iframe style=\"border: 0; position: absolute; top: 0; height: 100%; width: 100%;\" src=\"https://iframe.mediadelivery.net/embed/220943/5ce49524-2aed-4cba-bdc8-2e77f47fc4e9?autoplay=false&loop=false&muted=false&preload=false&responsive=true\" allowfullscreen=\"allowfullscreen\"></iframe></div>",
-        "Het is interessant om te zien dat tijdens het uploaden Starlink het meeste vermogen gebruikt. Dit is ook wel logisch aangezien hij flink wat kilometers omhoog moet stralen.",
-        "Starlink gebruikt dus tussen de 30 en 80 watt. 80 watt bij uploaden en 30 watt idle.",
-        "PS. De snelheid is in het bovenstaande filmpje relatief laag. Dit komt omdat de Starlink nog de optimale positie moet vinden. Na een kwartier gaat de snelheid vaak flink hoger."
+      "title": "Hoeveel stroom gebruikt Starlink?",
+      "excerpt": "We hebben het verbruik van een Starlink-set gemeten tijdens idle, downloaden en uploaden. Kort antwoord: tussen de 30 en 80 watt.",
+      "tags": ["Starlink", "Stroomverbruik"],
+      "cover": null,
+      "sections": [
+        {
+          "body": [
+            "Misschien ben je benieuwd hoeveel vermogen een Starlink-set gebruikt. Spoiler: best veel. Voor eventwerk is dat relevant, want het bepaalt mede hoe je de stroomvoorziening en de UPS dimensioneert."
+          ]
+        },
+        {
+          "heading": "De metingen",
+          "body": [
+            "De complete set gebruikt ongeveer 30 watt wanneer deze idle is. Tijdens het uploaden zagen we pieken tot ongeveer 80 watt. De router is daarvan maar een klein deel: die zit rond de 10 watt.",
+            "Dat het verbruik tijdens uploaden het hoogst is, komt doordat de zendkant van de schotel dan het hardst werkt. De phased-array antenne moet dan actief richting de satelliet zenden in plaats van vooral te ontvangen."
+          ]
+        },
+        {
+          "heading": "Conclusie",
+          "body": [
+            "Reken voor een Starlink-set op 30 watt idle en pieken tot 80 watt. Bij het dimensioneren van accu's of een UPS gaan wij uit van het piekverbruik, niet van het gemiddelde.",
+            "Let op: in onze meetvideo is de doorvoersnelheid relatief laag, omdat de schotel op dat moment nog de optimale positie zocht. Na een kwartier ligt de snelheid doorgaans een stuk hoger."
+          ]
+        }
       ]
     }
   ]

@@ -1,5 +1,12 @@
 # macOS
 .DS_Store
 
-# idk
+# Editor
 .vscode/tasks.json
+
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key

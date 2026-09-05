@@ -1,229 +1,159 @@
+<?php
+require __DIR__ . '/partials/i18n-boot.php';
+
+$metaTitle          = t('reliabilityPage.title') . ' — JarnoWiFi';
+$metaDescriptionKey = 'reliabilityPage.lead';
+$metaImage          = '/img/opt/og-default.png';
+$activeNav          = 'reliability';
+
+$metrics = ['sla', 'failover', 'power', 'noc'];
+$pillars = ['uplinks', 'power', 'monitoring', 'runbooks'];
+$slaRows = ['failover', 'incident', 'field', 'update'];
+?>
 <!doctype html>
-<html lang="en">
+<html lang="<?= e($currentLang) ?>">
   <head>
-    <?php
-      $metaTitle = 'Reliability — JarnoWiFi';
-      $metaDescriptionKey = 'reliabilityPage.lead';
-      $metaImage = '/img/logo.jpeg';
-    ?>
-    <?php include 'partials/meta-common.php'; ?>
-    <title>Reliability — JarnoWiFi</title>
+    <?php include __DIR__ . '/partials/meta-common.php'; ?>
   </head>
   <body>
-    <div data-include="header" data-active="reliability"></div>
+    <?php include __DIR__ . '/partials/header.php'; ?>
 
-    <main class="page-shell">
-      <section class="mb-5">
-        <div class="container">
-          <div class="hero-video">
-            <div class="hero-video__overlay"></div>
-            <div class="container hero-video__content">
-              <div class="row align-items-center mx-0">
-                <div class="col-lg-8">
-                  <p class="section-label mb-2" data-i18n="reliabilityPage.label">Reliability</p>
-                  <h1 class="fw-bold mb-3" data-i18n="reliabilityPage.title"><span class="text-gradient">Always-on connectivity for critical events</span></h1>
-                  <p class="lead text-white-50 mb-4" data-i18n="reliabilityPage.lead">
-                    Dual Starlink, bonded 5G, conditioned power, and on-call engineers working from tested runbooks to protect payments, production and safety.
-                  </p>
-                  <div class="d-flex flex-wrap gap-3">
-                    <span class="fw-bold align-self-center" data-i18n="reliabilityPage.sla.table.incidentValue">"Binnen 5 minuten"</span>
-                    <a class="btn btn-sm cta-primary" href="/#pricing" data-i18n="reliabilityPage.ctaSecondary">See managed plans</a>
-                  </div>
-                  <div class="d-flex flex-wrap gap-2 mt-4">
-                    <span class="metric-pill" data-i18n="reliabilityPage.sla.table.fieldValue">"Binnen 60 minuten on-site"</span>
-                    <span class="metric-pill" data-i18n="reliabilityPage.failover">Sub-2s failover</span>
-                    <span class="metric-pill" data-i18n="reliabilityPage.power">3-layer power</span>
-                    <span class="metric-pill" data-i18n="reliabilityPage.noc">24/7 NOC</span>
-                  </div>
-                </div>
+    <main id="main" class="page-shell">
+      <section class="container mb-5">
+        <div class="hero-video">
+          <div class="hero-video__overlay"></div>
+          <div class="container hero-video__content">
+            <div class="row align-items-center mx-0">
+              <div class="col-lg-8">
+                <p class="section-label mb-2"><?= te('reliabilityPage.label') ?></p>
+                <h1 class="fw-bold mb-3"><span class="text-gradient"><?= te('reliabilityPage.title') ?></span></h1>
+                <p class="lead text-white-50 mb-4"><?= te('reliabilityPage.lead') ?></p>
+                <p class="mb-0">
+                  <a class="btn btn-sm cta-primary" href="<?= e(langUrl('/')) ?>#pricing"><?= te('reliabilityPage.ctaSecondary') ?></a>
+                </p>
+                <ul class="d-flex flex-wrap gap-2 mt-4 list-unstyled mb-0">
+                  <li class="metric-pill"><?= te('reliabilityPage.hero.stat1') ?></li>
+                  <li class="metric-pill"><?= te('reliabilityPage.hero.stat2') ?></li>
+                  <li class="metric-pill"><?= te('reliabilityPage.failover') ?></li>
+                  <li class="metric-pill"><?= te('reliabilityPage.power') ?></li>
+                  <li class="metric-pill"><?= te('reliabilityPage.noc') ?></li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <div class="container mb-5">
+      <section class="container mb-5">
+        <h2 class="visually-hidden"><?= te('reliabilityPage.sla.matrixLabel') ?></h2>
         <div class="row g-4">
-          <div class="col-md-3">
+          <?php foreach ($metrics as $metric): ?>
+          <div class="col-md-6 col-lg-3">
             <div class="info-card p-3 h-100">
-              <p class="text-muted mb-1" data-i18n="reliabilityPage.metrics.slaLabel">Availability</p>
-              <h4 class="fw-bold mb-2" data-i18n="reliabilityPage.metrics.slaValue">99.98% SLA</h4>
-              <p class="small text-muted mb-0" data-i18n="reliabilityPage.metrics.slaNote">Measured on managed WiFi + uplink bundle.</p>
+              <p class="text-muted mb-1"><?= te("reliabilityPage.metrics.{$metric}Label") ?></p>
+              <p class="h5 fw-bold mb-2"><?= te("reliabilityPage.metrics.{$metric}Value") ?></p>
+              <p class="small text-muted mb-0"><?= te("reliabilityPage.metrics.{$metric}Note") ?></p>
             </div>
           </div>
-          <div class="col-md-3">
-            <div class="info-card p-3 h-100">
-              <p class="text-muted mb-1" data-i18n="reliabilityPage.metrics.failoverLabel">Failover</p>
-              <h4 class="fw-bold mb-2" data-i18n="reliabilityPage.metrics.failoverValue">Under 2s L3 swap</h4>
-              <p class="small text-muted mb-0" data-i18n="reliabilityPage.metrics.failoverNote">Automatic cutover between Starlink and 5G.</p>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="info-card p-3 h-100">
-              <p class="text-muted mb-1" data-i18n="reliabilityPage.metrics.powerLabel">Power</p>
-              <h4 class="fw-bold mb-2" data-i18n="reliabilityPage.metrics.powerValue">3-layer</h4>
-              <p class="small text-muted mb-0" data-i18n="reliabilityPage.metrics.powerNote">Grid, UPS banks, and generator-ready feeds.</p>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="info-card p-3 h-100">
-              <p class="text-muted mb-1" data-i18n="reliabilityPage.metrics.nocLabel">Monitoring</p>
-              <h4 class="fw-bold mb-2" data-i18n="reliabilityPage.metrics.nocValue">24/7 NOC</h4>
-              <p class="small text-muted mb-0" data-i18n="reliabilityPage.metrics.nocNote">Synthetic tests, telemetry, and alerting.</p>
-            </div>
-          </div>
+          <?php endforeach; ?>
         </div>
-      </div>
+      </section>
 
-      <div class="container mb-5">
+      <section class="container mb-5">
         <div class="row mb-4">
           <div class="col-lg-7">
-            <p class="section-label" data-i18n="reliabilityPage.pillars.label">Approach</p>
-            <h2 class="fw-bold" data-i18n="reliabilityPage.pillars.title">Reliability built on redundancy, visibility, and discipline.</h2>
-            <p class="text-muted" data-i18n="reliabilityPage.pillars.lead">Each layer is tested on-site before go-live and monitored continuously during the event.</p>
+            <p class="section-label"><?= te('reliabilityPage.pillars.label') ?></p>
+            <h2 class="fw-bold"><?= te('reliabilityPage.pillars.title') ?></h2>
+            <p class="text-muted"><?= te('reliabilityPage.pillars.lead') ?></p>
           </div>
         </div>
         <div class="row g-4">
+          <?php foreach ($pillars as $pillar): ?>
           <div class="col-md-6 col-lg-3">
-            <div class="pillar-card p-4">
-              <h5 class="fw-semibold" data-i18n="reliabilityPage.pillars.uplinks.title">Resilient uplinks</h5>
+            <div class="pillar-card p-4 h-100">
+              <h3 class="h5 fw-semibold"><?= te("reliabilityPage.pillars.{$pillar}.title") ?></h3>
               <ul class="text-muted mb-0 check-list">
-                <li data-i18n="reliabilityPage.pillars.uplinks.item1">Dual Starlink with bonded routing.</li>
-                <li data-i18n="reliabilityPage.pillars.uplinks.item2">5G/LTE with priority SIMs.</li>
-                <li data-i18n="reliabilityPage.pillars.uplinks.item3">Wired uplink preferred when available.</li>
+                <?php foreach (['item1', 'item2', 'item3'] as $item): ?>
+                <li><?= te("reliabilityPage.pillars.{$pillar}.{$item}") ?></li>
+                <?php endforeach; ?>
               </ul>
             </div>
           </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="pillar-card p-4">
-              <h5 class="fw-semibold" data-i18n="reliabilityPage.pillars.power.title">Conditioned power</h5>
-              <ul class="text-muted mb-0 check-list">
-                <li data-i18n="reliabilityPage.pillars.power.item1">UPS banks on core + edge.</li>
-                <li data-i18n="reliabilityPage.pillars.power.item2">Generator-ready cabling and ATS.</li>
-                <li data-i18n="reliabilityPage.pillars.power.item3">Voltage and temperature telemetry.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="pillar-card p-4">
-              <h5 class="fw-semibold" data-i18n="reliabilityPage.pillars.monitoring.title">Monitoring</h5>
-              <ul class="text-muted mb-0 check-list">
-                <li data-i18n="reliabilityPage.pillars.monitoring.item1">Synthetic reachability checks every 30s.</li>
-                <li data-i18n="reliabilityPage.pillars.monitoring.item2">QoS and latency per SSID/VLAN.</li>
-                <li data-i18n="reliabilityPage.pillars.monitoring.item3">On-call escalation within minutes.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="pillar-card p-4">
-              <h5 class="fw-semibold" data-i18n="reliabilityPage.pillars.runbooks.title">Runbooks</h5>
-              <ul class="text-muted mb-0 check-list">
-                <li data-i18n="reliabilityPage.pillars.runbooks.item1">Pre-flight checklists on-site.</li>
-                <li data-i18n="reliabilityPage.pillars.runbooks.item2">Drills for uplink and power failover.</li>
-                <li data-i18n="reliabilityPage.pillars.runbooks.item3">Post-incident review within 48h.</li>
-              </ul>
-            </div>
-          </div>
+          <?php endforeach; ?>
         </div>
-      </div>
+      </section>
 
-      <div class="container mb-5">
-        <div class="row align-items-center g-4">
+      <section class="container mb-5">
+        <div class="row align-items-stretch g-4">
           <div class="col-lg-6">
             <div class="info-card p-4 h-100">
-              <p class="section-label mb-2" data-i18n="reliabilityPage.sla.label">Service scope</p>
-              <h3 class="fw-bold mb-3" data-i18n="reliabilityPage.sla.title">What our 99.98% SLA covers</h3>
+              <p class="section-label mb-2"><?= te('reliabilityPage.sla.label') ?></p>
+              <h2 class="h4 fw-bold mb-3"><?= te('reliabilityPage.sla.title') ?></h2>
               <ul class="text-muted mb-0 check-list">
-                <li data-i18n="reliabilityPage.sla.item1">Managed WiFi SSIDs (guest, staff, production) and wired drops.</li>
-                <li data-i18n="reliabilityPage.sla.item2">Primary + secondary uplinks with automatic failover.</li>
-                <li data-i18n="reliabilityPage.sla.item3">Power delivery to core networking racks.</li>
-                <li data-i18n="reliabilityPage.sla.item4">Live monitoring, alerting, and on-call response.</li>
+                <?php foreach (['item1', 'item2', 'item3', 'item4'] as $item): ?>
+                <li><?= te("reliabilityPage.sla.{$item}") ?></li>
+                <?php endforeach; ?>
               </ul>
             </div>
           </div>
           <div class="col-lg-6">
             <div class="info-card p-4 h-100">
-              <p class="section-label mb-2" data-i18n="reliabilityPage.sla.matrixLabel">Response targets</p>
+              <h2 class="section-label mb-2"><?= te('reliabilityPage.sla.matrixLabel') ?></h2>
               <div class="table-responsive">
                 <table class="table align-middle mb-0">
                   <thead>
                     <tr>
-                      <th scope="col" data-i18n="reliabilityPage.sla.table.col1">Event</th>
-                      <th scope="col" data-i18n="reliabilityPage.sla.table.col2">Target</th>
+                      <th scope="col"><?= te('reliabilityPage.sla.table.col1') ?></th>
+                      <th scope="col"><?= te('reliabilityPage.sla.table.col2') ?></th>
                     </tr>
                   </thead>
                   <tbody>
+                    <?php foreach ($slaRows as $row): ?>
                     <tr>
-                      <td data-i18n="reliabilityPage.sla.table.failover">Uplink failover</td>
-                      <td data-i18n="reliabilityPage.sla.table.failoverValue">Under 2 seconds</td>
+                      <th scope="row" class="fw-normal"><?= te("reliabilityPage.sla.table.{$row}") ?></th>
+                      <td><?= te("reliabilityPage.sla.table.{$row}Value") ?></td>
                     </tr>
-                    <tr>
-                      <td data-i18n="reliabilityPage.sla.table.incident">Critical incident ack</td>
-                      <td data-i18n="reliabilityPage.sla.table.incidentValue">Under 5 minutes</td>
-                    </tr>
-                    <tr>
-                      <td data-i18n="reliabilityPage.sla.table.field">Field dispatch (event hours)</td>
-                      <td data-i18n="reliabilityPage.sla.table.fieldValue">Under 60 minutes on-site</td>
-                    </tr>
-                    <tr>
-                      <td data-i18n="reliabilityPage.sla.table.update">Status update cadence</td>
-                      <td data-i18n="reliabilityPage.sla.table.updateValue">Every 15 minutes</td>
-                    </tr>
+                    <?php endforeach; ?>
                   </tbody>
                 </table>
               </div>
-              <p class="small text-muted mb-0 mt-3" data-i18n="reliabilityPage.sla.footer">Detailed SLAs and scopes are finalized per event.</p>
+              <p class="small text-muted mb-0 mt-3"><?= te('reliabilityPage.sla.footer') ?></p>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="container mb-5">
+      <section class="container mb-5">
         <div class="info-card p-4">
           <div class="row g-4 align-items-center">
             <div class="col-lg-6">
-              <p class="section-label mb-2" data-i18n="reliabilityPage.runbook.label">Playbook</p>
-              <h3 class="fw-bold mb-3" data-i18n="reliabilityPage.runbook.title">How we keep your network live</h3>
+              <p class="section-label mb-2"><?= te('reliabilityPage.runbook.label') ?></p>
+              <h2 class="h4 fw-bold mb-3"><?= te('reliabilityPage.runbook.title') ?></h2>
               <ol class="text-muted mb-0">
-                <li data-i18n="reliabilityPage.runbook.step1">Site survey: uplink mapping, power paths, RF plan.</li>
-                <li data-i18n="reliabilityPage.runbook.step2">Pre-flight: burn-in test of uplinks, UPS load test, failover drill.</li>
-                <li data-i18n="reliabilityPage.runbook.step3">Go-live: staged activation of SSIDs and VLANs with validation walks.</li>
-                <li data-i18n="reliabilityPage.runbook.step4">During event: continuous telemetry, synthetic tests, and staffed hotline.</li>
-                <li data-i18n="reliabilityPage.runbook.step5">After action: report with uptime, incidents, and recommendations.</li>
+                <?php foreach (['step1', 'step2', 'step3', 'step4', 'step5'] as $step): ?>
+                <li><?= te("reliabilityPage.runbook.{$step}") ?></li>
+                <?php endforeach; ?>
               </ol>
             </div>
             <div class="col-lg-6">
               <div class="cta-band cta-band--dark h-100">
-                <h4 class="fw-semibold" data-i18n="reliabilityPage.ctaBand.title">Need a reliability audit for your venue?</h4>
-                <p class="mb-4" data-i18n="reliabilityPage.ctaBand.lead">We design the uplink, power and WiFi plan and deliver a ready-to-run kit with on-site engineers.</p>
+                <h2 class="h4 fw-semibold"><?= te('reliabilityPage.ctaBand.title') ?></h2>
+                <p class="mb-4"><?= te('reliabilityPage.ctaBand.lead') ?></p>
                 <div class="d-flex flex-wrap gap-3">
-                  <a class="btn btn-sm cta-primary" href="/#contact" data-i18n="reliabilityPage.ctaBand.primary">Book a call</a>
-                  <a class="btn btn-sm cta-outline" href="mailto:contact@jarnowifi.net" data-i18n="reliabilityPage.ctaBand.secondary">Email the NOC</a>
+                  <a class="btn btn-sm cta-primary" href="<?= e(langUrl('/')) ?>#contact"><?= te('reliabilityPage.ctaBand.primary') ?></a>
+                  <a class="btn btn-sm cta-outline" href="mailto:noc@jarnowifi.net"><?= te('reliabilityPage.ctaBand.secondary') ?></a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </main>
 
-    <?php include 'partials/footer.php'; ?>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-
-    <script type="module">
-      import { i18n } from '/js/i18n.js';
-      
-      document.addEventListener('DOMContentLoaded', async () => {
-        await import('/menu.js');
-        await i18n.init();
-        await window.loadHeader({ active: 'reliability' });
-        await window.loadFooter();
-      });
-    </script>
+    <?php
+      include __DIR__ . '/partials/footer.php';
+      include __DIR__ . '/partials/consent.php';
+      include __DIR__ . '/partials/scripts.php';
+    ?>
   </body>
 </html>

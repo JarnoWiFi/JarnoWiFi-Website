@@ -1,8 +1,14 @@
 version: 2
 updates:
-  # Keep GitHub Actions used in workflows up to date
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    open-pull-requests-limit: 5
+
+  # Base images are floating tags today; this surfaces CVE-driven bumps.
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
     open-pull-requests-limit: 5

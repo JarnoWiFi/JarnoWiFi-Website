@@ -1,238 +1,179 @@
-# JarnoWiFi - Professional Event WiFi Solutions
+# JarnoWiFi website
 
-JarnoWiFi delivers enterprise-grade WiFi infrastructure for markets, summer camps, festivals, and outdoor events. Built on Starlink satellite internet with 5G failover, backed by a 99.98% SLA.
+Marketing site for JarnoWiFi — managed WiFi for markets, summer camps, festivals
+and other outdoor events, built on Starlink with 5G backup.
 
-## 🚀 Overview
+Three languages (Dutch, English, German), served by nginx + PHP-FPM in Docker.
 
-This repository contains the JarnoWiFi website - a multilingual (Dutch, English, German) marketing site showcasing professional event WiFi services. The site features:
+## Architecture
 
-- **Multi-language support** with client-side i18n (nl, en, de)
-- **Dynamic blog system** with RSS feed integration
-- **Contact form** with SMTP integration
-- **Responsive design** with custom CSS and Bootstrap 5
-- **Dockerized deployment** with Nginx + PHP-FPM
+Copy is **rendered server-side from a single catalog** (`docs/locales/translations.json`).
+Pages never hardcode visible text; they call `t('key')` / `te('key')`. This matters:
+the site previously kept every string twice — once in the PHP and once in the
+catalog — and the two had drifted apart on 215 of ~361 keys, so prices visibly
+changed after JavaScript loaded. `tools/check-content.py` now fails the build if
+copy starts creeping back into markup.
 
-## 🏗️ Architecture
-
-### Tech Stack
-
-- **Frontend**: HTML, CSS (custom design system), Vanilla JavaScript
-- **Backend**: PHP 8.2 (for contact form and server-side rendering)
-- **Web Server**: Nginx (Alpine)
-- **Container Runtime**: Docker Compose
-- **CI/CD**: GitHub Actions (automated deployment)
-
-### Project Structure
+JavaScript is progressive enhancement only (`docs/js/site.js`, ~2 KB): lightbox,
+contact form submission, cookie consent and the gated hero video. Navigation,
+translations and blog content all work with JavaScript disabled.
 
 ```
-PiloWiFi/
-├── docs/                    # Public web root
-│   ├── index.php           # Homepage
-│   ├── contact.php         # Contact form handler
-│   ├── imprint.php         # Legal impressum page
-│   ├── jobs.php            # Careers page
-│   ├── reliability.php     # Uptime & SLA page
-│   ├── site.css            # Main stylesheet
-│   ├── menu.js             # Navigation logic
-│   ├── blog/               # Blog system
-│   │   ├── index.php       # Blog post viewer
-│   │   └── sources/        # RSS feeds
-│   ├── data/               # Static data files
-│   │   └── blog-posts.json
-│   ├── img/                # Image assets
-│   ├── js/                 # JavaScript modules
-│   │   ├── i18n.js         # Internationalization engine
-│   │   ├── blog-helpers.js # Blog rendering utilities
-│   │   └── menu.js         # Menu functionality
-│   ├── locales/            # Translation files
-│   │   └── translations.json
-│   └── partials/           # Reusable components
-│       ├── header.html     # Site header
-│       ├── footer.php      # Site footer
-│       ├── meta-common.php # SEO & meta tags
-│       └── modal.php       # Modal dialogs
-├── docker-compose.yml      # Container orchestration
-├── nginx.conf              # Nginx configuration with language routing
-├── php-fpm-env.conf        # PHP-FPM environment config
-└── README.md               # This file
+docs/                       # web root
+├── index.php               # homepage
+├── reliability.php         # reliability / service scope
+├── jobs.php                # open roles
+├── imprint.php             # Impressum
+├── privacy.php             # privacy statement
+├── contact.php             # contact form handler (SMTP)
+├── sitemap.php             # served at /sitemap.xml
+├── blog/index.php          # blog list + single post
+├── partials/
+│   ├── i18n-boot.php       # language detection + t()/e()/te()/langUrl() helpers
+│   ├── meta-common.php     # <head>: SEO, OG, hreflang, JSON-LD, consent-gated GA
+│   ├── header.php          # nav (server-rendered)
+│   ├── footer.php
+│   ├── blog.php            # post loading + rendering
+│   ├── modal.php           # lightbox dialog
+│   ├── consent.php         # cookie banner
+│   └── scripts.php
+├── locales/translations.json  # ALL visible copy, 3 locales
+├── data/blog-posts.json       # blog content
+├── js/site.js                 # progressive enhancement
+├── js/analytics.js            # loaded only after consent
+└── img/opt/                   # generated responsive derivatives (see tools/)
+tools/
+├── build-images.py         # regenerate img/opt/ derivatives
+├── check-content.py        # locale parity, retired claims, no inline copy
+└── smoke-test.py           # end-to-end HTTP checks
 ```
 
-## 🛠️ Getting Started
+## Local development
 
-### Prerequisites
+```bash
+cp .env.example .env        # set SMTP_PASS (any value works for local browsing)
+docker compose up -d --wait
+```
 
-- Docker & Docker Compose
-- SMTP credentials (for contact form functionality)
-
-### Local Development
-
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd PiloWiFi
-   ```
-
-2. **Create environment file**
-   ```bash
-   echo "SMTP_PASS=your_smtp_password" > .env
-   ```
-
-3. **Start the containers**
-   ```bash
-   docker compose up -d
-   ```
-
-4. **Access the site**
-   Open http://localhost:1212 in your browser
-
-   The site will automatically redirect to a language-specific path:
-   - http://localhost:1212/nl/ (Dutch)
-   - http://localhost:1212/en/ (English)
-   - http://localhost:1212/de/ (German)
-
-### Stop the Development Server
+Open http://localhost:1212 — it redirects to a language path (`/nl/`, `/en/`, `/de/`)
+based on the `preferredLanguage` cookie, then `Accept-Language`.
 
 ```bash
 docker compose down
 ```
 
-## 🌍 Internationalization (i18n)
+## Routing
 
-The site uses a custom client-side i18n system:
+nginx maps language-prefixed URLs onto the PHP files:
 
-- **Translations**: Stored in `docs/locales/translations.json`
-- **Language Detection**: 
-  1. Cookie preference (`preferredLanguage`)
-  2. URL path (`/en/`, `/de/`, `/nl/`)
-  3. Browser `Accept-Language` header
-- **Routing**: Nginx handles language prefix routing (see `nginx.conf`)
+| URL | File |
+|---|---|
+| `/<lang>/` | `index.php` |
+| `/<lang>/jobs`, `/reliability`, `/imprint`, `/privacy` | matching `*.php` |
+| `/<lang>/blog` | `blog/index.php` (list) |
+| `/<lang>/blog/<slug>` | `blog/index.php` (single post) |
+| `/sitemap.xml` | `sitemap.php` |
 
-### Adding a New Language
+The language-prefixed rules deliberately sit **before** the generic `\.php$`
+handler: the contact form posts to `/contact.php` from a page served under
+`/<lang>/`, and that used to fall through to a 404 that silently dropped leads.
 
-1. Add language code to `docs/js/i18n.js` `supportedLanguages` array
-2. Add translations to `docs/locales/translations.json`
-3. Update Nginx language detection in `nginx.conf`
+`/partials/` and `/locales/` are `internal` — they are templates and data, not pages.
 
-## 📧 Contact Form
+## Internationalisation
 
-The contact form (`docs/contact.php`) features:
+- All copy lives in `docs/locales/translations.json` under `nl`, `en`, `de`.
+- `docs/partials/i18n-boot.php` derives `$currentLang` from the URL prefix and
+  exposes `t()` (translate), `e()` (escape), `te()` (translate + escape) and
+  `langUrl()`.
+- Adding a key means adding it to **all three** locales; CI enforces parity.
+- The language switcher is a plain set of links to the same page under a
+  different prefix, so it works without JavaScript.
 
-- **SMTP Integration**: Sends emails via authenticated SMTP
-- **Field Validation**: Server-side validation for all inputs
-- **Anti-Spam**: Honeypot field and rate limiting
-- **JSON API**: Supports both HTML and JSON responses
-- **Security**: Input sanitization and CSRF protection
+## Contact form
 
-### Required Environment Variables
+`docs/contact.php` sends via SMTP. It sets `Reply-To` to the submitter so replies
+reach the lead. Protections: honeypot field, length caps, per-IP application
+throttle (5/hour) plus an nginx `limit_req` zone.
 
-- `SMTP_PASS`: SMTP server password (set in `.env` file)
+Responses never include SMTP configuration or server dialogue — failures are
+written to the PHP error log and the client receives a generic message only.
 
-## 🚢 Deployment
+Configuration is environment-driven (see `.env.example`): `SMTP_HOST`, `SMTP_PORT`,
+`SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`, `SMTP_HELO`, `SMTP_TLS`, `CONTACT_RECIPIENT`,
+`SITE_ORIGIN`. Only these are exposed to PHP (`php-fpm-env.conf` sets
+`clear_env = yes`), so the rest of the process environment stays out of reach.
 
-Automated deployment via GitHub Actions on push to `main` branch:
+## Privacy
 
-1. **Build**: Prepares environment file with secrets
-2. **Sync**: Uses rsync to deploy to production server
-3. **Deploy**: Restarts Docker containers on remote server
+Google Analytics is **not loaded at all** until the visitor accepts via the
+consent banner; the server withholds the tag entirely. Consent is stored in the
+`analyticsConsent` cookie and can be withdrawn on `/privacy`. The only
+consent-free cookie is `preferredLanguage`.
 
-### Manual Deployment
+## Images
+
+Sources live in `docs/img/`; the site references generated derivatives in
+`docs/img/opt/`. After adding or replacing a source image:
 
 ```bash
-# SSH into production server
-ssh root@krakatau.treudler.net
-
-# Navigate to project directory
-cd /root/docker/jarnowifi/website
-
-# Pull latest changes
-git pull origin main
-
-# Restart containers
-docker compose down && docker compose up -d
+python3 tools/build-images.py
 ```
 
-## 🎨 Design System
+The hero background video is decorative and ~1.8 MB. The poster image always
+renders; the video is only fetched on wide viewports, on a connection that does
+not report save-data or 2g, and when the visitor has not requested reduced
+motion. (Hiding it with CSS would not have prevented the download.)
 
-Custom CSS variables defined in `docs/site.css`:
+## Checks
+
+```bash
+python3 tools/check-content.py                 # locale parity, retired claims, no inline copy
+find docs -name '*.php' -print0 | xargs -0 -n1 php -l
+docker compose up -d --wait && python3 tools/smoke-test.py
+```
+
+CI (`.github/workflows/ci.yml`) runs all of these on every pull request, plus
+nginx and compose validation and a gitleaks secret scan.
+
+## Deployment
+
+Pushing to `main` triggers `.github/workflows/deploy.yml`: rsync the repo to the
+server, then restart the containers.
+
+```
+rsync -az --delete --exclude ".git" ./ root@krakatau.treudler.net:/root/docker/jarnowifi/website/
+ssh root@krakatau.treudler.net "cd /root/docker/jarnowifi/website && docker compose down && docker compose up -d"
+```
+
+Required repository secrets: `SSH_PRIVATE_KEY`, `SMTP_PASS`.
+
+The workflow writes `.env` containing `SMTP_PASS` before syncing. Every other
+setting has a default in `docker-compose.yml`, including
+`SITE_ORIGIN=https://jarnowifi.net`, which drives canonical, OG and hreflang
+URLs — override it in `.env` on the server if the public origin ever changes.
+
+The container publishes port `1212` on all interfaces; the reverse proxy in
+front terminates TLS and should set `X-Forwarded-Proto` so generated URLs use
+`https://`.
+
+## Design system
+
+CSS variables in `docs/site.css`:
 
 ```css
-:root {
-  --ink: #0f172a;      /* Primary text */
-  --night: #020617;    /* Dark backgrounds */
-  --ocean: #1e293b;    /* Medium dark */
-  --sand: #f8fafc;     /* Light backgrounds */
-  --sun: #f59e0b;      /* Accent (amber) */
-  --teal: #0ea5e9;     /* Links & CTA */
-  --mist: #e2e8f0;     /* Borders */
-}
+--ink:       #0f172a;  /* primary text */
+--night:     #020617;  /* dark backgrounds */
+--sand:      #f8fafc;  /* light backgrounds */
+--sun:       #f59e0b;  /* accent, CTAs */
+--teal:      #0ea5e9;  /* accents, borders, on-dark text */
+--teal-text: #0369a1;  /* link/label text — AA on light backgrounds */
+--muted:     #52606d;  /* muted body text — AA on --sand */
 ```
 
-### Key Components
+`--teal` fails WCAG AA as text on light backgrounds (2.8:1), so `--teal-text`
+exists for anything that has to be read.
 
-- **Glass Cards**: Translucent cards with backdrop blur
-- **Hero Section**: Video background with gradient overlay
-- **Service Cards**: Interactive hover effects with image galleries
-- **Plan Cards**: Pricing cards with featured state
-- **Stat Chips**: Pill-shaped badges for metrics
+## Licence
 
-## 📝 Blog System
-
-Dynamic blog with:
-
-- **Markdown-style content** rendered from JSON
-- **RSS feed integration** (PD0DP feed)
-- **Image galleries** with lightbox support
-- **Post filtering** by tags
-- **SEO-friendly URLs** with post slugs
-
-### Adding a Blog Post
-
-Edit `docs/data/blog-posts.json`:
-
-```json
-{
-  "slug": "post-slug",
-  "title": "Post Title",
-  "date": "2026-01-14",
-  "tags": ["Technology", "WiFi"],
-  "cover": "/img/cover.jpg",
-  "content": "Post content in HTML",
-  "gallery": ["/img/1.jpg", "/img/2.jpg"]
-}
-```
-
-## 🔒 Security
-
-- **Environment Variables**: Sensitive data stored in `.env` (not in repo)
-- **Input Validation**: Server-side validation on all forms
-- **XSS Prevention**: Output escaping in PHP templates
-- **HTTPS**: Enforced in production (Nginx configuration)
-- **Secrets Management**: GitHub Secrets for CI/CD
-
-## 📊 Monitoring & Operations
-
-- **24/7 NOC**: noc@jarnowifi.net
-- **SLA**: 99.98% uptime guarantee
-- **Infrastructure**: Dual Starlink + 5G failover
-- **Support**: On-site and remote technical support
-
-## 🤝 Contributing
-
-Contact form submissions and inquiries:
-- **General**: contact@jarnowifi.net
-- **Jobs**: jobs@jarnowifi.net
-- **Technical**: noc@jarnowifi.net
-
-## 📄 License
-
-Copyright © 2026 Jarno Sulmann trading as JarnoWiFi. All rights reserved.
-
-## 🔗 Links
-
-- **Website**: https://jarnowifi.net
-- **Imprint**: https://jarnowifi.net/imprint
-- **Careers**: https://jarnowifi.net/jobs
-
----
-
-**Built with** ❤️ **by the JarnoWiFi team**
+Copyright © 2026 Jarno Sulmann, trading as JarnoWiFi. All rights reserved.

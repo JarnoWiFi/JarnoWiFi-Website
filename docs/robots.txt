@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Language negotiation entry points redirect; index the prefixed URLs instead.
+Disallow: /*?lang=
+Disallow: /*?sent=
+
+Sitemap: https://jarnowifi.net/sitemap.xml

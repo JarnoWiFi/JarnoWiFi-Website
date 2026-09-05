@@ -1,83 +1,141 @@
+<?php
+require __DIR__ . '/../partials/i18n-boot.php';
+require __DIR__ . '/../partials/blog.php';
+
+// /<lang>/blog/<slug> — nginx rewrites to this file, slug arrives in the path.
+$slug = '';
+if (preg_match('#^/blog/([a-z0-9-]+)/?$#', $pagePath, $m)) {
+    $slug = $m[1];
+}
+
+$post = $slug !== '' ? findBlogPost($slug) : null;
+if ($slug !== '' && $post === null) {
+    http_response_code(404);
+}
+
+$activeNav = 'blog';
+
+if ($post) {
+    $metaTitle       = $post['title'] . ' — JarnoWiFi';
+    $metaDescription = (string) ($post['excerpt'] ?? '');
+    $metaType        = 'article';
+    if (!empty($post['cover']) && is_file(__DIR__ . '/../img/opt/' . $post['cover'] . '-1200.webp')) {
+        $metaImage = '/img/opt/' . $post['cover'] . '-1200.webp';
+    }
+    $jsonLd = [
+        '@type'         => 'BlogPosting',
+        'headline'      => $post['title'],
+        'description'   => $post['excerpt'] ?? '',
+        'datePublished' => $post['date'] ?? '',
+        'inLanguage'    => $post['lang'] ?? 'nl',
+        'author'        => ['@type' => 'Organization', 'name' => 'JarnoWiFi'],
+        'publisher'     => ['@id' => siteOrigin() . '/#business'],
+        'mainEntityOfPage' => siteOrigin() . langUrl('/blog/' . $post['slug']),
+    ];
+} else {
+    $metaTitle          = t('blog.title') . ' — JarnoWiFi';
+    $metaDescriptionKey = 'blog.lead';
+    $metaImage          = '/img/opt/og-default.png';
+}
+?>
 <!doctype html>
-<html lang="en">
+<html lang="<?= e($currentLang) ?>">
   <head>
-    <?php
-      $metaTitle = 'Blog — JarnoWiFi';
-      $metaDescriptionKey = 'blog.lead';
-      $metaImage = '/img/people/joshua.jpeg';
-    ?>
-    <?php include '../partials/meta-common.php'; ?>
-    <title>Blog - JarnoWiFi</title>
+    <?php include __DIR__ . '/../partials/meta-common.php'; ?>
   </head>
   <body>
-    <div data-include="header" data-active="blog"></div>
+    <?php include __DIR__ . '/../partials/header.php'; ?>
 
-    <main class="page-shell">
+    <main id="main" class="page-shell">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-9">
-            <article class="d-none" data-post-article>
-              <p class="section-label mb-2">Blog</p>
-              <h1 class="fw-bold mb-3" data-post-title></h1>
-              <div class="d-flex flex-wrap align-items-center gap-2 mb-4">
-                <span class="post-meta" data-post-date></span>
-                <div class="d-flex flex-wrap gap-2" data-post-tags></div>
+
+            <?php if ($post): ?>
+            <nav class="mb-4" aria-label="breadcrumb">
+              <a class="text-decoration-none" href="<?= e(langUrl('/blog')) ?>">&larr; <?= te('blog.backToList') ?></a>
+            </nav>
+            <article>
+              <p class="section-label mb-2"><?= te('blog.label') ?></p>
+              <h1 class="fw-bold mb-3"><?= e((string) $post['title']) ?></h1>
+              <p class="blog-meta d-flex flex-wrap align-items-center gap-2 mb-4">
+                <time datetime="<?= e((string) $post['date']) ?>"><?= e(formatPostDate((string) $post['date'])) ?></time>
+                <?php foreach (($post['tags'] ?? []) as $tag): ?>
+                <span class="tag-pill"><?= e((string) $tag) ?></span>
+                <?php endforeach; ?>
+              </p>
+
+              <?php if (!empty($post['cover'])): ?>
+              <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-sm mb-4">
+                <?php renderImage($post['cover'], (string) ($post['coverAlt'] ?? ''), 'w-100 h-100 gallery-img', '(max-width: 992px) 100vw, 720px', false); ?>
               </div>
-              <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-sm mb-4 d-none" data-post-cover>
-                <img class="w-100 h-100" alt="" loading="lazy" data-post-cover-img />
+              <?php endif; ?>
+
+              <div class="post-content">
+                <?php foreach (($post['sections'] ?? []) as $section): ?>
+                  <?php if (!empty($section['heading'])): ?>
+                  <h2 class="h4 fw-semibold mt-5 mb-3"><?= e((string) $section['heading']) ?></h2>
+                  <?php endif; ?>
+                  <?php foreach (($section['body'] ?? []) as $paragraph): ?>
+                  <p><?= e((string) $paragraph) ?></p>
+                  <?php endforeach; ?>
+                  <?php if (!empty($section['images'])): ?>
+                  <div class="row g-3 my-4">
+                    <?php foreach ($section['images'] as $stem): ?>
+                    <div class="col-6 col-md-4">
+                      <button type="button" class="gallery-trigger ratio ratio-4x3 rounded-4 overflow-hidden shadow-sm"
+                              data-enlarge aria-label="<?= te('a11y.enlarge') ?>">
+                        <?php renderImage((string) $stem, '', 'gallery-img', '(max-width: 768px) 50vw, 240px'); ?>
+                      </button>
+                    </div>
+                    <?php endforeach; ?>
+                  </div>
+                  <?php endif; ?>
+                <?php endforeach; ?>
               </div>
-              <div class="post-content text-muted" data-post-content></div>
-              <div class="post-gallery row g-3 mt-4 d-none" data-post-gallery></div>
             </article>
 
-            <div class="mt-5 d-none" data-post-list>
-              <h4 class="fw-semibold mb-3">More posts</h4>
-              <div class="row g-4" data-post-list-container></div>
-              <div class="mt-5">
-                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
-                  <h4 class="fw-semibold mb-0">PD0DP feed</h4>
-                  <a class="text-decoration-none" href="/blog/sources/pd0dp-feed.xml" target="_blank" rel="noopener">XML</a>
-                </div>
-                <div class="row g-4" data-feed-list></div>
-                <p class="text-muted small mb-0 d-none" data-feed-status>Unable to load the feed right now.</p>
+            <?php $others = array_filter(loadBlogPosts(), fn($p) => $p['slug'] !== $post['slug']); ?>
+            <?php if ($others): ?>
+            <section class="mt-5 pt-4 border-top">
+              <h2 class="h5 fw-semibold mb-3"><?= te('blog.morePosts') ?></h2>
+              <div class="row g-4">
+                <?php foreach ($others as $other): ?>
+                <div class="col-md-6"><?php renderPostCard($other); ?></div>
+                <?php endforeach; ?>
               </div>
+            </section>
+            <?php endif; ?>
+
+            <?php else: ?>
+            <header class="mb-4">
+              <p class="section-label mb-2"><?= te('blog.label') ?></p>
+              <h1 class="fw-bold mb-3"><?= te('blog.title') ?></h1>
+              <p class="text-muted"><?= te('blog.lead') ?></p>
+            </header>
+
+            <?php $posts = loadBlogPosts(); ?>
+            <?php if (!$posts): ?>
+            <p class="text-muted"><?= te('blog.empty') ?></p>
+            <?php else: ?>
+            <div class="row g-4">
+              <?php foreach ($posts as $item): ?>
+              <div class="col-md-6"><?php renderPostCard($item); ?></div>
+              <?php endforeach; ?>
             </div>
+            <?php endif; ?>
+            <?php endif; ?>
+
           </div>
         </div>
       </div>
     </main>
 
-    <?php include '../partials/footer.php'; ?>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-
-    <script type="module">
-      import { i18n } from '/js/i18n.js';
-      import { loadBlogPost, loadBlogPostList, loadPD0DPFeed, setupImageEnlargement } from '/js/blog-helpers.js';
-      
-      document.addEventListener('DOMContentLoaded', async () => {
-        await import('/menu.js');
-        await i18n.init();
-        await window.loadHeader({ active: 'blog' });
-        await window.loadFooter();
-        
-        // Load blog post or list
-        const postId = new URL(window.location.href).searchParams.get('post');
-        if (postId) {
-          await loadBlogPost(postId);
-        } else {
-          await loadBlogPostList();
-          await loadPD0DPFeed();
-        }
-        
-        setupImageEnlargement();
-      });
-    </script>
-
-    <?php include '../partials/modal.php'; ?>
+    <?php
+      include __DIR__ . '/../partials/footer.php';
+      include __DIR__ . '/../partials/modal.php';
+      include __DIR__ . '/../partials/consent.php';
+      include __DIR__ . '/../partials/scripts.php';
+    ?>
   </body>
 </html>
