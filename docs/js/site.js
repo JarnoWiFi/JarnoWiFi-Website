@@ -1,18 +1,153 @@
 /**
- * Site behaviour: image lightbox, contact form, cookie consent.
+ * Site behaviour: navigation, lightbox, contact form, cookie consent.
  *
  * Copy is rendered server-side, so there is no client-side translation here.
  * The few strings JS needs are passed in via data-* attributes.
+ *
+ * There is no UI framework. The handful of interactive widgets (nav collapse,
+ * language dropdown, FAQ accordion, lightbox) are implemented below against the
+ * same data-bs-* hooks the markup already used, so the templates did not change.
  */
 
+/* -------------------------------------------------------------- primitives */
+
+const isOpen = (el) => el.classList.contains('show');
+
+function setExpanded(trigger, open) {
+  if (trigger) trigger.setAttribute('aria-expanded', String(open));
+}
+
+/* --------------------------------------------------------- nav / accordion */
+
+/**
+ * data-bs-toggle="collapse" shows or hides data-bs-target. When the target
+ * declares data-bs-parent (the FAQ), its siblings close first.
+ */
+function setupCollapse() {
+  document.querySelectorAll('[data-bs-toggle="collapse"]').forEach((trigger) => {
+    const selector = trigger.getAttribute('data-bs-target');
+    const target = selector && document.querySelector(selector);
+    if (!target) return;
+
+    setExpanded(trigger, isOpen(target));
+    trigger.classList.toggle('collapsed', !isOpen(target));
+
+    trigger.addEventListener('click', (event) => {
+      event.preventDefault();
+      const opening = !isOpen(target);
+
+      const parentSelector = target.getAttribute('data-bs-parent');
+      if (opening && parentSelector) {
+        const parent = document.querySelector(parentSelector);
+        parent?.querySelectorAll('.accordion-collapse.show').forEach((sibling) => {
+          if (sibling === target) return;
+          sibling.classList.remove('show');
+          const owner = document.querySelector(`[data-bs-target="#${sibling.id}"]`);
+          setExpanded(owner, false);
+          owner?.classList.add('collapsed');
+        });
+      }
+
+      target.classList.toggle('show', opening);
+      setExpanded(trigger, opening);
+      trigger.classList.toggle('collapsed', !opening);
+
+      if (target.classList.contains('navbar-collapse')) {
+        document.querySelector('.navbar')?.classList.toggle('nav-open', opening);
+      }
+    });
+  });
+
+  // Following an in-page link should close the mobile menu behind it.
+  document.querySelector('.navbar-collapse')?.addEventListener('click', (event) => {
+    if (!event.target.closest('a')) return;
+    const panel = document.querySelector('.navbar-collapse');
+    panel?.classList.remove('show');
+    document.querySelector('.navbar')?.classList.remove('nav-open');
+    const toggler = document.querySelector('[data-bs-target="#mainNavbar"]');
+    setExpanded(toggler, false);
+    toggler?.classList.add('collapsed');
+  });
+}
+
+/* ---------------------------------------------------------------- dropdown */
+
+function setupDropdown() {
+  const toggles = document.querySelectorAll('[data-bs-toggle="dropdown"]');
+  if (!toggles.length) return;
+
+  const closeAll = (except) => {
+    document.querySelectorAll('.dropdown-menu.show').forEach((menu) => {
+      if (menu === except) return;
+      menu.classList.remove('show');
+      setExpanded(menu.parentElement?.querySelector('[data-bs-toggle="dropdown"]'), false);
+    });
+  };
+
+  toggles.forEach((toggle) => {
+    const menu = toggle.parentElement?.querySelector('.dropdown-menu');
+    if (!menu) return;
+
+    toggle.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const opening = !isOpen(menu);
+      closeAll(menu);
+      menu.classList.toggle('show', opening);
+      setExpanded(toggle, opening);
+    });
+  });
+
+  document.addEventListener('click', () => closeAll());
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeAll();
+  });
+}
+
+/* ------------------------------------------------------- navbar elevation */
+
+/** Solid background once the page scrolls off the (dark) hero. */
+function setupNavbarScroll() {
+  const navbar = document.querySelector('.navbar');
+  if (!navbar) return;
+
+  const sentinel = document.createElement('div');
+  sentinel.setAttribute('aria-hidden', 'true');
+  sentinel.style.cssText = 'position:absolute;top:0;height:1px;width:1px;';
+  document.body.prepend(sentinel);
+
+  new IntersectionObserver(
+    ([entry]) => navbar.classList.toggle('is-stuck', !entry.isIntersecting),
+    { threshold: 0 }
+  ).observe(sentinel);
+}
+
 /* ---------------------------------------------------------------- lightbox */
+
 function setupLightbox() {
   const modalEl = document.getElementById('imageModal');
-  if (!modalEl || !window.bootstrap) return;
+  if (!modalEl) return;
 
-  const modal = new bootstrap.Modal(modalEl);
   const image = modalEl.querySelector('[data-modal-image]');
   const label = modalEl.querySelector('#imageModalLabel');
+  let lastFocused = null;
+
+  function show() {
+    lastFocused = document.activeElement;
+    modalEl.classList.add('show');
+    modalEl.removeAttribute('aria-hidden');
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => modalEl.classList.add('in'));
+    modalEl.querySelector('[data-bs-dismiss="modal"]')?.focus();
+  }
+
+  function hide() {
+    modalEl.classList.remove('in', 'show');
+    modalEl.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    image.removeAttribute('src');
+    lastFocused?.focus();
+  }
 
   document.querySelectorAll('[data-enlarge]').forEach((trigger) => {
     trigger.addEventListener('click', () => {
@@ -20,8 +155,19 @@ function setupLightbox() {
       image.src = img.currentSrc || img.src;
       image.alt = img.alt || '';
       if (label) label.textContent = img.alt || '';
-      modal.show();
+      show();
     });
+  });
+
+  modalEl.querySelector('[data-bs-dismiss="modal"]')?.addEventListener('click', hide);
+
+  // Clicking the backdrop (anything outside the image) closes it.
+  modalEl.addEventListener('click', (event) => {
+    if (!event.target.closest('.modal-body, .modal-header')) hide();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modalEl.classList.contains('show')) hide();
   });
 }
 
@@ -135,6 +281,9 @@ function setupConsent() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  setupCollapse();
+  setupDropdown();
+  setupNavbarScroll();
   setupLightbox();
   setupContactForm();
   setupConsent();

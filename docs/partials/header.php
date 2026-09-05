@@ -3,6 +3,9 @@
 declare(strict_types=1);
 
 $activeNav = $activeNav ?? '';
+// Only pages with a full-bleed dark hero let the header sit transparently on
+// top of it; everywhere else it must be legible against a light background.
+$navOverlay = !empty($navOverlay);
 $home = langUrl('/');
 
 $navItems = [
@@ -20,7 +23,7 @@ $langNames = ['nl' => 'Nederlands', 'en' => 'English', 'de' => 'Deutsch'];
 $langFlags = ['nl' => '🇳🇱', 'en' => '🇬🇧', 'de' => '🇩🇪'];
 ?>
 <a class="skip-link" href="#main"><?= te('a11y.skipToContent') ?></a>
-<nav class="navbar navbar-expand-lg fixed-top" aria-label="<?= te('a11y.mainNav') ?>">
+<nav class="navbar navbar-expand-lg fixed-top<?= $navOverlay ? ' navbar--overlay' : '' ?>" aria-label="<?= te('a11y.mainNav') ?>">
   <div class="container">
     <a class="navbar-brand fw-bold" href="<?= e($home) ?>">JarnoWiFi</a>
     <button

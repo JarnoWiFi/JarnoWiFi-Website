@@ -11,6 +11,9 @@ declare(strict_types=1);
 const SUPPORTED_LANGS = ['nl', 'en', 'de'];
 const DEFAULT_LANG    = 'nl';
 
+/** Cache-busting token for /site.css, derived from its mtime. */
+define('ASSET_VERSION', (string) (@filemtime(__DIR__ . '/../site.css') ?: '1'));
+
 $requestPath = strtok((string) ($_SERVER['REQUEST_URI'] ?? '/'), '?');
 
 // Language comes from the URL prefix only. The cookie/Accept-Language fallback

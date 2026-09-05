@@ -7,6 +7,7 @@ $metaDescriptionKey = 'meta.description';
 $metaImage          = '/img/opt/og-default.png';
 $preloadImage       = '/img/opt/hero-poster.webp'; // hero background, LCP
 $activeNav          = '';
+$navOverlay         = true;   // full-bleed hero sits behind the header
 
 $faqKeys = ['1', '2', '3', '4', '5', '6', '7'];
 $plans = [

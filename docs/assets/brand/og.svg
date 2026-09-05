@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0F1826"/>
+      <stop offset="1" stop-color="#060B14"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.82" cy="0.12" r="0.7">
+      <stop offset="0" stop-color="#22D3EE" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#22D3EE" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sig" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#06B6D4"/>
+      <stop offset="0.55" stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#67E8F9"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 H0 V40" fill="none" stroke="#22D3EE" stroke-opacity="0.06" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#sig)"/>
+
+  <g transform="translate(88,96) scale(3.0)">
+    <rect width="32" height="32" rx="9" fill="#111C2A"/>
+    <rect x="0.5" y="0.5" width="31" height="31" rx="8.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.12"/>
+    <g fill="none" stroke="url(#sig)" stroke-linecap="round">
+      <path d="M9.5 16.3 A6.2 6.2 0 0 1 15.7 22.5" stroke-width="2.1"/>
+      <path d="M9.5 11.8 A10.7 10.7 0 0 1 20.2 22.5" stroke-width="2.8"/>
+      <path d="M9.5 7.3 A15.2 15.2 0 0 1 24.7 22.5" stroke-width="3.4"/>
+    </g>
+    <circle cx="9.5" cy="22.5" r="2.4" fill="#FFB020"/>
+  </g>
+
+  <text x="200" y="153" font-family="Space Grotesk" font-weight="700" font-size="52" letter-spacing="-1.6" fill="#FFFFFF">JarnoWiFi</text>
+
+  <text x="88" y="316" font-family="Space Grotesk" font-weight="700" font-size="72" letter-spacing="-2.6" fill="#FFFFFF">Professional WiFi</text>
+  <text x="88" y="398" font-family="Space Grotesk" font-weight="700" font-size="72" letter-spacing="-2.6" fill="#22D3EE">for events, anywhere.</text>
+
+  <text x="88" y="466" font-family="Inter" font-weight="400" font-size="26" fill="#A8B7C7">Starlink uplink · 5G backup · engineer on-site</text>
+
+  <g transform="translate(88,534)">
+    <rect width="238" height="46" rx="23" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.14"/>
+    <circle cx="26" cy="23" r="5" fill="#34D399"/>
+    <text x="44" y="31" font-family="Inter" font-weight="500" font-size="18" fill="#E4ECF4">jarnowifi.net</text>
+  </g>
+</svg>

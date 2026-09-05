@@ -29,22 +29,24 @@ if (mb_strlen($computedDescription) > 155) {
 $canonicalPath = $pagePath === '/' ? "/{$currentLang}/" : "/{$currentLang}{$pagePath}";
 $canonicalUrl  = $origin . $canonicalPath;
 
-$rawImage = $metaImage ?? '/img/og-default.png';
+$rawImage = $metaImage ?? '/assets/brand/og.jpg';
 $imageUrl = preg_match('#^https?://#', $rawImage) ? $rawImage : $origin . $rawImage;
 
 $ogLocale = ['nl' => 'nl_NL', 'en' => 'en_US', 'de' => 'de_DE'][$currentLang] ?? 'nl_NL';
 ?>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="theme-color" content="#020617" />
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#060b14" media="(prefers-color-scheme: dark)" />
+<meta name="color-scheme" content="light dark" />
 
 <title><?= e($computedTitle) ?></title>
 <meta name="description" content="<?= e($computedDescription) ?>" />
 <link rel="canonical" href="<?= e($canonicalUrl) ?>" />
 
-<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-<link rel="icon" href="/favicon.ico" sizes="32x32" />
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/assets/brand/favicon.ico" sizes="32x32" />
+<link rel="apple-touch-icon" href="/assets/brand/icon-180.png" />
 <link rel="manifest" href="/site.webmanifest" />
 
 <meta property="og:type" content="<?= e($metaType ?? 'website') ?>" />
@@ -68,12 +70,9 @@ $ogLocale = ['nl' => 'nl_NL', 'en' => 'en_US', 'de' => 'de_DE'][$currentLang] ??
 <?php endforeach; ?>
 <link rel="alternate" hreflang="x-default" href="<?= e($origin . ($pagePath === '/' ? '/nl/' : "/nl{$pagePath}")) ?>" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-<link href="/site.css" rel="stylesheet" />
+<link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link href="/site.css?v=<?= ASSET_VERSION ?>" rel="stylesheet" />
 <?php if (!empty($preloadImage)): ?>
 <link rel="preload" as="image" href="<?= e($preloadImage) ?>" fetchpriority="high" />
 <?php endif; ?>

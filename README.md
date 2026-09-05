@@ -14,9 +14,13 @@ catalog — and the two had drifted apart on 215 of ~361 keys, so prices visibly
 changed after JavaScript loaded. `tools/check-content.py` now fails the build if
 copy starts creeping back into markup.
 
-JavaScript is progressive enhancement only (`docs/js/site.js`, ~2 KB): lightbox,
-contact form submission, cookie consent and the gated hero video. Navigation,
-translations and blog content all work with JavaScript disabled.
+There is **no CSS or JS framework**. `docs/site.css` holds the entire design
+system and `docs/js/site.js` (~3 KB gzipped) holds all behaviour: nav collapse,
+language dropdown, FAQ accordion, lightbox, contact form, cookie consent and the
+gated hero video. Navigation, translations, the FAQ and blog content all work
+with JavaScript disabled. Dropping Bootstrap and Google Fonts removed roughly
+50 KB gzipped and two third-party origins, which also let the CSP drop
+`cdn.jsdelivr.net`, `fonts.googleapis.com` and `fonts.gstatic.com`.
 
 ```
 docs/                       # web root
@@ -37,6 +41,10 @@ docs/                       # web root
 │   ├── modal.php           # lightbox dialog
 │   ├── consent.php         # cookie banner
 │   └── scripts.php
+├── assets/
+│   ├── brand/              # logo, favicons, PWA icons, OG card
+│   └── fonts/              # self-hosted Inter + Space Grotesk (woff2)
+├── site.css                # the entire design system — see BRAND.md
 ├── locales/translations.json  # ALL visible copy, 3 locales
 ├── data/blog-posts.json       # blog content
 ├── js/site.js                 # progressive enhancement
@@ -161,20 +169,42 @@ front terminates TLS and should set `X-Forwarded-Proto` so generated URLs use
 
 ## Design system
 
-CSS variables in `docs/site.css`:
+The visual identity is **"Signal"** — deep navy, a single electric-cyan accent
+and a rare amber highlight. Logo, palette, type scale, motion and the
+accessibility floor are documented in **[BRAND.md](BRAND.md)**.
+
+`docs/site.css` is the whole presentation layer: ~44 KB, no framework. It
+carries the design tokens, a small grid/utility layer matching the class names
+the templates use, and every component. There is no build step.
+
+Build against the semantic tokens, not the raw brand hexes — they re-map
+automatically under `prefers-color-scheme: dark`:
 
 ```css
---ink:       #0f172a;  /* primary text */
---night:     #020617;  /* dark backgrounds */
---sand:      #f8fafc;  /* light backgrounds */
---sun:       #f59e0b;  /* accent, CTAs */
---teal:      #0ea5e9;  /* accents, borders, on-dark text */
---teal-text: #0369a1;  /* link/label text — AA on light backgrounds */
---muted:     #52606d;  /* muted body text — AA on --sand */
+--bg  --bg-subtle  --surface  --surface-2  --line
+--text  --text-muted  --text-faint
+--accent  --accent-bright  --accent-wash  --accent-line
 ```
 
-`--teal` fails WCAG AA as text on light backgrounds (2.8:1), so `--teal-text`
-exists for anything that has to be read.
+`--accent` resolves to cyan-700 on light backgrounds and cyan-300 on dark, so
+accent text always clears WCAG AA. Raw `--jw-cyan-400` is 2.0:1 on white and
+must never carry text.
+
+Sections that stay dark in both schemes (hero, footer, `.reliability`) use the
+fixed `--dark-*` tokens instead.
+
+### Fonts
+
+Space Grotesk (display) and Inter (body) are **self-hosted** from
+`docs/assets/fonts/` as subset woff2 — no Google Fonts request, which is faster
+and avoids sending visitor IPs to a third party. Latin-ext is split behind
+`unicode-range`, so a typical visitor downloads ~70 KB.
+
+### Brand assets
+
+`docs/assets/brand/` holds the mark, favicons, PWA icons and the social card.
+The SVGs are the sources; `./tools/build-brand.sh` re-renders the rasters
+(favicons, PWA icons, `og.jpg`) in a container.
 
 ## Licence
 
