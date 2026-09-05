@@ -64,7 +64,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      # The gitleaks *action* requires a paid licence on organisation-owned
+      # repositories; the binary itself does not. Run it directly.
       - name: Scan for committed secrets
-        uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          docker run --rm -v "$PWD:/repo" zricethezav/gitleaks:latest \
+            detect --source /repo --redact --no-banner --verbose

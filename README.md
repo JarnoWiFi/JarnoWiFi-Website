@@ -134,7 +134,9 @@ docker compose up -d --wait && python3 tools/smoke-test.py
 ```
 
 CI (`.github/workflows/ci.yml`) runs all of these on every pull request, plus
-nginx and compose validation and a gitleaks secret scan.
+nginx and compose validation and a gitleaks secret scan. The scan invokes the
+gitleaks binary directly rather than `gitleaks-action`, which requires a paid
+licence on organisation-owned repositories.
 
 ## Deployment
 

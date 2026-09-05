@@ -6,9 +6,8 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 5
 
-  # Base images are floating tags today; this surfaces CVE-driven bumps.
-  - package-ecosystem: "docker"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 5
+# Note: a "docker" ecosystem entry was tried here and errored on every run.
+# This repo has no Dockerfile - only docker-compose.yml, where `nginx:alpine`
+# is a floating tag Dependabot cannot meaningfully pin. Worth re-adding once
+# someone with repo access can read the failing job log; until then it would
+# just be a permanently red check.
