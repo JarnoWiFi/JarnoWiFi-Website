@@ -120,6 +120,18 @@ function setupNavbarScroll() {
     ([entry]) => navbar.classList.toggle('is-stuck', !entry.isIntersecting),
     { threshold: 0 }
   ).observe(sentinel);
+
+  // On overlay pages the bar keeps its dark treatment for as long as the dark
+  // hero is behind it; only past the hero does it adopt the page background.
+  const hero = navbar.classList.contains('navbar--overlay')
+    ? document.querySelector('.hero')
+    : null;
+  if (!hero) return;
+
+  new IntersectionObserver(
+    ([entry]) => navbar.classList.toggle('is-past-hero', !entry.isIntersecting),
+    { rootMargin: `-${navbar.offsetHeight || 68}px 0px 0px 0px`, threshold: 0 }
+  ).observe(hero);
 }
 
 /* ---------------------------------------------------------------- lightbox */
